@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Not logged In</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <!-- Header Section -->
+  <header class="header">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <img src="static/assets/Rectangle.png" alt="SmartStart Logo">
+      </div>
+      <ul class="nav__menu">
+        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Features</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Pricing</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+      </ul>
+      <button type="submit" class="nav__btn" >Log In</button>
+    </nav>
+  </header>
+        <!-- Main -->
+  <main class="main">
+    <section class="hero container">
+      <div class="hero__content">
+        <h1 class="hero__title">Welcome to SmartStart. <br> Better onboarding, from Day 1.</h1>
+        <p class="hero__text">
+          Streamlined checklists, secure e-sign, and a helpful AskBot to guide new hires.
+        </p>
+        <button type="submit" class="hero__btn">Get Started</a>
+      </div>
+      <div class="hero__image">
+        <img src="static/assets/image 3.png" alt="Onboarding illustration">
+      </div>
+    </section>
+    <!-- Features -->
+    <section class="features container">
+      <div class="features__item">
+        <img src="static/assets/Frame 2085654885.png" alt="Checklist icon" class="features__icon">
+        <h3 class="features__title">Personalized checklists per role</h3>
+        <p class="features__desc">Automate onboarding steps for new hires.</p>
+      </div>
+      <div class="features__item">
+        <img src="static/assets/Frame 2085654893.png" alt="Upload icon" class="features__icon">
+        <h3 class="features__title">Fast document upload & e-sign</h3>
+        <p class="features__desc">Monitor onboarding completion in real-time.</p>
+      </div>
+      <div class="features__item">
+        <img src="static/assets/Frame 2085654891.png" alt="Progress tracker icon" class="features__icon">
+        <h3 class="features__title">Progress Tracker</h3>
+        <p class="features__desc">Monitor onboarding completion in real-time.</p>
+      </div>
+    </section>
+        <!-- Testimonial -->
+    <section class="testimonial container">
+        <div class="testimonial__wrapper">
+      <p class="testimonial__quote">
+        “🚀 Onboard 50% faster on average.” <br>
+        <span class="testimonial__note">"Based on pilot data from HR teams using SmartStart."</span>
+      </p>
+        </div>
+      <p class="testimonial__trust">
+        Trusted by HR teams to reduce onboarding support requests.
+      </p>
+    </section>
+  </main>
+            <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer__content container">
+      <p class="footer__text">© SmartStart · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </div>
+  </footer>
 </body>
 </html>
