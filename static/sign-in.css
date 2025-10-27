@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+.logo{
+  /* background-color: yellowgreen; */
+  padding: 20px;
+}
+.logo-section img.logo {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.logo-section h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.icon-circle {
+  background-color: #ddd;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 25px;
+}
+
+.icon-circle i{
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  /* background-color: yellowgreen; */
+  align-content: center;
+
+}
+
+/* Form Card */
+.form-card {
+  background-color: #fff;
+  width: 320px;
+  padding: 30px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+.form-card label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-card input,
+.form-card select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: #777;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.forgot-password span {
+  color: #009fe3;
+  font-weight: 500;
+}
+
+/* Button */
+.sign-in-btn {
+  background-color: #00aee0;
+  border: none;
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.sign-in-btn:hover {
+  background-color: #008fc3;
+}
+
+.signup-text {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 15px;
+  color: #555;
+}
+
+.signup-text a {
+  color: #009fe3;
+  text-decoration: none;
+  font-weight: 500;
+}
