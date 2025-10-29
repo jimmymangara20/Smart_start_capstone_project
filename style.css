@@ -11,6 +11,7 @@
     --hero-btn: #0A93F4;
     --testimonial: #0A93F45C;
     --text-color: #000000b6;
+    --btn: #55CDE5;
 }
 html{
     font-size: 62.5%;
@@ -61,6 +62,16 @@ body{
         padding: 1rem 8rem;
     }
 }
+@media (max-width: 700px) {
+    .nav{
+        padding: 1rem 5rem;
+    }
+}
+@media (max-width: 550px) {
+    .nav{
+        padding: 1rem 5rem;
+    }
+}
 .nav__logo{
     width: 15rem;
     height: 15rem;
@@ -86,39 +97,52 @@ body{
     display: flex;
     gap: 8rem;
 }
-@media (max-width:700px) {
+@media (max-width:900px) {
     .nav__menu{
        display: none;
     }
 }
 .nav__item{
     list-style: none;
-    font-size: 1.2rem;
 }
 .nav__link:hover{
     color: var(--hero-btn);
 }
+.nav__login{
+    color: var(--btn-color);
+    font-size: 1.5rem;
+}
 .nav__link{
     text-decoration: none;
+    font-size: 1.5rem;
     color: var(--primary);
 }
 .nav__btn{
-    padding: 1rem;
+    padding: 1rem 3rem;
     border: none;
-    border-radius: 40%;
+    border-radius: 1rem;
     background-color: var(--btn-color);
     color: var(--white);
 }
+.nav__wrapper{
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width:700px) {
-    .nav__btn{
-      display: none;
+    .nav__wrapper{
+      align-items: center;
+      justify-content: center;
+      margin-right: 5rem;
     }
 }
 /* Hero Section */
 .hero{
     display: flex;
     justify-content: center;
-    margin: 3rem 20rem;
+    max-width: 100%;
+    margin: 1rem 25rem;
     gap: 20rem;
 }
 @media (max-width:1200px) {
@@ -131,43 +155,70 @@ body{
     .hero{
      display: flex;
      flex-direction: column;
-     align-items: center;
+     margin: auto;
+     width: 50%;
     }
 }
-
+@media (max-width: 790px) {
+    .hero{
+     width: 60%;
+     margin-bottom: 5rem;
+    }
+}
+@media (max-width: 790px) {
+    .hero{
+     width: 70%;
+    }
+}
 .hero__content{
-    width: 50rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 .hero__title{
-    width: 42rem;
-    font-size: 4rem;
+    /* width: 55rem; */
+    font-size: 8rem;
+}
+.smartstart{
+    color: var(--hero-btn);
 }
 .hero__text{
-    width: 30rem;
+    /* width: 30rem; */
+    font-size: 1.5rem;
 }
 .hero__btn{
-    width: 18rem;
-    background-color: var(--hero-btn);
+    width: 70%;
+    background-color: var(--btn-color);
     color: var(--white);
-    padding: 1rem 3rem;
-    border: none;
+    padding: 1.2rem 5rem;
+    border: 1px solid #55CDE5;
     border-radius: 1rem;
+    margin-top: 1.5rem;
 }
 .features{
     display: flex;
     justify-content: center;
-    margin-top: 0;
+    margin-top: 5rem;
     gap: 8rem;
+    align-items: center;
+    width: 100%;
+}
+@media (max-width: 650px) {
+    .features{
+        width: 60%;
+        margin: auto;
+    }
+}
+.features__wrapper{
+    display: flex;
+    width: 13rem;
+    gap: .5rem;
+    margin-bottom: 3rem;
+    flex-direction: column;
 }
 .features__item{
-    width: 12rem;
     display: flex;
-    flex-direction: column;
     gap: .5rem;
-    margin-bottom: 2rem;
 }
 .features__icon{
     height: 3rem;
@@ -183,7 +234,7 @@ body{
     justify-content: center;
     margin: auto;
     align-items: center;
-    width: 16rem;
+    width: 18rem;
     height: 8rem;
     font-size: 1rem;
     text-align: center;
@@ -197,7 +248,7 @@ body{
 .testimonial__trust{
     display: flex;
     justify-content: center;
-    margin: 2rem;
+    margin: 3rem;
 }
 .footer{
     background-color: var(--testimonial);
