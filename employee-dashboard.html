@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Dashboard</title>
+
+  <!-- Font Awesome for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Dashboard Styles -->
+  <link rel="stylesheet" href="static\employee-dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <img
+            src="static/assets/smartstart-logo-orig.png"
+            alt="Smartstart Logo"
+            class="sidebar-logo"
+          />
+        </div>
+
+        <nav id="sidebar-menu">
+          <a href="#" class="nav-item active" data-section="home">
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="#" class="nav-item" data-section="onboarding">
+            <i class="fas fa-user-plus"></i> Onboarding
+          </a>
+          <a href="#" class="nav-item" data-section="events">
+            <i class="fas fa-calendar-alt"></i> Events
+          </a>
+          <a href="#" class="nav-item" data-section="documents">
+            <i class="fas fa-file-alt"></i> Documents
+          </a>
+          <a href="#" class="nav-item" data-section="profile">
+            <i class="fas fa-user-circle"></i> Profile
+          </a>
+        </nav>
+      </div>
+
+      <div class="logout">
+        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for..."
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="header-info">
+          <span id="current-date-time">October 27th, 9:00AM</span>
+          <i class="fas fa-bell notification-icon" id="notif-btn"></i>
+          <div class="user-avatar-small" id="user-avatar"></div>
+        </div>
+      </header>
+
+      <!-- Dashboard Cards -->
+      <div class="card-grid">
+        <!-- Welcome Card -->
+        <section class="card welcome-card" id="welcome-card">
+          <div class="user-photo" id="user-photo"></div>
+          <div class="user-details">
+            <p class="greeting">Welcome!</p>
+            <h3 id="user-name">Daniel Owoni</h3>
+            <p id="user-title">Software Engineer</p>
+          </div>
+        </section>
+
+        <!-- Task Summary -->
+        <section class="card task-summary-card" id="task-summary">
+          <h4>Task Completed</h4>
+          <div class="task-ring-container">
+            <div id="task-completion-ring" class="completion-ring">2/10</div>
+          </div>
+        </section>
+
+        <!-- Documents Uploaded -->
+        <section class="card documents-card" id="documents-card">
+          <h4>Documents Uploaded</h4>
+          <div id="documents-list" class="list-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- Task Assigned -->
+        <section class="card task-assigned-card" id="tasks-assigned">
+          <div class="card-header">
+            <h4>Task Assigned</h4>
+            <a href="#" id="view-all-tasks">See all</a>
+          </div>
+          <div id="tasks-assigned-list" class="list-container">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </section>
+
+        <!-- Task Progress -->
+        <section class="card progress-table-card full-width" id="task-progress">
+          <div class="card-header">
+            <h4>Task Progress</h4>
+          </div>
+
+          <div id="task-progress-body">
+            <!-- Dynamic rows will be injected here -->
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="static\javascript\employee-dashboard.js"></script>
+</body>
+</html>
