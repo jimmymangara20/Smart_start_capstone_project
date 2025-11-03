@@ -1,0 +1,252 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:"Mulish", sans-serif;
+}
+body {
+    background-color:#FAFAFA ;
+}
+html {
+    font-size: 62.5%;
+}
+
+.heading {
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 5rem;
+}
+.heading_img {
+    width: 13.2rem;
+    height: 3rem;
+}
+.nav_items {
+    display: flex;
+    gap: 20.14rem;
+    padding-right: 10rem;
+}
+.nav_item {
+    list-style: none;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.nav_link {
+    text-decoration: none;
+    color: #111827;
+    }
+.nav_btn {
+    display: block;
+    padding: 1.2rem 2rem;
+    background-color:  lab(47.71% -4.19 -40.93);
+    border-radius: 6px;
+    color: white;
+    border: none;
+}
+.hero {
+width: 100%;
+ background-color:  #FAFAFA;
+}
+.hero_diff_heading {
+    color: #0077B6;
+}
+.hero_heading {
+    font-size: 6rem;
+    font-weight: 800;
+    width: 80rem;
+    display: block;
+    color: #111827;
+   }
+   .hero_pg {
+    width: 60rem;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+   }
+   .hero_btn-get {
+    display:inline-block;
+    padding: 1.2rem 2rem;
+    background-color:  lab(47.71% -4.19 -40.93);
+    border-radius: 6px;
+    color: white;
+    border: none;
+   }
+   .hero_btn-see {
+    display: inline-block;
+    padding: 1.2rem 2rem;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #0077B6 ;
+    margin-left: 8rem;
+   }
+   .div_img-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+   }
+   .div_img-up {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+   }
+   .hero_img-right {
+    width: 37.8rem;
+    height: 39.4rem;
+   }
+   .hero_img-left {
+    width: 37.8rem;
+    height: 18.8rem;
+   }
+   .hero_img-below {
+    display: inline-block;
+    width:77.5rem;
+   }
+   .hero_img_div {
+    width: 80rem;
+    height: 60rem;
+   }
+   .hero_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10rem 5rem;
+   }
+/* why section */
+.why_section {
+    position: relative;
+    background: rgba(204, 240, 247, 0.4);
+    height: 50rem;
+    
+}
+.why_heading {
+    display: inline-block;
+    color: #111827;
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 7rem 5rem;
+}
+.why_box {
+    display: flex;
+    gap: 20.75rem;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5rem;
+    
+}
+.why_card-icon {
+    display: inline-block;
+    width: 5.2rem;
+    height: 4.6rem;
+}
+.why_card-heading {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #111827;
+}
+.why_card-pg {
+    display: inline-block;
+    width: 23.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.why_card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #FCFCFC;
+    padding: 6rem;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+}
+
+/* How section */
+.how_section {
+    width: 100%;
+    height: 87.2;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content:center;
+    gap: 30rem;
+    align-items: center;
+    margin: 10rem 0;
+    flex-wrap: wrap;
+}
+.how-pic {
+    display: inline-block;
+    width: 45rem;
+    height: 65rem;
+}
+.how_div {
+    display: flex;
+    flex-direction: column;
+}
+.how_heading {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 3rem;
+}
+.how_pg {
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+}
+.how-div-container {
+    display: flex;
+    flex-direction: column;
+}
+.how_step_div {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+.how_step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 500;
+    border: 1px solid #111827;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    text-align: center;
+}
+.how_step_heading {
+    display: inline-block;
+    width: 50rem;
+    color: #111827;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+.how_step_pg {
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 500;
+    width: 52rem;
+}
+.how_step_line {
+    display: inline-block;
+    margin-left: 3rem;
+    width: 1px;
+    height: 10rem;
+    color: #111827;
+}
+
+/* about section */
+.about_section {
+    display: flex;
+    justify-content: ;
+
+}
+.about.heading {
+    display: block;
+
+}
