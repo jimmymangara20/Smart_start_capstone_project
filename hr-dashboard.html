@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smartstart Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="hr-dashboard.css" />
+</head>
+<body class="dashboard">
+
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
+    </div>
+
+    <nav class="sidebar__nav">
+      <ul class="sidebar__list">
+        <li class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt=""class="sidebar__img">Home</li>
+        <li class="sidebar__item"><img src="static/assets/" alt="" class="sidebar__img">Employees</li>
+        <li class="sidebar__item"><img src="static/assets/task-square.png" alt=""class="sidebar__img">Checklist</li>
+        <li class="sidebar__item"><img src="static/assets/activity.png" alt="" class="sidebar__img">Progress Tracker</li>
+        <li class="sidebar__item"><img src="static/assets/" alt="" class="sidebar__img">Uploads</li>
+        <li class="sidebar__item"> <img src="static/assets/profile.png" alt="" class="sidebar__img">Profile</li>
+      </ul>
+    </nav>
+
+    <button class="sidebar__logout">Log Out</button>
+  </aside>
+
+  <main class="main">
+    <header class="main__header">
+      <input class="search" type="text" placeholder="Search" />
+      <div class="header__actions">
+        <img src="static/assets/notification.png" alt="Notification">
+        <img src="static/assets/message.png" alt="Message">
+        <p class="header__para"><img class="header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User"/>Ada Okafor</p>
+      </div>
+    </header>
+
+    <section class="top">
+        <div class="top__wrapper">
+            <div class="top__content">
+            <h1 class="top__title">Dashboard</h1>
+            <p class="top__text">Overview of onboarding activities</p>
+            </div>
+            <button class="btn btn--primary">New Employee</button>
+        </div>
+    </section>
+
+    <section class="stats">
+      <div class="stats__card"><h3 class="stats__value">24</h3><p class="stats__label">Active Employees</p></div>
+      <div class="stats__card"><h3 class="stats__value">18</h3><p class="stats__label">Completed Onboarding</p></div>
+      <div class="stats__card"><h3 class="stats__value">6</h3><p class="stats__label">In Progress</p></div>
+      <div class="stats__card"><h3 class="stats__value">2</h3><p class="stats__label">Overdue Tasks</p></div>
+    </section>
+
+    <section class="employees">
+      <header class="section__header">
+        <h2>Recent Employees</h2>
+        <button class="btn btn--link">View All</button>
+      </header>
+
+      <table class="table employees__table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Role</th>
+            <th>Start Date</th>
+            <th>Progress</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="employee-table-body"></tbody>
+      </table>
+    </section>
+
+    <section class="charts">
+      <div class="chart" id="calendar"></div>
+      <div class="chart" id="completion-chart"></div>
+    </section>
+  </main>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
