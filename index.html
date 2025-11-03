@@ -3,91 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Landing Page Not logged In</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <title>Smartstart - Create an Account</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header Section -->
-  <header class="header">
-    <nav class="nav container">
-      <div class="nav__logo">
-        <img src="static/assets/Rectangle.png" alt="SmartStart Logo">
-      </div>
-      
-      <ul class="nav__menu">
-        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Features</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Pricing</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
-      </ul>
-      <div class="nav__wrapper">
-      <a href="" class="nav__login">Log In</a>
-      <button type="submit" class="nav__btn" >Sign Up</button>
-      </div>
-    </nav>
-  </header>
-        <!-- Main -->
-  <main class="main">
-    <section class="hero container">
-      <div class="hero__content">
-        <h1 class="hero__title">Welcome to <b class="smartstart">SmartStart</b></h1>
-        <p class="hero__text">
-          From offer to onboarding — manage tasks, upload documents, and stay on track with smart checklists built for you.
-        </p>
-        <button type="submit" class="hero__btn">Get Started</a>
-      </div>
-      <div class="hero__image">
-        <img src="static/assets/image 3.png" alt="Onboarding illustration">
-      </div>
-    </section>
-    <!-- Features -->
-    <section class="features container">
-      <div class="features__item">
-        <img src="static/assets/Frame 2085654885.png" alt="Checklist icon" class="features__icon">
-        <div class="features__wrapper">
-        <h3 class="features__title">Personalized checklists per role</h3>
-        <p class="features__desc">Automate onboarding steps for new hires.</p>
-        </div>
-      </div>
-      <div class="features__item">
-        <img src="static/assets/Frame 2085654893.png" alt="Upload icon" class="features__icon">
-        <div class="features__wrapper">
-        <h3 class="features__title">Fast document upload & e-sign</h3>
-        <p class="features__desc">Monitor onboarding completion in real-time.</p>
-      </div>
-      </div>
-      <div class="features__item">
-        <img src="static/assets/Frame 2085654891.png" alt="Progress tracker icon" class="features__icon">
-        <div class="features__wrapper">
-        <h3 class="features__title">Progress Tracker</h3>
-        <p class="features__desc">Monitor onboarding completion in real-time.</p>
-      </div>
-      </div>
-      </div>
-    </section>
-        <!-- Testimonial -->
-    <section class="testimonial container">
-        <div class="testimonial__wrapper">
-      <p class="testimonial__quote">
-        “🚀 Onboard 50% faster on average.” <br>
-        <span class="testimonial__note">"Based on pilot data from HR teams using SmartStart."</span>
-      </p>
-        </div>
-      <p class="testimonial__trust">
-        Trusted by HR teams to reduce onboarding support requests.
-      </p>
-    </section>
-  </main>
-            <!-- Footer Section -->
-  <footer class="footer">
-    <div class="footer__content container">
-      <p class="footer__text">© SmartStart · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+  <div class="container">
+    <div class="image-section">
+      <img src="./People working in an office.jpg" alt="Office workspace">
     </div>
-  </footer>
+
+
+    <div class="form-section">
+      <div class="form-card">
+        <div class="logo">
+          <img src="./Smartstart Logo .png" alt="Smartstart logo">
+          <span>Smartstart</span>
+        </div>
+
+        <h1>Create an account</h1>
+        <p class="login-text">
+          Already have an account? <a href="#">Log In</a>
+        </p>
+
+        <form>
+          <div class="role-select">
+            <label><input type="radio" name="role" checked> Admin</label>
+            <label><input type="radio" name="role"> Employee</label>
+          </div>
+
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" placeholder="name@gmail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Doe Corps" required>
+          </div>
+
+          <div class="form-group">
+            <label>Role</label>
+            <input type="text" placeholder="HR Manager" required>
+          </div>
+
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Johndoe1234#" required>
+          </div>
+
+          <button type="submit" class="btn">Sign Up</button>
+
+          <p class="google-text">Or continue with <a href="#">Google</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
