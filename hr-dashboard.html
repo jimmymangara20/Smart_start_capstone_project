@@ -1,88 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smartstart Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="hr-dashboard.css" />
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HR Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="hr-dashboard.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+        <script type="module" src="static/javascript/hr-dashboard.js" defer></script>
+    </head>
 <body class="dashboard">
 
-  <aside class="sidebar">
-    <div class="sidebar__logo">
-      <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
-    </div>
 
-    <nav class="sidebar__nav">
-      <ul class="sidebar__list">
-        <li class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt=""class="sidebar__img">Home</li>
-        <li class="sidebar__item"><img src="static/assets/" alt="" class="sidebar__img">Employees</li>
-        <li class="sidebar__item"><img src="static/assets/task-square.png" alt=""class="sidebar__img">Checklist</li>
-        <li class="sidebar__item"><img src="static/assets/activity.png" alt="" class="sidebar__img">Progress Tracker</li>
-        <li class="sidebar__item"><img src="static/assets/" alt="" class="sidebar__img">Uploads</li>
-        <li class="sidebar__item"> <img src="static/assets/profile.png" alt="" class="sidebar__img">Profile</li>
-      </ul>
-    </nav>
-
-    <button class="sidebar__logout">Log Out</button>
-  </aside>
-
-  <main class="main">
-    <header class="main__header">
-      <input class="search" type="text" placeholder="Search" />
-      <div class="header__actions">
-        <img src="static/assets/notification.png" alt="Notification">
-        <img src="static/assets/message.png" alt="Message">
-        <p class="header__para"><img class="header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User"/>Ada Okafor</p>
-      </div>
-    </header>
-
-    <section class="top">
-        <div class="top__wrapper">
-            <div class="top__content">
-            <h1 class="top__title">Dashboard</h1>
-            <p class="top__text">Overview of onboarding activities</p>
-            </div>
-            <button class="btn btn--primary">New Employee</button>
+        <aside class="sidebar" aria-label="Main Navigation">
+        <div class="sidebar__logo">
+        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
         </div>
-    </section>
 
-    <section class="stats">
-      <div class="stats__card"><h3 class="stats__value">24</h3><p class="stats__label">Active Employees</p></div>
-      <div class="stats__card"><h3 class="stats__value">18</h3><p class="stats__label">Completed Onboarding</p></div>
-      <div class="stats__card"><h3 class="stats__value">6</h3><p class="stats__label">In Progress</p></div>
-      <div class="stats__card"><h3 class="stats__value">2</h3><p class="stats__label">Overdue Tasks</p></div>
-    </section>
+        <nav class="sidebar__nav">
+            <ul class="sidebar__list">
+                <li class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</li>
+                <li class="sidebar__item"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</li>
+                <li class="sidebar__item"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</li>
+                <li class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</li>
+                <li class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</li>
+                <li class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</li>
+                <li class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</li>
+            </ul>
+        </nav>
+          <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
+        </aside>
+        <main class="main">
+                <header class="main-header">
+                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
 
-    <section class="employees">
-      <header class="section__header">
-        <h2>Recent Employees</h2>
-        <button class="btn btn--link">View All</button>
-      </header>
+            <div class="main-header__search-wrapper">
+                <button class="main-header__search-icon" aria-label="Search">🔍</button>
+                <input class="main-header__search-input" type="text" placeholder="Search" />
 
-      <table class="table employees__table">
-        <thead>
-          <tr>
-            <th>Employee</th>
-            <th>Role</th>
-            <th>Start Date</th>
-            <th>Progress</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="employee-table-body"></tbody>
-      </table>
-    </section>
 
-    <section class="charts">
-      <div class="chart" id="calendar"></div>
-      <div class="chart" id="completion-chart"></div>
-    </section>
-  </main>
+                <div class="main-headear__wrapper">
+                    <div class="main-header__actions">
+                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
+                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
+                    <div class="main-header__user">
+                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
+                <span class="main-header__name">Ada Okafor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </header>
 
-  <script src="./js/app.js"></script>
-</body>
+
+            <section class="dashboard-top">
+                <div class="dashboard-top__wrapper">
+                    <div class="dashboard-top__content">
+                        <h1 class="dashboard-top__title">Dashboard</h1>
+                        <p class="dashboard-top__text">Overview of onboarding activities</p>
+                    </div>
+                        <button class="btn btn--primary">New Employee</button>
+                </div>
+            </section>
+
+
+            <section class="stats">
+                <div class="stats__card card">
+                    <div class="stats__wrapper">
+                    <p class="stats__label">Active Employees</p>
+                    <h3 class="stats__value">24</h3>
+                    </div>
+                        <img src="static/assets/profile-2user.png" alt="Profile" class="stats__img">
+                </div>
+                <div class="stats__card card">
+                    <div class="stats__wrapper">
+                    <p class="stats__label">Completed Onboarding</p>
+                    <h3 class="stats__value">18</h3>
+                    </div>
+                        <img src="static/assets/tick-circle.png" alt="Tick" class="stats__img">
+                </div>
+                <div class="stats__card card">
+                    <div class="stats__wrapper">
+                    <p class="stats__label">In Progress</p>
+                    <h3 class="stats__value">6</h3>
+                    </div>
+                        <img src="static/assets/Container.png" alt="Container" class="stats__img">
+                </div>
+                <div class="stats__card card">
+                    <div class="stats__wrapper">
+                    <p class="stats__label">Overdue Tasks</p>
+                    <h3 class="stats__value">2</h3>
+                    </div>
+                        <img src="static/assets/Icon.png" alt="Icon" class="stats__img">
+                </div>
+            </section>
+
+
+            <section class="employees">
+                <header class="employees__header">
+                <div class="employees__wrapper">
+                    <h2 class="employees__title">Recent Employees</h2>
+                <p class="employee__para">Track Onboarding Progress</p>
+                </div>
+                <button class="btn btn--link"><img src="static/assets/Icon (1).png" alt="" class="btn--img">View All</button>
+                </header>
+
+
+                <table class="table employees__table">
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Role</th>
+                        <th>Start Date</th>
+                        <th>Progress</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                    <tbody id="employee-table-body"></tbody>
+                </table>
+            </section>
+
+
+            <section class="dashboard-charts">
+            <article class="routine">
+                <header class="routine__header">
+                    <h2 class="routine__title">Onboarding Routine</h2>
+                    <button class="routine__view-btn">View ▾</button>
+                </header>
+                <ul class="routine__list" id="routineList"></ul>
+            </article>
+
+
+            <article class="completion">
+                <h2 class="completion__title">Onboarding Completion Status</h2>
+                    <div class="completion__chart-wrapper">
+                        <canvas id="completionChart"></canvas>
+                    </div>
+             </article>
+
+            </section>
+        </main>
+    </body>
 </html>
