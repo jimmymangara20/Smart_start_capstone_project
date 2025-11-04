@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Account Details</title>
+    <link rel="stylesheet" href="static\profile-employee.css">
+    <!-- Poppins font for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for all icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- 1. SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <a href="#" class="logo-link">
+                <!-- Placeholder for your image logo -->
+                <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item"><i class="fas fa-users"></i> Employees</a>
+                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item"><i class="fas fa-cloud-arrow-up"></i> Uploads</a>
+                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item active"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </div>
+        </aside>
+
+        <!-- 2. MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- 2a. Top Header -->
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <!-- 2b. ACCOUNT DETAILS CONTENT -->
+            <div class="account-details-body">
+                
+                <header class="account-header">
+                    <i class="fas fa-arrow-left back-arrow" data-action="back"></i>
+                    <h1>My account</h1>
+                </header>
+
+                <!-- Profile Picture Area -->
+                <div class="user-avatar-section">
+                    <img src="aisha-bello-large.jpg" alt="Aisha Bello" class="large-profile-pic">
+                    <p class="user-name-label">Aisha Bello</p>
+                </div>
+
+                <!-- Account Information List -->
+                <ul class="account-info-list">
+                    
+                    <li class="info-item clickable" data-section="personal">
+                        <div class="item-icon"><i class="fas fa-clipboard-user"></i></div>
+                        <span class="item-text">Personal Details</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                    <li class="info-item clickable" data-section="residential">
+                        <div class="item-icon"><i class="fas fa-home-user"></i></div>
+                        <span class="item-text">Residential Details</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                    <li class="info-item clickable" data-section="document">
+                        <div class="item-icon"><i class="fas fa-file-invoice"></i></div>
+                        <span class="item-text">Identification Document</span>
+                        <span class="item-status approved">Approved</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                </ul>
+                
+                <!-- Danger Zone Action -->
+                <button class="danger-action-btn" data-action="delete">Delete my account</button>
+                
+            </div>
+
+        </main>
+    </div>
+
+    <script src="static\javascript\profile-employee.js"></script>
+</body>
+</html>
