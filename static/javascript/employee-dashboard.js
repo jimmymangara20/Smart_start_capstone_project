@@ -1,154 +1,118 @@
-// --- Initialization ---
-document.addEventListener("DOMContentLoaded", () => {
-  initDashboard();
-});
-
-// ---Main Dashboard Setup ---
-async function initDashboard() {
-  try {
-    // When backend is ready, replace the mock with:
-    // const data = await fetchDataFromAPI('/api/employee/dashboard');
-    const data = getMockDashboardData();
-
-    renderUserInfo(data.user);
-    renderDocuments(data.documents);
-    renderTasksAssigned(data.tasks);
-    renderTaskProgress(data.tasks);
-    updateTaskCompletion(data.tasks);
-    updateCurrentDate();
-  } catch (err) {
-    console.error("Error initializing dashboard:", err);
-  }
-
-  setupEventListeners();
-}
-
-// ---Mock Data (until API is connected) ---
-function getMockDashboardData() {
-  return {
-    user: {
-      name: "Daniel Owoni",
-      title: "Software Engineer",
-      photo: "static/assets/user-avatar.png"
-    },
-    documents: [
-      { filename: "Daniel Resume.pdf" },
-      { filename: "Daniel Cover Letter.pdf" },
-      { filename: "Daniel Original Certificate.pdf" },
-      { filename: "Daniel Reference Letter.pdf" }
-    ],
-    tasks: [
-      { title: "Upload Resume", progress: 100 },
-      { title: "Upload Cover Letter", progress: 56 },
-      { title: "Upload ID Card", progress: 30 },
-      { title: "Upload Original Certificate", progress: 100 },
-      { title: "Upload Reference Letter", progress: 95 },
-      { title: "Upload Agreement Form", progress: 40 }
-    ]
-  };
-}
-
-// ---Fetch Data from API ---
-async function fetchDataFromAPI(endpoint) {
-  const response = await fetch(endpoint);
-  if (!response.ok) throw new Error("Failed to fetch API data");
-  return await response.json();
-}
-
-// ---Render Functions ---
-function renderUserInfo(user) {
-  document.getElementById("user-name").textContent = user.name;
-  document.getElementById("user-title").textContent = user.title;
-  document.getElementById("user-photo").style.backgroundImage = `url('${user.photo}')`;
-}
-
-function renderDocuments(docs) {
-  const container = document.getElementById("documents-list");
-  container.innerHTML = docs.map(d => `<p><i class="fas fa-file-alt"></i> ${d.filename}</p>`).join("");
-}
-
-function renderTasksAssigned(tasks) {
-  const container = document.getElementById("tasks-assigned-list");
-  container.innerHTML = tasks
-    .slice(0, 4)
-    .map(
-      t => `<p><i class="fas fa-tasks"></i> ${t.title}</p>`
-    )
-    .join("");
-}
-
-// ---JS Improvement for Task Progress---
-function renderTaskProgress(tasks) {
-  const container = document.getElementById("task-progress-body");
-  
-  // Use a proper table structure (divs can work if styled correctly)
-  // Let's create header rows manually for semantic clarity
-  const header = `
-    <div class="progress-row progress-header">
-      <span class="col-task-title">Tasks</span>
-      <span class="col-progress-bar">Progress</span>
-      <span class="col-status">Status</span>
-    </div>
-  `;
-  
-  const bodyRows = tasks
-    .map(t => `
-      <div class="progress-row">
-        <span class="col-task-title"><i class="fas fa-file-alt"></i> ${t.title}</span>
-        <div class="progress-bar col-progress-bar">
-          <div class="progress-fill" style="width:${t.progress}%;"></div>
-        </div>
-        <span class="col-status progress-status">${t.progress}%</span>
-      </div>
-    `)
-    .join("");
+// Function to update the progress bar visually
+function updateProgress(percentage) {
+    const progressCircle = document.querySelector('.progress-circle');
+    const percentageNum = document.querySelector('.percentage-num');
     
-  container.innerHTML = header + bodyRows;
+    // Safety check to ensure percentage is between 0 and 100
+    const normalizedPercent = Math.max(0, Math.min(100, percentage));
+    
+    // 1. Update the CSS Variable which controls the conic-gradient
+    progressCircle.style.setProperty('--progress-percent', normalizedPercent);
+    
+    // 2. Update the text value
+    percentageNum.textContent = `${normalizedPercent}%`;
 }
 
-// ---Completion Ring ---
-function updateTaskCompletion(tasks) {
-  const completed = tasks.filter(t => t.progress === 100).length;
-  const total = tasks.length;
-  const percent = Math.round((completed / total) * 100);
+// Example usage: You can test this in your browser's console
+// updateProgress(75); // Should make the bar 75% blue
+// updateProgress(0); // Back to 0%
 
-  const ring = document.getElementById("task-completion-ring");
-  ring.textContent = `${completed}/${total}`;
-  ring.style.background = `conic-gradient(#007bff ${percent}%, #e8efff ${percent}%)`;
+// A single object to hold all the necessary DOM elements (good practice!)
+const DOM = {
+    // Header & Welcome
+    userName: document.querySelector('.user-name'),
+    welcomeHeader: document.querySelector('.welcome-banner h2'),
+    profilePic: document.querySelector('.profile-pic'),
+    
+    // Progress Widget
+    progressCircle: document.querySelector('.progress-circle'),
+    percentageNum: document.querySelector('.percentage-num'),
+    progressDetailH3: document.querySelector('.progress-details h3'),
+    
+    // Quick Information
+    employeeId: document.querySelector('.detail-row .value:nth-child(1)'),
+    email: document.querySelector('.detail-row .value:nth-child(2)'),
+    phone: document.querySelector('.detail-row .value:nth-child(3)'),
+    department: document.querySelector('.detail-row .value:nth-child(4)'),
+    startDate: document.querySelector('.detail-row .value:nth-child(5)'),
+    
+    // Sessions Container (for dynamic rendering)
+    sessionsContainer: document.querySelector('.upcoming-sessions-container')
+};
+
+const API_BASE = 'http://your-backend-api.com'; // Replace with your actual base URL
+
+/**
+ * Updates the circular progress bar based on the percentage fetched.
+ * @param {number} percentage - The completion percentage (0-100).
+ */
+function updateProgressBar(percentage) {
+    const normalizedPercent = Math.max(0, Math.min(100, percentage));
+    
+    // Update the CSS Variable, which drives the conic-gradient fill
+    DOM.progressCircle.style.setProperty('--progress-percent', normalizedPercent);
+    DOM.percentageNum.textContent = `${normalizedPercent}%`;
+    DOM.progressDetailH3.textContent = `Onboarding Progress: ${normalizedPercent}% Complete`;
 }
 
-// --- Current Date ---
-function updateCurrentDate() {
-  const now = new Date();
-  const options = {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  };
-  document.getElementById("current-date-time").textContent = now.toLocaleString("en-US", options);
+
+/**
+ * The main function to fetch and render all dashboard data.
+ */
+async function loadDashboardData() {
+    try {
+        // --- 1. Fetch User Data ---
+        const userResponse = await fetch(`${API_BASE}/api/user/aisha`);
+        if (!userResponse.ok) throw new Error("Failed to fetch user data.");
+        const userData = await userResponse.json();
+        
+        // --- Render User Details ---
+        const fullName = userData.firstName + ' ' + userData.lastName;
+        
+        DOM.userName.textContent = fullName;
+        DOM.welcomeHeader.textContent = `Welcome ${userData.firstName}!`;
+        DOM.profilePic.src = userData.profileImageUrl || 'default.jpg';
+        
+        // Quick Information
+        DOM.employeeId.textContent = userData.employeeId;
+        // (You would continue populating all the other detail fields here...)
+        
+        // Progress
+        updateProgressBar(userData.onboardingProgress);
+
+        // --- 2. Fetch Upcoming Sessions ---
+        const sessionsResponse = await fetch(`${API_BASE}/api/sessions`);
+        if (!sessionsResponse.ok) throw new Error("Failed to fetch sessions.");
+        const sessions = await sessionsResponse.json();
+        
+        // --- Render Sessions ---
+        renderSessions(sessions);
+        
+    } catch (error) {
+        console.error("Dashboard failed to load:", error);
+        // Display a user-friendly error message on the screen
+        // document.querySelector('.dashboard-container').innerHTML = '<h2>Failed to load data. Please try again later.</h2>';
+    }
 }
 
-// ---Event Listeners ---
-function setupEventListeners() {
-  // Sidebar navigation
-  document.querySelectorAll(".nav-item").forEach(item => {
-    item.addEventListener("click", e => {
-      e.preventDefault();
-      document.querySelectorAll(".nav-item").forEach(link => link.classList.remove("active"));
-      item.classList.add("active");
-
-      const section = item.dataset.section;
-      console.log(`Navigated to section: ${section}`);
-      // Future: trigger content loading based on section
-    });
-  });
-
-  // Logout button
-  document.getElementById("logout-btn").addEventListener("click", e => {
-    e.preventDefault();
-    console.log("Logging out...");
-    // Future: Add backend logout request or redirect
-  });
+/**
+ * Takes an array of session objects and renders them into the sessions container.
+ */
+function renderSessions(sessions) {
+    const sessionsHTML = sessions.map(session => `
+        <div class="session-card">
+            <p class="session-date">${session.date} - ${session.time}</p>
+            <p class="session-title">${session.title}</p>
+        </div>
+    `).join('');
+    
+    // Replace the static cards with the dynamically generated HTML
+    DOM.sessionsContainer.innerHTML = sessionsHTML; 
 }
+
+
+// --- Execute when the page is fully loaded ---
+document.addEventListener('DOMContentLoaded', loadDashboardData);
+
+// Note: You would also need logic to handle data for the Support Team and Manager, 
+// likely by mapping through an array in the userData object.

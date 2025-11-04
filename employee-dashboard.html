@@ -1,131 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Employee Dashboard</title>
-
-  <!-- Font Awesome for Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
-
-  <!-- Dashboard Styles -->
-  <link rel="stylesheet" href="static\employee-dashboard.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Dashboard</title>
+    <link rel="stylesheet" href="static\employee-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="dashboard-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div>
-        <div class="logo">
-          <img
-            src="static/assets/smartstart-logo-orig.png"
-            alt="Smartstart Logo"
-            class="sidebar-logo"
-          />
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="#" class="logo-link">
+    <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-list-check"></i>
+                    Checklist
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    Progress Tracker
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    Events
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-alt"></i>
+                    Documents
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Log Out
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+        <div class="search-area">
+            <input type="text" placeholder="Search" class="search-input">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
 
-        <nav id="sidebar-menu">
-          <a href="#" class="nav-item active" data-section="home">
-            <i class="fas fa-home"></i> Home
-          </a>
-          <a href="#" class="nav-item" data-section="onboarding">
-            <i class="fas fa-user-plus"></i> Onboarding
-          </a>
-          <a href="#" class="nav-item" data-section="events">
-            <i class="fas fa-calendar-alt"></i> Events
-          </a>
-          <a href="#" class="nav-item" data-section="documents">
-            <i class="fas fa-file-alt"></i> Documents
-          </a>
-          <a href="#" class="nav-item" data-section="profile">
-            <i class="fas fa-user-circle"></i> Profile
-          </a>
-        </nav>
-      </div>
-
-      <div class="logout">
-        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Header -->
-      <header class="dashboard-header">
-        <div class="search-box">
-          <i class="fas fa-search"></i>
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search for..."
-            autocomplete="off"
-          />
+        <div class="user-info">
+            <i class="fas fa-bell user-icon"></i>
+            <i class="fas fa-cog user-icon"></i>
+            <div class="profile-area">
+                <span class="user-name">Aisha Bello</span>
+                <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+            </div>
+        </div>
+    </header>
+    
+    <section class="dashboard-body-content">
+        <div class="welcome-banner">
+            <h2>Welcome Aisha!</h2>
+            <p>Let's get you settled in</p>
         </div>
 
-        <div class="header-info">
-          <span id="current-date-time">October 27th, 9:00AM</span>
-          <i class="fas fa-bell notification-icon" id="notif-btn"></i>
-          <div class="user-avatar-small" id="user-avatar"></div>
+        <div class="widget progress-widget">
+            <div class="progress-bar-container">
+                <div class="progress-circle">
+                    <div class="progress-ring"></div>
+                    <div class="progress-value">
+                        <span class="percentage-num">0%</span>
+                        <span class="percentage-text">Complete</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-details">
+                <h3>Onboarding Progress: 0% Complete</h3>
+                <p>Better late than never! Complete your tasks to reach 100%.</p>
+            </div>
         </div>
-      </header>
+    </section>
+    <section class="info-sessions-grid">
+        
+        <div class="quick-info-container widget">
+            <h4>Quick Information</h4>
+            <div class="info-group details-section">
+                
+                <div class="details-block">
+                    <h5>Details</h5>
+                    <div class="detail-row"><span class="label">Employee ID:</span><span class="value">123948ASH3</span></div>
+                    <div class="detail-row"><span class="label">Email:</span><span class="value">aishabello@gmail.com</span></div>
+                    <div class="detail-row"><span class="label">Phone:</span><span class="value">+2347082368956</span></div>
+                    <div class="detail-row"><span class="label">Department:</span><span class="value">Logistics</span></div>
+                    <div class="detail-row"><span class="label">Start Date:</span><span class="value">Oct 30, 2025</span></div>
+                </div>
 
-      <!-- Dashboard Cards -->
-      <div class="card-grid">
-        <!-- Welcome Card -->
-        <section class="card welcome-card" id="welcome-card">
-          <div class="user-photo" id="user-photo"></div>
-          <div class="user-details">
-            <p class="greeting">Welcome!</p>
-            <h3 id="user-name">Daniel Owoni</h3>
-            <p id="user-title">Software Engineer</p>
-          </div>
-        </section>
+                <div class="details-block">
+                    <h5>Support Team</h5>
+                    <div class="support-contact"><span class="name">Hassan Ahmed</span><span class="email">hassanahmed@gmail.com</span></div>
+                    <div class="support-contact"><span class="name">George Adekunle</span><span class="email">georgeade@gmail.com</span></div>
+                    <div class="support-contact"><span class="name">Okafor Benedicta</span><span class="email">benedictaokaf@gmail.com</span></div>
+                </div>
 
-        <!-- Task Summary -->
-        <section class="card task-summary-card" id="task-summary">
-          <h4>Task Completed</h4>
-          <div class="task-ring-container">
-            <div id="task-completion-ring" class="completion-ring">2/10</div>
-          </div>
-        </section>
+                <div class="details-block">
+                    <h5>Manager</h5>
+                    <div class="manager-contact"><span class="name">Olumide Adeboyega</span><span class="email">olumide-adeboyega@gmail.com</span></div>
+                </div>
 
-        <!-- Documents Uploaded -->
-        <section class="card documents-card" id="documents-card">
-          <h4>Documents Uploaded</h4>
-          <div id="documents-list" class="list-container">
-            <!-- Dynamically populated via JS -->
-          </div>
-        </section>
+            </div>
+        </div>
 
-        <!-- Task Assigned -->
-        <section class="card task-assigned-card" id="tasks-assigned">
-          <div class="card-header">
-            <h4>Task Assigned</h4>
-            <a href="#" id="view-all-tasks">See all</a>
-          </div>
-          <div id="tasks-assigned-list" class="list-container">
-            <!-- Dynamically populated via JS -->
-          </div>
-        </section>
+        <div class="upcoming-sessions-container widget">
+            <h4>Upcoming Sessions</h4>
+            
+            <div class="session-card">
+                <p class="session-date">10/01/2026 - 10:30 AM</p>
+                <p class="session-title">Policy Induction</p>
+            </div>
+            
+            <div class="session-card">
+                <p class="session-date">10/01/2026 - 12:00 PM</p>
+                <p class="session-title">Company's Culture Induction</p>
+            </div>
 
-        <!-- Task Progress -->
-        <section class="card progress-table-card full-width" id="task-progress">
-          <div class="card-header">
-            <h4>Task Progress</h4>
-          </div>
+            <div class="session-card">
+                <p class="session-date">10/01/2026 - 2:00 PM</p>
+                <p class="session-title">Maximizing Productivity</p>
+            </div>
+        </div>
 
-          <div id="task-progress-body">
-            <!-- Dynamic rows will be injected here -->
-          </div>
-        </section>
-      </div>
-    </main>
-  </div>
+    </section>
+    <section class="action-cards-grid">
 
-  <!-- JavaScript -->
-  <script src="static\javascript\employee-dashboard.js"></script>
+        <div class="action-card widget">
+            <div class="card-icon-container">
+                <i class="far fa-clipboard"></i> 
+            </div>
+            
+            <div class="card-text">
+                <h3>View Checklist</h3>
+                <p>See your onboarding tasks and track your progress</p>
+            </div>
+            
+            <button class="action-button primary-btn">
+                Open Checklist
+            </button>
+        </div>
+
+        <div class="action-card widget">
+            <div class="card-icon-container">
+                <i class="far fa-file-upload"></i>
+            </div>
+            
+            <div class="card-text">
+                <h3>Upload Documents</h3>
+                <p>Submit your required documents securely</p>
+            </div>
+            
+            <button class="action-button secondary-btn">
+                Upload Files
+            </button>
+        </div>
+
+    </section>
+
+</main> 
+</div>
+<script src="script.js"></script>
+</body>
+</html>
+            </main>
+
+    </div>
+
 </body>
 </html>
