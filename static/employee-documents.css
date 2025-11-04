@@ -1,0 +1,238 @@
+/* ========================================================= */
+/* 1. BASE LAYOUT & COMMON STYLES                            */
+/* ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    overflow-y: auto;
+}
+
+.view.active {
+    display: block;
+}
+
+/* --- Sidebar Styles (Essential) --- */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+.logo-link { padding: 0 20px 30px 20px; display: block; }
+.logo-img { height: 40px; }
+.nav-links { flex-grow: 1; }
+.nav-item { display: flex; align-items: center; padding: 12px 20px; text-decoration: none; color: #555; }
+.nav-item i { margin-right: 15px; }
+.nav-item.active {
+    background-color: #e0f0ff;
+    color: #007bff;
+    border-left: 4px solid #007bff;
+    padding-left: 16px;
+}
+.logout-btn { color: #d9534f; border-top: 1px solid #eee; margin-top: auto; padding: 20px; }
+
+/* --- Header Styles (Essential) --- */
+.top-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+.search-area { border: 1px solid #ccc; border-radius: 6px; width: 350px; padding: 0 10px; height: 40px; display: flex; align-items: center;}
+.search-input { border: none; outline: none; flex-grow: 1; padding: 5px; }
+.user-info { display: flex; align-items: center; gap: 20px; }
+.profile-pic { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+
+/* ========================================================= */
+/* 2. DOCUMENT MANAGEMENT VIEW STYLING                       */
+/* ========================================================= */
+.documents-content-body {
+    padding: 30px;
+}
+
+.docs-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.docs-header p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* --- Controls (Search & Filter) --- */
+.docs-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.search-doc-area {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 400px;
+    padding: 8px 15px;
+    background-color: white;
+}
+.search-doc-area .search-icon {
+    color: #999;
+    margin-right: 10px;
+}
+.search-doc-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.filter-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.filter-dropdown i {
+    color: #555;
+    margin-right: 5px;
+}
+.filter-dropdown span {
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+/* --- Upload Section --- */
+.upload-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 40px;
+}
+.upload-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.upload-dropzone {
+    border: 2px dashed #e0f0ff;
+    background-color: #f7faff;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.choose-file-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.dropzone-text {
+    color: #777;
+}
+.support-text {
+    font-size: 0.85rem;
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+/* --- Uploaded Documents Table --- */
+.uploaded-docs-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.docs-table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+thead th {
+    background-color: #f7f7f7;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.pdf-icon {
+    color: #dc3545;
+    margin-right: 5px;
+}
+.actions-cell i {
+    color: #777;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.status-badge.pending {
+    background-color: #fffae0;
+    color: #ffc107;
+}
+.status-badge.approved {
+    background-color: #e6ffed;
+    color: #28a745;
+}

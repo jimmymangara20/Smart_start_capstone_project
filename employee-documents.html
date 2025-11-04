@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Document Management</title>
+    <link rel="stylesheet" href="static\employee-documents.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="#" class="logo-link"><img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item active"><i class="fas fa-file-alt"></i> Documents</a>
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+            <div class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div id="documents-view" class="view active">
+                
+                <div class="documents-content-body">
+                    
+                    <header class="docs-header">
+                        <h1>Document Management</h1>
+                        <p>Upload and manage required documents</p>
+                    </header>
+
+                    <div class="docs-controls">
+                        <div class="search-doc-area">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search document type..." class="search-doc-input">
+                        </div>
+                        <div class="filter-dropdown">
+                            <i class="fas fa-filter filter-icon"></i>
+                            <span>All Documents</span>
+                            <i class="fas fa-chevron-down arrow-down"></i>
+                        </div>
+                    </div>
+
+                    <section class="upload-section">
+                        <h2>Upload Documents</h2>
+                        <div class="upload-dropzone">
+                            <label for="file-upload" class="file-label">
+                                <button class="choose-file-btn">Choose file</button>
+                                <span class="dropzone-text">Upload a scan or photo of your documents</span>
+                            </label>
+                            <input type="file" id="file-upload" multiple style="display: none;">
+                        </div>
+                        <p class="support-text">Supported document format: pdf and jpg</p>
+                    </section>
+
+                    <section class="uploaded-docs-section">
+                        <h2>Uploaded Documents</h2>
+                        <div class="docs-table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Document Type</th>
+                                        <th>File Name</th>
+                                        <th>Size</th>
+                                        <th>Uploaded</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Document Type">Government ID</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> drivers-license.pdf</td>
+                                        <td data-label="Size">2.4 MB</td>
+                                        <td data-label="Uploaded">2 hours ago</td>
+                                        <td data-label="Status"><span class="status-badge pending">Pending Review</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <i class="fas fa-download download-icon"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Document Type">Offer Letter</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> signed-offer.pdf</td>
+                                        <td data-label="Size">1.8 MB</td>
+                                        <td data-label="Uploaded">1 day ago</td>
+                                        <td data-label="Status"><span class="status-badge approved">Approved</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon"></i>
+                                            <i class="fas fa-download download-icon"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="static\javascript\employee-documents.js"></script>
+</body>
+</html>
