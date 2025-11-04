@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HR Checklist</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="checklist-page-hr.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script type="module" src="static/javascript/checklist-page-hr.js" defer></script>
+</head>
+
+<body class="dashboard">
+
+<!-- ✅ SIDEBAR -->
+<aside class="sidebar" aria-label="Main Navigation">
+    <div class="sidebar__logo">
+        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
+    </div>
+
+    <nav class="sidebar__nav">
+        <ul class="sidebar__list">
+           <a href="#" class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</a>
+            <a href="#" class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</a>
+        </ul>
+    </nav>
+
+    <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
+</aside>
+
+<!-- ✅ MAIN CONTENT -->
+<main class="main">
+                <header class="main-header">
+                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
+
+            <div class="main-header__search-wrapper">
+                <button class="main-header__search-icon" aria-label="Search">🔍</button>
+                <input class="main-header__search-input" type="text" placeholder="Search" />
+
+
+                <div class="main-headear__wrapper">
+                    <div class="main-header__actions">
+                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
+                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
+                    <div class="main-header__user">
+                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
+                <span class="main-header__name">Ada Okafor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </header>
+
+
+        <section class="dashboard-top">
+                <div class="dashboard-top__wrapper">
+                    <div class="dashboard-top__content">
+                        <h1 class="dashboard-top__title">Checklist</h1>
+                        <p class="dashboard-top__text">Create and manage onboarding checklists</p>
+                    </div>
+                        <button class="btn btn--primary"> + New Template</button>
+                </div>
+            </section>
+
+ <section class="stats">
+                <div class="stats__card card">
+                    <p class="stats__label">Total Templates</p>
+                    <h3 class="stats__value">4</h3>
+                </div>
+                <div class="stats__card card">
+                    <p class="stats__label">Active</p>
+                    <h3 class="stats__value">3</h3>
+                </div>
+                <div class="stats__card card">
+                    <p class="stats__label">Total Tasks</p>
+                    <h3 class="stats__value">55</h3>
+                </div>
+                <div class="stats__card card">
+                    <p class="stats__label">Employees Using</p>
+                    <h3 class="stats__value">24</h3>
+                </div>
+            </section>
+
+
+            <!-- <section class="table__wrapper"> -->
+                <!-- <button class="table__btn">
+                    <button class="table__innerbtn">All Templates</button>
+                    <button class="table__innerbtn">All Templates</button>
+                    <button class="table__innerbtn">All Templates</button>
+                </button> -->
+            <table class="table employees__table">
+                <thead>
+                    <tr>
+                        <th>Template Name</th>
+                        <th>Department</th>
+                        <th>Tasks</th>
+                        <th>Assigned</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                    <tbody id="employee-table-body"></tbody>
+                </table>
+                <!-- </section> -->
+            </section>
+
+</body>
+</html>
