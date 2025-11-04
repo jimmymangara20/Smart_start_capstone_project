@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Progress Tracker</title>
+    <link rel="stylesheet" href="static\employee-progress-tracker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="#" class="logo-link">
+                <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item"><i class="fas fa-file-alt"></i> Documents</a>
+                <a href="#" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div class="progress-tracker-body">
+                
+                <header class="tracker-header">
+                    <h1>Progress Tracker</h1>
+                    <p>See how far you've come in your onboarding journey</p>
+                </header>
+
+                <div class="tracker-banner success-banner">
+                    <i class="fas fa-user-graduate"></i>
+                    <div class="banner-text">
+                        <h3>Great Progress!</h3>
+                        <p>You're more than halfway through your onboarding. Keep up the excellent work!</p>
+                    </div>
+                </div>
+
+                <section class="milestones-section widget">
+                    <h2>Milestones</h2>
+                    
+                    <ul class="milestone-list">
+                        
+                        <li class="milestone-item completed" data-date="Oct 25, 2025">
+                            <div class="milestone-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="milestone-content">
+                                <p class="title">Welcome Email Sent</p>
+                            </div>
+                        </li>
+                        <li class="milestone-item completed" data-date="Oct 30, 2025">
+                            <div class="milestone-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="milestone-content">
+                                <p class="title">Documentation Submitted</p>
+                            </div>
+                        </li>
+                        <li class="milestone-item completed" data-date="Nov 1, 2025">
+                            <div class="milestone-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="milestone-content">
+                                <p class="title">IT Equipment Assigned</p>
+                            </div>
+                        </li>
+                        
+                        <li class="milestone-item pending" data-date="Nov 5, 2025">
+                            <div class="milestone-icon">4</div>
+                            <div class="milestone-content">
+                                <p class="title">Complete All Tasks</p>
+                            </div>
+                        </li>
+                        <li class="milestone-item pending" data-date="Nov 8, 2025">
+                            <div class="milestone-icon">5</div>
+                            <div class="milestone-content">
+                                <p class="title">First Day Ready</p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </section>
+
+                <section class="next-up-section widget">
+                    <h2>Next Up</h2>
+                    
+                    <div class="next-up-card warning-card">
+                        <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
+                        <div class="card-content">
+                            <p class="title">Complete Tax Forms</p>
+                            <p class="description">Fill out W-4 and state tax withholding forms</p>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+
+        </main>
+    </div>
+
+    <script src="static\javascript\employee-progress-tracker.js"></script>
+</body>
+</html>
