@@ -1,0 +1,263 @@
+/* ========================================================= */
+/* 1. BASE STYLES & LAYOUT GRID                              */
+/* ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: grid;
+    /* Sidebar width is 250px, main content is the rest */
+    grid-template-columns: 250px 1fr; 
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    overflow-y: auto;
+}
+
+/* ========================================================= */
+/* 2. SIDEBAR STYLING                                        */
+/* ========================================================= */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+
+.logo-link {
+    display: block;
+    padding: 0 20px 30px 20px;
+}
+.logo-img {
+    height: 40px; 
+    display: block;
+}
+
+.nav-links {
+    flex-grow: 1; 
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555; 
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    margin-right: 15px;
+    width: 20px;
+}
+
+/* Active Link State */
+.nav-item.active {
+    background-color: #e0f0ff;
+    color: #007bff; /* Primary blue */
+    border-left: 4px solid #007bff;
+    padding-left: 16px; 
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: #d9534f; /* Red */
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: auto; 
+    border-top: 1px solid #eee;
+}
+
+/* ========================================================= */
+/* 3. HEADER STYLING                                         */
+/* ========================================================= */
+.top-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 350px;
+    height: 40px;
+    padding: 0 10px;
+}
+.search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ========================================================= */
+/* 4. PROFILE CONTENT STYLING                                */
+/* ========================================================= */
+.profile-content-body {
+    padding: 30px;
+}
+
+.profile-content-body h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* --- Top Profile Card --- */
+.profile-card {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px; 
+    cursor: pointer;
+}
+.card-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.card-info {
+    flex-grow: 1;
+}
+.card-name {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.card-email {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* --- Settings List --- */
+.settings-list {
+    list-style: none;
+    padding: 0;
+}
+.list-group-header {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    padding: 20px 0 10px 0;
+}
+.list-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    font-size: 1rem;
+    color: #555;
+}
+.list-item:last-of-type {
+    border-bottom: 1px solid #eee; /* Closing the last section */
+}
+.list-item.clickable:hover {
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+.item-icon {
+    font-size: 1.1rem;
+    width: 30px;
+    margin-right: 15px;
+    color: #666; 
+}
+.item-text {
+    flex-grow: 1;
+}
+
+/* Incomplete Status Badge */
+.item-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: #ffc107; /* Incomplete status color */
+    color: #333;
+}
+
+/* Arrow Icons */
+.details-arrow {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* --- Toggle Switch (Biometric) --- */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    margin-right: 15px;
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 22px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #007bff;
+}
+input:checked + .slider:before {
+    transform: translateX(18px);
+}

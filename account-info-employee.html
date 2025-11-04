@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Profile</title>
+    <link rel="stylesheet" href="static\account-info-employee.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="#" class="logo-link">
+                <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item"><i class="fas fa-users"></i> Employees</a>
+                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item"><i class="fas fa-cloud-arrow-up"></i> Uploads</a>
+                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item active"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div class="profile-content-body">
+                
+                <h1>Profile</h1>
+
+                <div class="profile-card clickable" data-action="details">
+                    <img src="ada-okafor.jpg" alt="Ada Okafor Profile" class="card-profile-pic">
+                    <div class="card-info">
+                        <p class="card-name">Ada Okafor</p>
+                        <p class="card-email">okafora@abccompany.com</p>
+                    </div>
+                    <i class="fas fa-chevron-right details-arrow"></i>
+                </div>
+
+                <ul class="settings-list">
+                    
+                    <li class="list-group-header">Account</li>
+                    <li class="list-item clickable" data-action="verify">
+                        <div class="item-icon"><i class="fas fa-user-check"></i></div>
+                        <span class="item-text">Account Verification</span>
+                        <span class="item-status incomplete">Incomplete</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                    <li class="list-group-header">Security</li>
+                    <li class="list-item" data-action="biometric">
+                        <div class="item-icon"><i class="fas fa-fingerprint"></i></div>
+                        <span class="item-text">Enable Biometric Login</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="biometric-toggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                    <li class="list-item clickable" data-action="change-password">
+                        <div class="item-icon"><i class="fas fa-lock"></i></div>
+                        <span class="item-text">Change Password</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                    <li class="list-group-header">Help & Support</li>
+                    <li class="list-item clickable" data-action="privacy">
+                        <div class="item-icon"><i class="fas fa-shield-alt"></i></div>
+                        <span class="item-text">Privacy Policy</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+                    <li class="list-item clickable" data-action="support">
+                        <div class="item-icon"><i class="fas fa-headset"></i></div>
+                        <span class="item-text">Support</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+                    <li class="list-item clickable" data-action="about">
+                        <div class="item-icon"><i class="fas fa-info-circle"></i></div>
+                        <span class="item-text">About Us</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+
+                    <li class="list-group-header">Log Out</li>
+                    <li class="list-item clickable logout-item" data-action="logout-menu">
+                        <div class="item-icon"><i class="fas fa-sign-out-alt"></i></div>
+                        <span class="item-text">Log Out</span>
+                        <i class="fas fa-chevron-right details-arrow"></i>
+                    </li>
+                </ul>
+
+            </div> </main> </div>
+
+    <script src="static\javascript\account-info-employee.js"></script>
+</body>
+</html>
