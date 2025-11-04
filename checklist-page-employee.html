@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Checklist</title>
+    <link rel="stylesheet" href="static\checklist-page-employee.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="#" class="logo-link" data-view="home">
+                    <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#" class="nav-item" data-view="home">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="#" class="nav-item active" data-view="checklist">
+                    <i class="fas fa-list-check"></i> Checklist
+                </a>
+                <a href="#" class="nav-item" data-view="progress-tracker">
+                    <i class="fas fa-chart-line"></i> Progress Tracker
+                </a>
+                <a href="#" class="nav-item" data-view="events">
+                    <i class="fas fa-calendar-alt"></i> Events
+                </a>
+                <a href="#" class="nav-item" data-view="documents">
+                    <i class="fas fa-file-alt"></i> Documents
+                </a>
+                <a href="#" class="nav-item" data-view="profile">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area"> 
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+            
+            <div id="checklist-view" class="view active">
+                
+                <div class="checklist-content-body">
+                    
+                    <header class="checklist-view-header">
+                        <h1>Checklist</h1>
+                    </header>
+
+                    <div class="deadline-banner warning-card">
+                        <div class="banner-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="banner-text">
+                            <p class="deadline-title">Deadline to complete all task:</p>
+                            <p class="deadline-time" data-deadline-ms="368022007">4 days 18:22:07</p> 
+                        </div>
+                    </div>
+
+                    <div class="progress-summary">
+                        <h2>Complete all tasks to finish your onboarding</h2>
+                        <p class="completion-count">2 of 8 completed</p>
+                    </div>
+
+                    <ul class="task-list">
+                        <li class="task-item status-completed clickable" data-task-id="1">...</li>
+                        <li class="task-item status-completed clickable" data-task-id="2">...</li>
+                        <li class="task-item status-processing clickable" data-task-id="3">...</li>
+                        <li class="task-item status-pending clickable" data-task-id="4">...</li>
+                        <li class="task-item status-not-started clickable" data-task-id="5">...</li>
+                    </ul>
+                </div>
+                
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="static\javascript\checklist-page-employee.js"></script>
+</body>
+</html>
