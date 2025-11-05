@@ -65,7 +65,7 @@ body {
 }
 
 /* Active Link State */
-.nav-item.active {
+.nav-item:hover {
     background-color: #e0f0ff;
     color: #007bff; /* Primary blue */
     border-left: 4px solid #007bff;
