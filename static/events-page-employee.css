@@ -1,0 +1,202 @@
+/* ========================================================= */
+/* 1. BASE LAYOUT & COMMON STYLES                            */
+/* ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9; /* Light gray background */
+    color: #333;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar width fixed at 250px */
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    overflow-y: auto;
+}
+
+.view {
+    padding: 30px; /* Base padding for all routed pages */
+}
+
+/* ========================================================= */
+/* 2. SIDEBAR STYLING                                        */
+/* ========================================================= */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+
+.logo-link {
+    display: block;
+    padding: 0 20px 30px 20px;
+}
+.logo-img {
+    height: 40px; 
+    display: block;
+}
+
+.nav-links {
+    flex-grow: 1; 
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555; 
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item i {
+    font-size: 1.1rem;
+    margin-right: 15px;
+    width: 20px;
+}
+
+/* Active Link State */
+.nav-item.active {
+    background-color: #e0f0ff; /* Light blue background */
+    color: #007bff; /* Primary blue text */
+    border-left: 4px solid #007bff;
+    padding-left: 16px; 
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: #d9534f;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: auto; 
+    border-top: 1px solid #eee;
+}
+
+/* ========================================================= */
+/* 3. HEADER STYLING                                         */
+/* ========================================================= */
+.top-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 350px;
+    height: 40px;
+    padding: 0 10px;
+}
+.search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.profile-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ========================================================= */
+/* 4. EVENTS VIEW STYLING (Specific to the current page)     */
+/* ========================================================= */
+.events-content-body {
+    /* Padding is inherited from .view */
+}
+
+.events-view-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* --- Event List and Cards --- */
+.event-list {
+    list-style: none;
+    padding: 0;
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    border-top: 1px solid #eee; 
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.event-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.event-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 4px;
+    white-space: nowrap; 
+}
+
+.tag-time {
+    /* Light blue background for date/time - matches the image */
+    background-color: #e0f0ff; 
+    color: #007bff;
+}
+
+.tag-location {
+    /* Neutral background for location type - matches the image */
+    background-color: #f0f0f0; 
+    color: #555;
+}

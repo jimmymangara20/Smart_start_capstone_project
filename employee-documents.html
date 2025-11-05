@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smartstart Document Management</title>
-    <link rel="stylesheet" href="static\employee-documents.css"> 
+
+    <link rel="stylesheet" href="static/employee-documents.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
+
+<!-- VERY IMPORTANT: body ID for routing -->
+<body id="documents-page">
 
     <div class="dashboard-container">
         
         <aside class="sidebar">
-            <a href="#" class="logo-link"><img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img"></a>
+            <a href="employee-dashboard.html" class="logo-link">
+                <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
+
             <nav class="nav-links">
-                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
-                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
-                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
-                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="nav-item active"><i class="fas fa-file-alt"></i> Documents</a>
-                <a href="#" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+                <a href="employee-dashboard.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="checklist-page-employee.html" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="employee-progress-tracker.html" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="events-page-employee.html" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="employee-documents.html" class="nav-item active"><i class="fas fa-file-alt"></i> Documents</a>
+                <a href="profile-employee.html" class="nav-item"><i class="fas fa-user"></i> Profile</a>
             </nav>
+
             <div class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</div>
         </aside>
 
         <main class="main-content">
-            
+
             <header class="top-header">
                 <div class="search-area">
                     <input type="text" placeholder="Search" class="search-input">
                     <button class="search-button"><i class="fas fa-search"></i></button>
                 </div>
+
                 <div class="user-info">
                     <i class="fas fa-bell user-icon"></i>
                     <div class="profile-area">
@@ -42,7 +50,7 @@
             </header>
 
             <div id="documents-view" class="view active">
-                
+
                 <div class="documents-content-body">
                     
                     <header class="docs-header">
@@ -55,6 +63,7 @@
                             <i class="fas fa-search search-icon"></i>
                             <input type="text" placeholder="Search document type..." class="search-doc-input">
                         </div>
+
                         <div class="filter-dropdown">
                             <i class="fas fa-filter filter-icon"></i>
                             <span>All Documents</span>
@@ -100,6 +109,7 @@
                                             <i class="fas fa-download download-icon"></i>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td data-label="Document Type">Offer Letter</td>
                                         <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> signed-offer.pdf</td>
@@ -118,10 +128,15 @@
 
                 </div>
             </div>
-            
         </main>
+
     </div>
 
-    <script src="static\javascript\employee-documents.js"></script>
+    <!-- Main routing system -->
+    <script src="static/javascript/main.js"></script>
+
+    <!-- Document page logic only -->
+    <script src="static/javascript/employee-documents.js"></script>
+
 </body>
 </html>

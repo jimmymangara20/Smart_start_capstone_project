@@ -4,31 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smartstart Account Details</title>
-    <link rel="stylesheet" href="static\profile-employee.css">
-    <!-- Poppins font for a modern look -->
+
+    <link rel="stylesheet" href="static/profile-employee.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for all icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
     <div class="dashboard-container">
         
-        <!-- 1. SIDEBAR NAVIGATION -->
+        <!-- 1. SIDEBAR -->
         <aside class="sidebar">
-            <a href="#" class="logo-link">
-                <!-- Placeholder for your image logo -->
-                <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            <a href="home.html" class="logo-link">
+                <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
             </a>
 
             <nav class="nav-links">
-                <a href="#" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="home.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
                 <a href="#" class="nav-item"><i class="fas fa-users"></i> Employees</a>
-                <a href="#" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
-                <a href="#" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="checklist-page-employee.html" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="employee-progress-tracker.html" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
                 <a href="#" class="nav-item"><i class="fas fa-cloud-arrow-up"></i> Uploads</a>
-                <a href="#" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="nav-item active"><i class="fas fa-user"></i> Profile</a>
+                <a href="events-page-employee.html" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="profile-employee.html" class="nav-item active"><i class="fas fa-user"></i> Profile</a>
             </nav>
 
             <div class="logout-btn">
@@ -36,15 +34,16 @@
             </div>
         </aside>
 
-        <!-- 2. MAIN CONTENT AREA -->
+        <!-- 2. MAIN CONTENT -->
         <main class="main-content">
             
-            <!-- 2a. Top Header -->
+            <!-- HEADER -->
             <header class="top-header">
                 <div class="search-area">
                     <input type="text" placeholder="Search" class="search-input">
                     <button class="search-button"><i class="fas fa-search"></i></button>
                 </div>
+
                 <div class="user-info">
                     <i class="fas fa-bell user-icon"></i>
                     <div class="profile-area">
@@ -54,7 +53,6 @@
                 </div>
             </header>
 
-            <!-- 2b. ACCOUNT DETAILS CONTENT -->
             <div class="account-details-body">
                 
                 <header class="account-header">
@@ -62,15 +60,12 @@
                     <h1>My account</h1>
                 </header>
 
-                <!-- Profile Picture Area -->
                 <div class="user-avatar-section">
                     <img src="aisha-bello-large.jpg" alt="Aisha Bello" class="large-profile-pic">
                     <p class="user-name-label">Aisha Bello</p>
                 </div>
 
-                <!-- Account Information List -->
                 <ul class="account-info-list">
-                    
                     <li class="info-item clickable" data-section="personal">
                         <div class="item-icon"><i class="fas fa-clipboard-user"></i></div>
                         <span class="item-text">Personal Details</span>
@@ -89,10 +84,8 @@
                         <span class="item-status approved">Approved</span>
                         <i class="fas fa-chevron-right details-arrow"></i>
                     </li>
-
                 </ul>
                 
-                <!-- Danger Zone Action -->
                 <button class="danger-action-btn" data-action="delete">Delete my account</button>
                 
             </div>
@@ -100,6 +93,8 @@
         </main>
     </div>
 
-    <script src="static\javascript\profile-employee.js"></script>
+    <!-- Load Main Script -->
+    <script src="static/javascript/main.js" defer></script>
+
 </body>
 </html>

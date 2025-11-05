@@ -4,188 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smartstart Dashboard</title>
-    <link rel="stylesheet" href="static\employee-dashboard.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/employee-dashboard.css">
+
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
 
-    <div class="dashboard-container">
+<!--  PAGE IDENTIFIER -->
+<body id="dashboard-page">
 
-        <aside class="sidebar">
-            <div class="logo">
-                <a href="#" class="logo-link">
-    <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
-                </a>
-            </div>
+<div class="dashboard-container">
 
-            <nav class="nav-links">
-                <a href="#" class="nav-item active">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-list-check"></i>
-                    Checklist
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-chart-line"></i>
-                    Progress Tracker
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    Events
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-file-alt"></i>
-                    Documents
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-user"></i>
-                    Profile
-                </a>
-            </nav>
-
-            <div class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-                Log Out
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <header class="top-header">
-        <div class="search-area">
-            <input type="text" placeholder="Search" class="search-input">
-            <button class="search-button">
-                <i class="fas fa-search"></i>
-            </button>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <a href="employee-dashboard.html" class="logo-link">
+                <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
         </div>
 
-        <div class="user-info">
-            <i class="fas fa-bell user-icon"></i>
-            <i class="fas fa-cog user-icon"></i>
-            <div class="profile-area">
-                <span class="user-name">Aisha Bello</span>
-                <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
-            </div>
+        <nav class="nav-links">
+            <a href="employee-dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="checklist-page-employee.html" class="nav-item">
+                <i class="fas fa-list-check"></i>
+                Checklist
+            </a>
+            <a href="employee-progress-tracker.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                Progress Tracker
+            </a>
+            <a href="events-page-employee.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                Events
+            </a>
+            <a href="employee-documents.html" class="nav-item">
+                <i class="fas fa-file-alt"></i>
+                Documents
+            </a>
+            <a href="profile-employee.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+        </nav>
+
+        <div class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
         </div>
-    </header>
+    </aside>
+
     
-    <section class="dashboard-body-content">
-        <div class="welcome-banner">
-            <h2>Welcome Aisha!</h2>
-            <p>Let's get you settled in</p>
-        </div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-header">
+            <div class="search-area">
+                <input type="text" placeholder="Search" class="search-input">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
 
-        <div class="widget progress-widget">
-            <div class="progress-bar-container">
-                <div class="progress-circle">
-                    <div class="progress-ring"></div>
-                    <div class="progress-value">
-                        <span class="percentage-num">0%</span>
-                        <span class="percentage-text">Complete</span>
+            <div class="user-info">
+                <i class="fas fa-bell user-icon"></i>
+                <i class="fas fa-cog user-icon"></i>
+                <div class="profile-area">
+                    <span class="user-name">Loading...</span>
+                    <img src="static/assets/default-avatar.jpg" alt="Profile Picture" class="profile-pic">
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Welcome Banner + Progress-->
+        <section class="dashboard-body-content">
+            <div class="welcome-banner">
+                <h2>Welcome <span class="user-firstname">Employee</span>!</h2>
+                <p>Let's get you settled in</p>
+            </div>
+
+            <div class="widget progress-widget">
+                <div class="progress-bar-container">
+                    <div class="progress-circle">
+                        <div class="progress-ring"></div>
+                        <div class="progress-value">
+                            <span class="percentage-num">0%</span>
+                            <span class="percentage-text">Complete</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="progress-details">
-                <h3>Onboarding Progress: 0% Complete</h3>
-                <p>Better late than never! Complete your tasks to reach 100%.</p>
-            </div>
-        </div>
-    </section>
-    <section class="info-sessions-grid">
-        
-        <div class="quick-info-container widget">
-            <h4>Quick Information</h4>
-            <div class="info-group details-section">
-                
-                <div class="details-block">
-                    <h5>Details</h5>
-                    <div class="detail-row"><span class="label">Employee ID:</span><span class="value">123948ASH3</span></div>
-                    <div class="detail-row"><span class="label">Email:</span><span class="value">aishabello@gmail.com</span></div>
-                    <div class="detail-row"><span class="label">Phone:</span><span class="value">+2347082368956</span></div>
-                    <div class="detail-row"><span class="label">Department:</span><span class="value">Logistics</span></div>
-                    <div class="detail-row"><span class="label">Start Date:</span><span class="value">Oct 30, 2025</span></div>
+                <div class="progress-details">
+                    <h3>Onboarding Progress: 0% Complete</h3>
+                    <p>Better late than never! Complete your tasks to reach 100%.</p>
                 </div>
+            </div>
+        </section>
 
-                <div class="details-block">
-                    <h5>Support Team</h5>
-                    <div class="support-contact"><span class="name">Hassan Ahmed</span><span class="email">hassanahmed@gmail.com</span></div>
-                    <div class="support-contact"><span class="name">George Adekunle</span><span class="email">georgeade@gmail.com</span></div>
-                    <div class="support-contact"><span class="name">Okafor Benedicta</span><span class="email">benedictaokaf@gmail.com</span></div>
+
+        <!-- Info + Sessions -->
+        <section class="info-sessions-grid">
+
+            <div class="quick-info-container widget">
+                <h4>Quick Information</h4>
+                <div class="info-group details-section">
+
+                    <div class="details-block">
+                        <h5>Details</h5>
+                        <div class="detail-row"><span class="label">Employee ID:</span><span class="value employee-id">-</span></div>
+                        <div class="detail-row"><span class="label">Email:</span><span class="value employee-email">-</span></div>
+                        <div class="detail-row"><span class="label">Phone:</span><span class="value employee-phone">-</span></div>
+                        <div class="detail-row"><span class="label">Department:</span><span class="value employee-dept">-</span></div>
+                        <div class="detail-row"><span class="label">Start Date:</span><span class="value employee-startdate">-</span></div>
+                    </div>
+
+                    <div class="details-block support-team">
+                        <h5>Support Team</h5>
+                        <div class="support-list"></div>
+                    </div>
+
+                    <div class="details-block manager-block">
+                        <h5>Manager</h5>
+                        <div class="manager-contact">
+                            <span class="name manager-name">-</span>
+                            <span class="email manager-email">-</span>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
 
-                <div class="details-block">
-                    <h5>Manager</h5>
-                    <div class="manager-contact"><span class="name">Olumide Adeboyega</span><span class="email">olumide-adeboyega@gmail.com</span></div>
+            <div class="upcoming-sessions-container widget">
+                <h4>Upcoming Sessions</h4>
+                <!-- JS will insert sessions here -->
+            </div>
+        </section>
+
+
+        <!-- Action Buttons -->
+        <section class="action-cards-grid">
+
+            <div class="action-card widget">
+                <div class="card-icon-container">
+                    <i class="far fa-clipboard"></i>
                 </div>
-
-            </div>
-        </div>
-
-        <div class="upcoming-sessions-container widget">
-            <h4>Upcoming Sessions</h4>
-            
-            <div class="session-card">
-                <p class="session-date">10/01/2026 - 10:30 AM</p>
-                <p class="session-title">Policy Induction</p>
-            </div>
-            
-            <div class="session-card">
-                <p class="session-date">10/01/2026 - 12:00 PM</p>
-                <p class="session-title">Company's Culture Induction</p>
+                <div class="card-text">
+                    <h3>View Checklist</h3>
+                    <p>See your onboarding tasks and track your progress</p>
+                </div>
+                <a href="checklist-page-employee.html" class="action-button primary-btn">
+                    Open Checklist
+                </a>
             </div>
 
-            <div class="session-card">
-                <p class="session-date">10/01/2026 - 2:00 PM</p>
-                <p class="session-title">Maximizing Productivity</p>
+            <div class="action-card widget">
+                <div class="card-icon-container">
+                    <i class="fas fa-file-upload"></i>
+                </div>
+                <div class="card-text">
+                    <h3>Upload Documents</h3>
+                    <p>Submit your required documents securely</p>
+                </div>
+                <a href="employee-documents.html" class="action-button secondary-btn">
+                    Upload Files
+                </a>
             </div>
-        </div>
 
-    </section>
-    <section class="action-cards-grid">
-
-        <div class="action-card widget">
-            <div class="card-icon-container">
-                <i class="far fa-clipboard"></i> 
-            </div>
-            
-            <div class="card-text">
-                <h3>View Checklist</h3>
-                <p>See your onboarding tasks and track your progress</p>
-            </div>
-            
-            <button class="action-button primary-btn">
-                Open Checklist
-            </button>
-        </div>
-
-        <div class="action-card widget">
-            <div class="card-icon-container">
-                <i class="far fa-file-upload"></i>
-            </div>
-            
-            <div class="card-text">
-                <h3>Upload Documents</h3>
-                <p>Submit your required documents securely</p>
-            </div>
-            
-            <button class="action-button secondary-btn">
-                Upload Files
-            </button>
-        </div>
-
-    </section>
-
-</main> 
+        </section>
+    </main>
 </div>
-<script src="script.js"></script>
-</body>
-</html>
-            </main>
 
-    </div>
-
+<!-- Single Shared JS File -->
+<script src="static/javascript/main.js"></script>
 </body>
 </html>
