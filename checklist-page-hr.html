@@ -90,26 +90,93 @@
             </section>
 
 
-            <!-- <section class="table__wrapper"> -->
-                <!-- <button class="table__btn">
-                    <button class="table__innerbtn">All Templates</button>
-                    <button class="table__innerbtn">All Templates</button>
-                    <button class="table__innerbtn">All Templates</button>
-                </button> -->
-            <table class="table employees__table">
-                <thead>
-                    <tr>
-                        <th>Template Name</th>
-                        <th>Department</th>
-                        <th>Tasks</th>
-                        <th>Assigned</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                    <tbody id="employee-table-body"></tbody>
-                </table>
-                <!-- </section> -->
-            </section>
+            <section class="templates">
+                <header class="templates__header">
+                    <div class="templates__tabs">
+                        <button class="templates__tab templates__tab--active" data-tab="all">All Templates</button>
+                        <button class="templates__tab" data-tab="active">Active</button>
+                        <button class="templates__tab" data-tab="inactive">Inactive</button>
+                    </div>
+                </header>
 
+                    <div class="templates__table">
+                        <div class="templates__row templates__row--head">
+                            <span class="templates__col-title">Template Name</span>
+                            <span class="templates__col-title">Department</span>
+                            <span class="templates__col-title">Tasks</span>
+                            <span class="templates__col-title">Assigned</span>
+                            <span class="templates__col-title">Status</span>
+                            <span class="templates__col-title">Actions</span>
+                        </div>
+
+                    <!-- Row -->
+                    <div class="templates__row">
+                        <div class="templates__info">
+                            <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
+                            <div>
+                                <h4 class="templates__name">Standard Onboarding</h4>
+                                <p class="templates__desc">Default checklist for all new hires</p>
+                            </div>
+                        </div>
+
+                            <span class="templates__badge">All Departments</span>
+                            <span class="templates__value">☰ 12</span>
+                            <span class="templates__value">24 employees</span>
+                            <span class="templates__status templates__status--active">Active</span>
+                            <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
+                    </div>
+
+
+                    <div class="templates__row">
+                        <div class="templates__info">
+                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
+                            <div>
+                                <h4 class="templates__name">Engineering Onboarding</h4>
+                                <p class="templates__desc">Technical setup and team integration for engineers</p>
+                            </div>
+                        </div>
+
+                            <span class="templates__badge">Engineering</span>
+                            <span class="templates__value">☰ 18</span>
+                            <span class="templates__value">8 employees</span>
+                            <span class="templates__status templates__status--active">Active</span>
+                            <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
+                        </div>
+
+                    <div class="templates__row">
+                    <div class="templates__info">
+                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
+                        <div>
+                            <h4 class="templates__name">Remote Employee Setup</h4>
+                            <p class="templates__desc">Checklist for remote workers with equipment shipment</p>
+                        </div>
+                    </div>
+
+                        <span class="templates__badge">All Departments</span>
+                        <span class="templates__value">☰ 10</span>
+                        <span class="templates__value">5 employees</span>
+                        <span class="templates__status templates__status--inactive">Inactive</span>
+                        <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
+                    </div>
+
+
+                    <div class="templates__row">
+                    <div class="templates__info">
+                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
+                        <div>
+                            <h4 class="templates__name">Sales Team Onboarding</h4>
+                            <p class="templates__desc">Product training and CRM setup for sales team</p>
+                        </div>
+                    </div>
+
+                        <span class="templates__badge">Sales</span>
+                        <span class="templates__value">☰ 10</span>
+                        <span class="templates__value">5 employees</span>
+                        <span class="templates__status templates__status--inactive">Inactive</span>
+                        <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
+                    </div>
+
+                </div>
+                </section>
 </body>
 </html>
