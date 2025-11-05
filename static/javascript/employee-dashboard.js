@@ -40,7 +40,7 @@ const DOM = {
     sessionsContainer: document.querySelector('.upcoming-sessions-container')
 };
 
-const API_BASE = 'http://your-backend-api.com'; // Replace with your actual base URL
+// const API_BASE = 'http://your-backend-api.com'; // Replace with your actual base URL
 
 /**
  * Updates the circular progress bar based on the percentage fetched.

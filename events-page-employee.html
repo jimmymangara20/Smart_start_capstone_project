@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Events</title>
+
+    <link rel="stylesheet" href="static/events-page-employee.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<!-- body ID added so main.js detects the page -->
+<body id="events-page">
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="employee-dashboard.html" class="logo-link">
+                <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="employee-dashboard.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+                <a href="checklist-page-employee.html" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="employee-progress-tracker.html" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="events-page-employee.html" class="nav-item active"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="employee-documents.html" class="nav-item"><i class="fas fa-file-alt"></i> Documents</a>
+                <a href="profile-employee.html" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+
+            <div class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Log Out
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Aisha Bello</span>
+                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div id="events-view" class="view active">
+                
+                <div class="events-content-body">
+                    
+                    <header class="events-view-header">
+                        <h1>Upcoming Events</h1>
+                    </header>
+
+                    <ul class="event-list">
+                        <li class="event-card clickable">
+                            <span class="event-title">Induction</span>
+                            <div class="event-tags">
+                                <span class="tag tag-time">November 10 | 11:00-16:00</span>
+                                <span class="tag tag-location">Physical/Virtual</span>
+                            </div>
+                        </li>
+                        
+                        <li class="event-card clickable">
+                            <span class="event-title">Office Tour</span>
+                            <div class="event-tags">
+                                <span class="tag tag-time">November 10 | 11:00-16:00</span>
+                                <span class="tag tag-location">Physical</span>
+                            </div>
+                        </li>
+                        
+                        <li class="event-card clickable">
+                            <span class="event-title">Meet The Team</span>
+                            <div class="event-tags">
+                                <span class="tag tag-time">November 11 | 11:00-13:00</span>
+                                <span class="tag tag-location">Physical/Virtual</span>
+                            </div>
+                        </li>
+
+                        <li class="event-card clickable">
+                            <span class="event-title">Luncheon</span>
+                            <div class="event-tags">
+                                <span class="tag tag-time">November 15 | 12:00-15:00</span>
+                                <span class="tag tag-location">Physical</span>
+                            </div>
+                        </li>
+                        
+                        <li class="event-card clickable">
+                            <span class="event-title">Friday Scavenger Hunt</span>
+                            <div class="event-tags">
+                                <span class="tag tag-time">November 21 | 12:00-14:00</span>
+                                <span class="tag tag-location">Physical</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Page-specific JS first -->
+    <script src="static/javascript/events-page-employee.js"></script>
+
+    <!--  main.js last -->
+    <script src="static/javascript/main.js"></script>
+
+</body>
+</html>
