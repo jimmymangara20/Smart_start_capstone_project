@@ -1,0 +1,257 @@
+/* ========================================================= */
+/* 1. GLOBAL BASE STYLES & LAYOUT GRID                       */
+/* ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content {
+    overflow-y: auto;
+}
+
+.view {
+    padding: 30px;
+}
+.view.active {
+    display: block;
+}
+
+
+/* ========================================================= */
+/* 2. SIDEBAR STYLING                                        */
+/* ========================================================= */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+
+.logo-link { padding: 0 20px 30px 20px; display: block; }
+.logo-img { height: 40px; display: block; }
+.nav-links { flex-grow: 1; }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-item i { margin-right: 15px; width: 20px; font-size: 1.1rem; }
+
+/* Active Link State */
+.nav-item.active {
+    background-color: #e0f0ff;
+    color: #007bff;
+    border-left: 4px solid #007bff;
+    padding-left: 16px;
+}
+
+.logout-btn {
+    color: #d9534f;
+    border-top: 1px solid #eee;
+    margin-top: auto;
+    padding: 20px;
+}
+
+/* ========================================================= */
+/* 3. HEADER STYLING                                         */
+/* ========================================================= */
+.top-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.search-area {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 350px;
+    height: 40px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+.search-input { border: none; outline: none; flex-grow: 1; padding: 5px; font-size: 1rem; }
+
+.user-info { display: flex; align-items: center; gap: 20px; }
+.profile-pic { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+
+/* ========================================================= */
+/* 4. CHECKLIST TEMPLATE CREATION VIEW STYLING               */
+/* ========================================================= */
+.create-checklist-body {
+    max-width: 800px; /* Constrain content width for better readability */
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* --- Header & Back Button --- */
+.create-checklist-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-arrow {
+    font-size: 1.2rem;
+    color: #333;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.create-checklist-header h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.checklist-intro-text {
+    color: #777;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* --- Tabs Container (Questions/Response) --- */
+.tabs-container {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent; /* For inactive state */
+}
+
+.tab-button.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* --- Form Builder Section --- */
+.form-builder-section {
+    padding-bottom: 50px; /* Space for the add button */
+}
+
+.checklist-card {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-title-card h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.add-description-card p {
+    color: #777;
+    font-style: italic;
+}
+
+.card-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.action-icon {
+    color: #888;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+.action-icon:hover {
+    color: #007bff;
+}
+
+/* Add Task Card Specifics */
+.add-task-card {
+    flex-direction: column;
+    align-items: flex-start; /* Align contents to the left */
+}
+
+.task-input {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.task-input:focus {
+    border-color: #007bff;
+}
+
+.upload-required-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+.upload-required-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Add Button */
+.add-task-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto; /* Push to the right */
+    transition: background-color 0.2s;
+}
+.add-task-btn:hover {
+    background-color: #0056b3;
+}
+.add-task-btn i {
+    font-size: 0.85rem;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Create Checklist</title>
+    <link rel="stylesheet" href="static\hr-page-checklist-template.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="#" class="logo-link"><img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="#" class="nav-item" data-view="home"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item" data-view="employees"><i class="fas fa-users"></i> Employees</a>
+                <a href="#" class="nav-item active" data-view="checklist"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item" data-view="progress-tracker"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item" data-view="uploads"><i class="fas fa-cloud-upload-alt"></i> Uploads</a>
+                <a href="#" class="nav-item" data-view="events"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item" data-view="profile"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+            <div class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Ada Okafor</span>
+                        <img src="ada-okafor.jpg" alt="Ada Okafor Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div id="create-checklist-view" class="view active">
+                
+                <div class="create-checklist-body">
+                    
+                    <header class="create-checklist-header">
+                        <i class="fas fa-arrow-left back-arrow" data-action="back-to-checklists"></i>
+                        <h1>Add Template</h1>
+                    </header>
+
+                    <p class="checklist-intro-text">Create onboarding checklists here</p>
+
+                    <div class="tabs-container">
+                        <button class="tab-button active">Questions</button>
+                        <button class="tab-button">Response</button>
+                    </div>
+
+                    <section class="form-builder-section">
+                        
+                        <div class="form-title-card checklist-card">
+                            <h2 class="form-title">Untitled Form</h2>
+                            <div class="card-actions">
+                                <i class="fas fa-pencil-alt action-icon clickable" data-action="edit-form-title"></i>
+                                <i class="fas fa-link action-icon clickable" data-action="copy-form-link"></i>
+                            </div>
+                        </div>
+
+                        <div class="add-description-card checklist-card">
+                            <p class="card-description-placeholder">Add Description</p>
+                            <div class="card-actions">
+                                <i class="fas fa-pencil-alt action-icon clickable" data-action="edit-description"></i>
+                                <i class="fas fa-link action-icon clickable" data-action="copy-description-link"></i>
+                            </div>
+                        </div>
+
+                        <div class="add-task-card checklist-card">
+                            <input type="text" class="task-input" placeholder="Enter task">
+                            <div class="upload-required-checkbox">
+                                <input type="checkbox" id="upload-required">
+                                <label for="upload-required">Upload Required?</label>
+                            </div>
+                        </div>
+
+                        <button class="add-task-btn primary-btn" data-action="add-new-task">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+
+                    </section>
+                    
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="static\javascript\hr-page-checklist-template.js"></script>
+</body>
+</html>
