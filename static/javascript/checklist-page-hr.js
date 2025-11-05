@@ -1,4 +1,3 @@
-// ✅ SIDEBAR TOGGLE (MOBILE)
 const menuButton = document.querySelector(".main-header__menu-btn");
 const sidebar = document.querySelector(".sidebar");
 
@@ -6,7 +5,7 @@ menuButton.addEventListener("click", () => {
     sidebar.classList.toggle("open");
 });
 
-// ✅ API ENDPOINT (Backend will update this URL later)
+
 const API_URL = "/api/checklists"; // <-- backend will replace this
 
 // ✅ Table body element
@@ -33,7 +32,6 @@ async function loadChecklists() {
     }
 }
 
-// ✅ Render Table UI
 function renderTable(checklists) {
     tableBody.innerHTML = "";
 
@@ -56,7 +54,7 @@ function renderTable(checklists) {
     attachActionEvents();
 }
 
-// ✅ Handle action buttons (backend endpoints will be added later)
+// ✅ Handle action buttons 
 function attachActionEvents() {
     document.querySelectorAll(".action-btn.view").forEach(btn =>
         btn.addEventListener("click", e => {
@@ -85,7 +83,6 @@ function attachActionEvents() {
     );
 }
 
-// ✅ Delete Function (will work when backend endpoint exists)
 async function deleteChecklist(id) {
     try {
         const response = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
@@ -99,4 +96,21 @@ async function deleteChecklist(id) {
 
 // ✅ Load data on page load
 document.addEventListener("DOMContentLoaded", loadChecklists);
+
+const tabs = document.querySelectorAll(".templates__tab");
+
+tabs.forEach(tab => {
+  tab.addEventListener("click", async () => {
+    tabs.forEach(t => t.classList.remove("templates__tab--active"));
+    tab.classList.add("templates__tab--active");
+
+    const filter = tab.dataset.tab;
+    
+    // Later when backend supports filters you will call API like:
+    // loadChecklists(filter);
+
+    console.log("Filter selected:", filter);
+  });
+});
+
 
