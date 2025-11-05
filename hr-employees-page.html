@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HR Dashboard</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="hr-employees-page.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+        <script type="module" src="static/javascript/hr-dashboard.js" defer></script>
+    </head>
+<body class="dashboard">
+
+
+        <aside class="sidebar" aria-label="Main Navigation">
+        <div class="sidebar__logo">
+        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" class="Logo"/>
+        </div>
+
+        <nav class="sidebar__nav">
+            <div class="sidebar__list">
+                <a href="#" class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</a>
+                <a href="#" class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</a>
+            </div>
+        </nav>
+          <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
+        </aside>
+        <main class="main">
+                <header class="main-header">
+                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
+
+            <div class="main-header__search-wrapper">
+                <button class="main-header__search-icon" aria-label="Search">🔍</button>
+                <input class="main-header__search-input" type="text" placeholder="Search" />
+
+
+                <div class="main-headear__wrapper">
+                    <div class="main-header__actions">
+                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
+                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
+                    <div class="main-header__user">
+                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
+                <span class="main-header__name">Ada Okafor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </header>
+
+
+            <section class="dashboard-top">
+                <div class="dashboard-top__wrapper">
+                    <div class="dashboard-top__content">
+                        <h1 class="dashboard-top__title">Employees</h1>
+                        <p class="dashboard-top__text">View and manage employees</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="employee">
+        <div class="employee__header">
+            <div class="employee__title">
+            <span class="employee__icon"><img src="static/assets/profile-2user (1).png" alt=""></span>
+            <h2 class="employee__count">Total Employees: <span id="empCount">24</span></h2>
+            </div>
+
+            <div class="employee__actions">
+            <input type="text" class="employee__search" placeholder="Search payroll or name" id="searchInput"/>
+
+            <button class="employee__filter-btn"><img src="static/assets/filter.png" alt="" class="sort-img"> Filter</button>
+            <button class="employee__sort-btn"><img src="static/assets/sort.png" alt="" class="sort-img"> Sort</button>
+            </div>
+        </div>
+
+                <div class="employee__table-wrapper">
+                    <table class="employee__table">
+                    <thead>
+                        <tr class="employee__table-row">
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Role</th>
+                        <th>Joining Date</th>
+                        <th>Contract type</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="employeeTableBody"></tbody>
+                    </table>
+                </div>
+
+            <div class="employee__pagination">
+                <p class="employee__entries">Showing <span id="pageStart">1</span> to <span id="pageEnd">10</span> of <span id="totalEntries">24</span> entries</p>
+                
+                <div class="employee__pagination-controls">
+                <button id="prevPage" class="employee__page-btn">◀ Back</button>
+                <span id="pageNumbers"></span>
+                <button id="nextPage" class="employee__page-btn">Next ▶</button>
+                </div>
+            </div>
+            </section>
+            </section>
+        </main>
+    </body>
+</html>
