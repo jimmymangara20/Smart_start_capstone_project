@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Document Review</title>
+    <link rel="stylesheet" href="static\hr-uploads.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <a href="#" class="logo-link"><img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img"></a>
+            <nav class="nav-links">
+                <a href="#" class="nav-item" data-view="home"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-item" data-view="employees"><i class="fas fa-users"></i> Employees</a>
+                <a href="#" class="nav-item" data-view="checklist"><i class="fas fa-list-check"></i> Checklist</a>
+                <a href="#" class="nav-item" data-view="progress-tracker"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+                <a href="#" class="nav-item active" data-view="uploads"><i class="fas fa-cloud-upload-alt"></i> Uploads</a>
+                <a href="#" class="nav-item" data-view="events"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="nav-item" data-view="profile"><i class="fas fa-user"></i> Profile</a>
+            </nav>
+            <div class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+        </aside>
+
+        <main class="main-content">
+            
+            <header class="top-header">
+                <div class="search-area">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell user-icon"></i>
+                    <div class="profile-area">
+                        <span class="user-name">Ada Okafor</span>
+                        <img src="ada-okafor.jpg" alt="Ada Okafor Profile" class="profile-pic">
+                    </div>
+                </div>
+            </header>
+
+            <div id="uploads-view" class="view active">
+                
+                <div class="uploads-content-body">
+                    
+                    <header class="uploads-header">
+                        <h1>Document Management</h1>
+                        <p>Review and approve employee document submissions</p>
+                    </header>
+
+                    <div class="admin-docs-controls">
+                        <div class="search-doc-area">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search by employee or document type..." class="search-doc-input">
+                        </div>
+                        <div class="filter-dropdown">
+                            <i class="fas fa-filter filter-icon"></i>
+                            <span>All Documents</span>
+                            <i class="fas fa-chevron-down arrow-down"></i>
+                        </div>
+                    </div>
+
+                    <section class="status-card-grid">
+                        <div class="status-card pending-review">
+                            <p class="card-title">Pending Review</p><p class="card-value">2</p>
+                            <i class="far fa-hourglass-half card-icon-status"></i>
+                        </div>
+                        <div class="status-card approved-count">
+                            <p class="card-title">Approved</p><p class="card-value">2</p>
+                            <i class="fas fa-check-circle card-icon-status"></i>
+                        </div>
+                        <div class="status-card total-documents">
+                            <p class="card-title">Total Documents</p><p class="card-value">4</p>
+                            <i class="fas fa-file-alt card-icon-status"></i>
+                        </div>
+                    </section>
+
+                    <section class="submissions-table-section">
+                        <div class="docs-table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20%;">Employee</th><th style="width: 15%;">Document Type</th>
+                                        <th style="width: 20%;">File Name</th><th style="width: 8%;">Size</th>
+                                        <th style="width: 10%;">Uploaded</th><th style="width: 12%;">Status</th>
+                                        <th style="width: 10%;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-label="Employee">
+                                            <span class="employee-name">Akinade Iremide</span><br>
+                                            <span class="employee-email">akinadeiremidde@gmail.com</span>
+                                        </td>
+                                        <td data-label="Document Type">Government ID</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> drivers-license.pdf</td>
+                                        <td data-label="Size">2.4 MB</td>
+                                        <td data-label="Uploaded">2 hours ago</td>
+                                        <td data-label="Status"><span class="status-badge pending">Pending Review</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon clickable"></i><i class="fas fa-download download-icon clickable"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Employee">
+                                            <span class="employee-name">Hassan Donladi</span><br>
+                                            <span class="employee-email">hassan donladi@gmail.com</span>
+                                        </td>
+                                        <td data-label="Document Type">Offer Letter</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> signed-offer.pdf</td>
+                                        <td data-label="Size">1.8 MB</td>
+                                        <td data-label="Uploaded">1 day ago</td>
+                                        <td data-label="Status"><span class="status-badge approved">Approved</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon clickable"></i><i class="fas fa-download download-icon clickable"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Employee">
+                                            <span class="employee-name">Bamidèle Iniuluwa</span><br>
+                                            <span class="employee-email">bamideleinieluwa@gmail.com</span>
+                                        </td>
+                                        <td data-label="Document Type">W-4 Form</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> w4-form.pdf</td>
+                                        <td data-label="Size">890 KB</td>
+                                        <td data-label="Uploaded">2 days ago</td>
+                                        <td data-label="Status"><span class="status-badge approved">Approved</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon clickable"></i><i class="fas fa-download download-icon clickable"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td data-label="Employee">
+                                            <span class="employee-name">Isaiah Emmanuel</span><br>
+                                            <span class="employee-email">isaiahemmanuel@gmail.com</span>
+                                        </td>
+                                        <td data-label="Document Type">Direct Deposit</td>
+                                        <td data-label="File Name"><i class="fas fa-file-pdf pdf-icon"></i> bank-info.pdf</td>
+                                        <td data-label="Size">1.2 MB</td>
+                                        <td data-label="Uploaded">3 hours ago</td>
+                                        <td data-label="Status"><span class="status-badge pending">Pending Review</span></td>
+                                        <td class="actions-cell">
+                                            <i class="fas fa-eye view-icon clickable"></i><i class="fas fa-download download-icon clickable"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <script src="static\javascript\hr-uploads.js"></script>
+</body>
+</html>
