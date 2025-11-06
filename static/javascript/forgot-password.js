@@ -4,9 +4,15 @@ form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const email = document.querySelector("#email").value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!email) {
-    alert("Please enter your email address");
+    alert("Please enter your email address.");
+    return;
+  }
+
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address (e.g., name@example.com).");
     return;
   }
 
@@ -26,6 +32,7 @@ form.addEventListener("submit", async function (e) {
       return;
     }
 
+    // ✅ ROUTING happens here after successful response
     window.location.href = "forgot-password-instruction.html";
 
   } catch (error) {
@@ -33,4 +40,3 @@ form.addEventListener("submit", async function (e) {
     alert("Network error — please try again");
   }
 });
-
