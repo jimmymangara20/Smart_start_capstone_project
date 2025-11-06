@@ -118,6 +118,20 @@ if (searchBtn) {
   });
 }
 
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+
+    // Select all rows inside the checklist table (excluding header)
+    const rows = document.querySelectorAll(".templates__row:not(.templates__row--head)");
+
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      // Show row only if it contains the search term
+      row.style.display = text.includes(query) ? "" : "none";
+    });
+  });
+}
 // Initialize Dashboard
 document.addEventListener("DOMContentLoaded", async () => {
   await fetchEmployees();
@@ -128,4 +142,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   loadRoutine();
   loadCompletionChart();
 });
+
+
 

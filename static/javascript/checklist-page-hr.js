@@ -113,4 +113,34 @@ tabs.forEach(tab => {
   });
 });
 
+// ✅ Handle "+ New Template" button (no page change)
+const newTemplateBtn = document.querySelector(".btn--primary");
+
+if (newTemplateBtn) {
+  newTemplateBtn.addEventListener("click", () => {
+    console.log("Open new template form here");
+    alert("This will open the New Template form");
+    // Later you can show a modal or form here instead of alert
+  });
+}
+
+
+// ✅ Search functionality
+const searchInput = document.querySelector(".main-header__search-input");
+
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+
+    // Select all rows inside the checklist table (excluding header)
+    const rows = document.querySelectorAll(".templates__row:not(.templates__row--head)");
+
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      // Show row only if it contains the search term
+      row.style.display = text.includes(query) ? "" : "none";
+    });
+  });
+}
+
 
