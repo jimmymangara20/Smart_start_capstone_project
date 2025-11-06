@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-page</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  
+    <script src="/static/javascript/event-page.js" defer></script>
+    <link rel="stylesheet" href="event-page.css">
+</head>
+<body>
+     <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="#" class="logo-link">
+        <img
+          src="static/assets/smartstart-logo-orig.png"
+          alt="Smartstart Logo"
+          class="logo-img"
+        />
+      </a>
+      <img src="/static/assets/divider.png" alt="" />
+      <nav class="nav-links">
+        <a href="/" class="nav-item" data-spa><i class="fas fa-home"></i> Home</a>
+        <a href="/employees" class="nav-item" data-spa><i class="fas fa-users"></i> Employees</a>
+        <a href="/checklist" class="nav-item" data-spa><i class="fas fa-list-check"></i> Checklist</a>
+        <a href="/progress" class="nav-item" data-spa><i class="fas fa-chart-line"></i> Progress Tracker</a>
+        <a href="/uploads" class="nav-item" data-spa><i class="fas fa-cloud-arrow-up"></i> Uploads</a>
+        <a href="/events" class="nav-item" data-spa><i class="fas fa-calendar-alt"></i> Events</a>
+        <a href="/profile" class="nav-item active" data-spa><i class="fas fa-user"></i> Profile</a>
+      </nav>
+      <img src="/static/assets/divider.png" alt="" />
+      <div class="logout-btn clickable" data-action="logout-menu">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </div>
+    </aside>
+<!-- Header -->
+<main>
+     <header class="top-header">
+        <div class="search-area">
+          <input type="text" id="searchInput" placeholder="Search" class="search-input" />
+          <button id="searchBtn" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <div class="user-info">
+          <!-- Notifications -->
+          <div class="notification-wrapper">
+            <i class="fas fa-bell user-icon" id="notifIcon"></i>
+            <span id="notifBadge" class="notif-badge"></span>
+            <div id="notifDropdown" class="notif-dropdown"></div>
+          </div>
+
+          <!-- Messages -->
+          <div class="message-wrapper">
+            <i class="ph-fill ph-chat" id="msgIcon"></i>
+            <span id="msgBadge" class="notif-badge"></span>
+            <div id="msgDropdown" class="notif-dropdown"></div>
+          </div>
+
+          <!-- Profile + Upload -->
+          <div class="profile-area">
+            
+            <input type="file" id="uploadInput">
+            <input type="file" id="profileImageInput" accept="image/*" style="display:none" />
+            <span class="user-name">Ada Okafor</span>
+          </div>
+        </div>
+      </header>
+
+
+      <section>
+        <h1 class="event_heading">Create a new event</h1>
+        <div class="event_box">
+            <div class="event-container">
+            <form>
+      <!-- Time -->
+      <div class="form-group">
+        <label for="time">Time <span class="required">*</span></label>
+        <div class="input-wrapper">
+          <input class="back" type="text" id="time" placeholder="2:00AM">
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Title <span class="required">*</span></label>
+        <div class="input-wrapper">
+          <input class="back" type="text" id="title" placeholder="Meet The Team">
+        </div>
+      </div>
+
+      <!-- Registration form -->
+      <div class="form-group">
+        <label for="form-link">Registration Form (if needed)</label>
+        <div class="input-wrapper">
+          <input class="back" type="url" id="form-link" placeholder="Google Form Link">
+        </div>
+      </div>
+
+      <div class="form-group">
+      </div>
+
+      <!-- Mode -->
+      <div class="form-group">
+        <label for="mode">Mode</label>
+        <div class="input-wrapper">
+          <select id="mode">
+            <option>Physical</option>
+            <option>Virtual</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="calendar">
+    <div class="calendar-header">
+      <span class="month-year">October 2025</span>
+      <div class="nav-buttons">
+        <button class="prev-month">&#10094;</button>
+        <button class="next-month">&#10095;</button>
+      </div>
+    </div>
+    <div class="calendar-grid">
+      <div class="day-name">S</div>
+      <div class="day-name">M</div>
+      <div class="day-name">T</div>
+      <div class="day-name">W</div>
+      <div class="day-name">T</div>
+      <div class="day-name">F</div>
+      <div class="day-name">S</div>
+
+      <!-- previous month dates -->
+      <div class="prev-date">28</div>
+      <div class="prev-date">29</div>
+      <div class="prev-date">30</div>
+
+      <!-- current month -->
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div class="active">6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+      <div>13</div>
+      <div>14</div>
+      <div>15</div>
+      <div>16</div>
+      <div>17</div>
+      <div>18</div>
+      <div>19</div>
+      <div>20</div>
+      <div>21</div>
+      <div>22</div>
+      <div>23</div>
+      <div>24</div>
+      <div>25</div>
+      <div>26</div>
+      <div>27</div>
+      <div>28</div>
+      <div>29</div>
+      <div>30</div>
+      <div>31</div>
+    </div>
+  </div>
+        </div>
+       <div class="event-btn">
+         <button class="event-btn-one">Cancel</button>
+        <button class="event-btn-two">Save</button>
+       </div>
+        </div>
+        
+      </section>
+</main>
+</body>
+</html>

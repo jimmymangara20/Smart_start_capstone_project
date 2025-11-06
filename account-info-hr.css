@@ -1,4 +1,4 @@
-/* ========================================================= */
+
 
 * {
     margin: 0;
@@ -14,7 +14,6 @@ body {
 
 .dashboard-container {
     display: grid;
-    /* Sidebar width is 250px, main content is the rest */
     grid-template-columns: 250px 1fr; 
     height: 100vh;
     overflow: hidden;
@@ -23,10 +22,7 @@ body {
 .main-content {
     overflow-y: auto;
 }
-
-/* ========================================================= */
-/* 2. SIDEBAR STYLING                                        */
-/* ========================================================= */
+/* sidebar */
 .sidebar {
     background-color: #ffffff;
     padding: 20px 0;
@@ -67,7 +63,7 @@ body {
 /* Active Link State */
 .nav-item:hover {
     background-color: #e0f0ff;
-    color: #007bff; /* Primary blue */
+    color: #007bff; 
     border-left: 4px solid #007bff;
     padding-left: 16px; 
 }
@@ -76,16 +72,14 @@ body {
     display: flex;
     align-items: center;
     padding: 20px;
-    color: #d9534f; /* Red */
+    color: #d9534f; 
     cursor: pointer;
     font-weight: 500;
     margin-top: auto; 
     border-top: 1px solid #eee;
 }
 
-/* ========================================================= */
-/* 3. HEADER STYLING                                         */
-/* ========================================================= */
+/* /* HEADER STYLING */
 .top-header {
     background-color: #ffffff;
     padding: 15px 30px;
@@ -124,9 +118,8 @@ body {
     object-fit: cover;
 }
 
-/* ========================================================= */
-/* 4. PROFILE CONTENT STYLING                                */
-/* ========================================================= */
+
+/* 4. PROFILE CONTENT STYLING */
 .profile-content-body {
     padding: 30px;
 }
@@ -186,7 +179,7 @@ body {
     color: #555;
 }
 .list-item:last-of-type {
-    border-bottom: 1px solid #eee; /* Closing the last section */
+    border-bottom: 1px solid #eee; 
 }
 .list-item.clickable:hover {
     background-color: #f7f7f7;
@@ -209,7 +202,7 @@ body {
     padding: 3px 8px;
     border-radius: 4px;
     margin-right: 10px;
-    background-color: #ffc107; /* Incomplete status color */
+    background-color: #ffc107;
     color: #333;
 }
 
