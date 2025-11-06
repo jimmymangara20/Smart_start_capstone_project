@@ -25,9 +25,18 @@ html {
 }
     
 }
-@media (max-width:1300px) {
+@media (max-width:1200px) {
     html {
-        font-size: 40%;
+        font-size: 30%;
+    }
+    .eclipse_last {
+        top: 5rem;
+    }
+    
+}
+@media (max-width:900px) {
+    html {
+        font-size:20% ;
     }
     
 }
@@ -156,10 +165,10 @@ width: 100%;
 }
 .why_box {
     display: flex;
-    gap: 20.75rem;
-    justify-content: space-between;
+    gap: 10rem;
+    justify-content: space-around;
     align-items: center;
-    margin: 0 5rem;
+    width: 100%;
     
 }
 .why_card-icon {
@@ -186,7 +195,6 @@ width: 100%;
     padding: 6rem;
     border: 1px solid #D0D0D0;
     border-radius: 8px;
-    flex-wrap: wrap;
 }
 
 /* How section */
@@ -338,7 +346,7 @@ width: 100%;
     position: relative;
     margin-left: 70rem;
     display: block;
-    top: 6.3rem;
+    top: 6rem;
 }
 .about_pg-div {
     font-size: 2.5rem;
@@ -499,6 +507,7 @@ li {
     font-size: 2rem;
     font-weight: 500;
     color: #FFFDFA;
+    margin-left: 5rem;
 }
 .footer_pg {
     display: inline-block;
@@ -659,8 +668,8 @@ gap: 2rem;
 @media (max-width: 1024px) {
   .why_box {
     flex-wrap: wrap;
-    width: fit-content;
-    height: auto;
+    /* height: fit-content;
+    width: fit-content; */
 
   }
 
@@ -693,13 +702,11 @@ gap: 2rem;
   }
 
   .why_box {
-    flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
   }
 
   .why_card {
-    width: 100%;
     max-width: 90%;
     padding: 3rem;
   }
@@ -717,3 +724,14 @@ gap: 2rem;
     display: block;
 
 }
+
+
+
+
+.nav_link:hover {
+  color: #007bff;
+  font-weight: 700;
+  border-bottom: 2px solid #007bff;
+  transition: all 0.3s ease;
+}
+
