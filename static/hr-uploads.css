@@ -1,6 +1,17 @@
 /* ========================================================= */
-/* 1. BASE LAYOUT & COMMON STYLES (App Shell)                */
+/* 1. BASE LAYOUT & COMMON STYLES (App Shell) - Updated */
 /* ========================================================= */
+:root {
+    --smartstart-blue: #007bff; /* Primary Accent Color */
+    --text-dark: #333;
+    --text-medium: #6c757d;
+    --bg-light: #ffffff;
+    --bg-primary: #f4f7f9;
+    --sidebar-width: 250px;
+    --pending-color: #ffc107; /* Yellow/Amber for Pending */
+    --approved-color: #28a745; /* Green for Approved */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,13 +20,13 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f7f9; /* Global light gray background */
-    color: #333;
+    background-color: var(--bg-primary); 
+    color: var(--text-dark);
 }
 
 .dashboard-container {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
     height: 100vh;
     overflow: hidden;
 }
@@ -25,138 +36,364 @@ body {
 }
 
 .view {
-    /* Base padding for all routed content */
     padding: 30px; 
 }
-.view.active {
-    display: block;
-}
 
-/* --- Sidebar & Header Styles (Required for consistency) --- */
-.sidebar { background-color: #ffffff; border-right: 1px solid #eee; }
-.nav-item.active { background-color: #e0f0ff; color: #007bff; border-left: 4px solid #007bff; padding-left: 16px; }
-.top-header { background-color: #ffffff; border-bottom: 1px solid #eee; }
+/* -------------------- SIDEBAR STYLING -------------------- */
 
-
-/* ========================================================= */
-/* 2. ACCOUNT DETAILS VIEW STYLING                           */
-/* ========================================================= */
-.account-details-body {
-    /* Constrain the central content for a cleaner layout */
-    max-width: 700px;
-    margin: 0 auto; 
-    padding: 0; /* Remove redundant padding since .view handles it */
-}
-
-/* --- Header & Back Button --- */
-.account-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.back-arrow {
-    font-size: 1.5rem;
-    color: #333;
-    margin-right: 15px;
-    cursor: pointer;
-}
-
-.account-header h1 {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-/* --- Profile Picture Section --- */
-.user-avatar-section {
+.sidebar {
+    background-color: var(--bg-light); 
+    border-right: 1px solid #eee;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
+    padding: 20px 0;
 }
 
-.large-profile-pic {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around avatar */
+.logo-link {
+    display: block;
+    padding: 0 20px 30px 20px;
 }
 
-.user-name-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #555;
+.logo-img {
+    height: 35px; /* Size of the Smartstart logo */
 }
 
-/* --- Account Info List --- */
-.account-info-list {
-    list-style: none;
-    padding: 0;
+.nav-links {
+    flex-grow: 1; /* Pushes the logout button to the bottom */
 }
 
-.info-item {
+.nav-item {
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 12px 20px;
+    margin: 4px 0;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-item i {
+    margin-right: 15px;
+    width: 20px; /* Aligns icons vertically */
+    text-align: center;
+    color: var(--text-medium);
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-item.active { 
+    background-color: #e0f0ff; /* Very light blue background */
+    color: var(--smartstart-blue); 
+    border-left: 4px solid var(--smartstart-blue); 
+    padding-left: 16px; /* Adjusted padding after border */
+}
+
+.nav-item.active i {
+    color: var(--smartstart-blue);
+}
+
+.logout-btn {
+    padding: 20px;
     border-top: 1px solid #eee;
-    font-size: 1rem;
-    color: #555;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.info-item:last-of-type {
-    border-bottom: 1px solid #eee; /* Bottom border for the entire list section */
-}
-
-.info-item:hover {
-    background-color: #fcfcfc;
-}
-
-.item-icon {
-    font-size: 1.2rem;
-    width: 30px;
-    margin-right: 20px;
-    color: #666;
-}
-
-.item-text {
-    flex-grow: 1;
-}
-
-.details-arrow {
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
-/* Status Badge: Approved */
-.item-status {
-    font-size: 0.75rem;
+    color: #dc3545; /* Red for logout */
     font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-.item-status.approved {
-    background-color: #d4edda; /* Light green */
-    color: #155724; /* Dark green text */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
 }
 
-/* --- Danger Zone --- */
-.danger-action-btn {
-    display: block;
+.logout-btn i {
+    margin-right: 15px;
+}
+
+.logout-btn:hover {
+    color: #a71d2a;
+}
+
+/* -------------------- TOP HEADER STYLING -------------------- */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-light); 
+    padding: 15px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.search-area {
+    display: flex;
+    align-items: center;
+    width: 350px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.search-input {
+    border: none;
+    padding: 10px 0;
+    flex-grow: 1;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-button {
     background: none;
     border: none;
-    color: #dc3545; /* Red color */
-    font-size: 0.95rem;
-    font-weight: 500;
-    /* Aligns text with the content of the list items */
-    margin: 30px 0 0 50px; 
-    padding: 10px 0;
+    color: var(--text-medium);
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    font-size: 18px;
+    color: var(--text-medium);
+    margin-right: 25px;
     cursor: pointer;
 }
-.danger-action-btn:hover {
-    text-decoration: underline;
+
+.profile-area {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* ========================================================= */
+/* 2. UPLOADS VIEW SPECIFIC STYLING */
+/* ========================================================= */
+
+.uploads-header {
+    margin-bottom: 20px;
+}
+
+.uploads-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.uploads-header p {
+    color: var(--text-medium);
+    font-size: 15px;
+}
+
+/* --- Controls (Search and Filter) --- */
+.admin-docs-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+.search-doc-area {
+    display: flex;
+    align-items: center;
+    width: 450px;
+    padding: 10px 15px;
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-doc-icon {
+    color: var(--text-medium);
+    margin-right: 10px;
+}
+
+.search-doc-input {
+    border: none;
+    flex-grow: 1;
+    font-size: 14px;
+    outline: none;
+}
+
+.filter-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--bg-light);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.filter-dropdown .filter-icon {
+    margin-right: 10px;
+    color: var(--text-medium);
+}
+
+.filter-dropdown .arrow-down {
+    margin-left: 10px;
+    font-size: 12px;
+    color: var(--text-medium);
+}
+
+/* --- Status Cards --- */
+.status-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.status-card {
+    background-color: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-areas: 
+        "title icon"
+        "value icon";
+    align-items: center;
+}
+
+.card-title {
+    grid-area: title;
+    font-size: 14px;
+    color: var(--text-medium);
+    margin-bottom: 5px;
+}
+
+.card-value {
+    grid-area: value;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-icon-status {
+    grid-area: icon;
+    font-size: 2.5rem;
+    justify-self: end;
+    opacity: 0.6;
+}
+
+/* Card Coloring */
+.pending-review .card-value { color: var(--pending-color); }
+.pending-review .card-icon-status { color: #ffe6ac; } /* Light yellow background-like icon */
+
+.approved-count .card-value { color: var(--approved-color); }
+.approved-count .card-icon-status { color: #d4edda; } /* Light green background-like icon */
+
+.total-documents .card-value { color: var(--smartstart-blue); }
+.total-documents .card-icon-status { color: #e0f0ff; } /* Light blue background-like icon */
+
+
+/* --- Submissions Table --- */
+.submissions-table-section {
+    background-color: var(--bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.docs-table-container {
+    overflow-x: auto; /* Handles horizontal scrolling on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    text-align: left;
+    padding: 15px 10px;
+    color: var(--text-medium);
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+tbody td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Employee Column Styling */
+.employee-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.employee-email {
+    font-size: 12px;
+    color: var(--text-medium);
+}
+
+/* File Name Styling */
+.pdf-icon {
+    color: #dc3545; /* Red for PDF */
+    margin-right: 5px;
+}
+
+/* Status Badges */
+.status-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.status-badge.pending {
+    background-color: #fff3cd; /* Very light yellow */
+    color: #856404; /* Dark yellow text */
+}
+
+.status-badge.approved {
+    background-color: #d4edda; 
+    color: #155724; 
+}
+
+/* Actions Column */
+.actions-cell {
+    text-align: right;
+}
+
+.actions-cell .clickable {
+    font-size: 16px;
+    color: var(--text-medium);
+    margin-left: 15px;
+    cursor: pointer;
+    transition: color 0.1s;
+}
+
+.actions-cell .view-icon:hover {
+    color: var(--smartstart-blue);
+}
+
+.actions-cell .download-icon:hover {
+    color: var(--approved-color);
 }
