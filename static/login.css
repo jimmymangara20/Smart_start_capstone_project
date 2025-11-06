@@ -156,58 +156,6 @@ h1 {
     box-shadow: 0 0 5px rgba(0, 118, 200, 0.1);
 }
 
-/* Password input specific styling to mimic the image visually */
-.password-input-wrapper {
-    position: relative;
-    margin-bottom: 5px; /* Same margin as standard input */
-}
-
-.password-input-wrapper input[type="password"] {
-    /* Hide actual input for visual trick, JS handles interaction */
-    color: transparent; 
-    text-shadow: 0 0 0 var(--text-dark); /* Makes text visible but appears as dots */
-    font-family: monospace; /* For uniform dot/char width */
-    padding-right: 110px; /* Make space for the mock chars */
-}
-
-.password-char-mock {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #e9ecef; /* Light gray background for the "tabs" */
-    border-radius: var(--border-radius);
-    padding: 4px 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--text-dark);
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 30px; /* Adjust as needed */
-    height: 30px;
-    border: 1px solid #dee2e6;
-    user-select: none; /* Prevent selection */
-}
-
-.password-char-mock:nth-of-type(1) { right: 80px; } /* P */
-.password-char-mock:nth-of-type(2) { right: 55px; } /* I */
-.password-char-mock:nth-of-type(3) { right: 30px; } /* D */
-.password-char-mock:nth-of-type(4) { right: 5px; } /* Blank dot */
-
-/* For the blank dots, we can use a circle */
-.password-char-mock:nth-of-type(2):empty::after,
-.password-char-mock:nth-of-type(3):empty::after,
-.password-char-mock:nth-of-type(4):empty::after {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background-color: var(--text-dark);
-    border-radius: 50%;
-}
-
-
 .form-footer {
     display: flex;
     justify-content: space-between;
