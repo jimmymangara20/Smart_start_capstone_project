@@ -1,13 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>landing page</title>
-=======
-    <title>smartstart</title>
->>>>>>> 4dc9a928534c9aabe3892212fd794a5181a8e1ea
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
@@ -16,27 +13,30 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
     />
-<<<<<<< HEAD
-    <script src="/static/javascript/index.js" defer></script>
-=======
-    <script src="/index.js" defer></script>
->>>>>>> 4dc9a928534c9aabe3892212fd794a5181a8e1ea
+    <script src="index.js" defer></script>
 <link rel="stylesheet" href="index.css">
+
+<!-- smooth scrolling for anchor links -->
+<style> html { scroll-behavior: smooth; } </style>
 </head>
 <body>
+
 <header class="heading">
     <img class="heading_img" src="static/assets/smartstart-logo-orig.png" alt="">
     <div class="nav_div">
         <ul class="nav_items">
+            <!-- links updated to use ids -->
             <li class="nav_item"><a class="nav_link home" href="#home">Home</a></li>
-            <li class="nav_item"><a class="nav_link" href="#Features">Features</a></li>
-            <li class="nav_item"><a class="nav_link" href="#Contact">Contact</a></li>
-            <li class="nav_item"><a class="nav_link" href="#Pricing">Pricing</a></li>
+            <li class="nav_item"><a class="nav_link" href="features.html">Features</a></li>
+            <li class="nav_item"><a class="nav_link" href="#contact">Contact</a></li>
+            <li class="nav_item"><a class="nav_link" href="#about">About Us</a></li>
         </ul>
     </div>
-    <button class="nav_btn">Get started</button>
+    <button class="nav_btn" onclick="location.href='#get-started'">Get started</button>
 </header>
-    <section class="hero">
+
+<!-- HOME SECTION -->
+<section id="home" class="hero">
    <div class="hero_flex">
      <div class="hero_left">
          <h1 class="hero_heading">
@@ -44,8 +44,8 @@
     </h1>
     <p class="hero_pg">seamless onboarding designed for teams 
      that value clarity, connection, and excellence from day one.</p>
-    <button class="hero_btn-get"> Get started</button>
-    <button class="hero_btn-see">See Features</button>
+    <button class="hero_btn-get" onclick="location.href='#get-started'"> Get started</button>
+    <button class="hero_btn-see" onclick="location.href='#features'">See Features</button>
     </div>
     <div class="hero_img_div">
         <div class="div_img-up">
@@ -59,8 +59,9 @@
     </div>
    </div>
 </section>
-<!--why section-->
-<section class="why_section">
+
+<!-- WHY / FEATURES SECTION -->
+<section id="features" class="why_section">
     <h2 class="why_heading">
     Why Choose SmartStart?
     </h2>
@@ -82,8 +83,9 @@
         </div>
     </div>
 </section>
-<!--how section-->
-<section class="how_scetion">
+
+<!-- HOW SECTION (included exactly as original) -->
+<section id="how" class="how_scetion">
     <div class="how_section-div">
         <img class="how_pic" src="static/assets/howpic.png" alt="">
     <div class="how_div">
@@ -123,9 +125,10 @@
         </div> 
         </div>      
     </div>
-<section>
-<!--about section-->
-<section class="about_section">
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about_section">
     <div class="about_left">
         <h1 class="about_heading">About Us</h1>
     <img class="eclipse_one" src="/static/assets/eclipse02.png" alt="">
@@ -148,14 +151,14 @@ and support new hires.</p>
     <img class="about_img" src="/static/assets/about.png" alt="">
 </section>
 
-<!--re-imagining-->
+<!-- RE-IMAGINING -->
 <section class="reimagining_section">
     <h1 class="reimagining_heading">Reimagining Onboarding for Modern Teams</h1>
     <p class="reimagining_pg"> <span class="reimagining_pg-diff">SmartStart</span> makes it easy to create, track, and complete onboarding tasks—all in one place.</p>
 </section>
 
-<!--start section-->
-<section class="start_section">
+<!-- START SECTION (Get started target) -->
+<section id="get-started" class="start_section">
     <div class="start_img-div">
         <img class="start_img-one" src="/static/assets/about01.png" alt="">
         <img class="start_img-two" src="/static/assets/about02.png" alt="">
@@ -170,8 +173,8 @@ and support new hires.</p>
     </div>
 </section>
 
-<!--footer -->
-<footer>
+<!-- CONTACT / FOOTER -->
+<footer id="contact">
     <div class="footer_top-div">
     <div class="smart_div">
         <div class="footer_logo-div">
@@ -185,7 +188,7 @@ and support new hires.</p>
            <a class="footer_sociallink" href="twitter.com"> <img class="footer_social-image" src="/static/assets/footer03.png" alt=""></a>
            <a class="footer_sociallink" href="instagram.com"><img class="footer_social-image"src="/static/assets/footer04.png" alt=""></a>
         </div>
-    </div>div>
+    </div>
     <div class="footer_list-container">
         <div>
              <h1 class="footer_heading">PRODUCT</h1>

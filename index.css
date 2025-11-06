@@ -4,6 +4,11 @@
     box-sizing: border-box;
     font-family:"Mulish", sans-serif;
 }
+/* ✅ Smooth scrolling for all section jumps */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color:#FAFAFA ;
 }
