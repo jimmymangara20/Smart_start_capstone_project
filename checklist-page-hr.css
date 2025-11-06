@@ -29,6 +29,12 @@ html {
 }
 
 /* RESPONSIVE FONT SCALE */
+@media (max-width:1440px) {
+  html { 
+    font-size: 62.5%; 
+    max-width: fit-content;
+  }
+}
 @media (max-width:1200px) {
   html { 
     font-size: 58%; 

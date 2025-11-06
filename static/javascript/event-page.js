@@ -13,20 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-//   // Route every sidebar click to index.html
-//   navLinks.forEach((a) => {
-//     a.addEventListener('click', (e) => {
-//       e.preventDefault();
-//       window.location.href = 'index.html';
-//     });
-//   });
+  // // Route every sidebar click to index.html
+  // navLinks.forEach((a) => {
+  //   a.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     window.location.href = 'index.html';
+  //   });
+  // });
 
-//   if (logoLink && sidebar) {
-//     logoLink.addEventListener('click', (e) => {
-//       e.preventDefault();
-//       sidebar.classList.toggle('collapsed');
-//     });
-//   }
+  // if (logoLink && sidebar) {
+  //   logoLink.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     sidebar.classList.toggle('collapsed');
+  //   });
+  // }
 
   /* === Header === */
   const notifIcon = $('#notifIcon');
