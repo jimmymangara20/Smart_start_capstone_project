@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+     <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="stylesheet" href="static\sign-up.css">
+  
+    <link rel="stylesheet" href="/sign-up.css">
     
 </head>
 <body>
@@ -13,41 +22,45 @@
     <!-- Left Side Illustration -->
      <div class="left-side">
     <div class="logo">
-      <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo">
+      
     </div>
-    <img src="static/assets/sign-up.png" alt="Smartstart illustration" />
+    <img src="static/assets/signup.png" alt="Smartstart illustration" />
   </div>
 
     <!-- Right Side Form -->
     <div class="right-side">
-      <div class="form-box">
-        <h1>Sign up for an account</h1>
-        <p class="subtitle">Create your free account to get started!</p>
-
-        <div class="social-login">
-          <button class="google"><img src="static\assets\google-logo.png" alt=""> Sign Up with Google</button>
-          <button class="apple"><svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
-  <path d="M23.4424 27.885C22.0949 29.1913 20.6236 28.985 19.2074 28.3662C17.7086 27.7337 16.3336 27.7062 14.7524 28.3662C12.7724 29.2187 11.7274 28.9713 10.5449 27.885C3.83489 20.9688 4.82489 10.4362 12.4424 10.0512C14.2986 10.1475 15.5911 11.0687 16.6774 11.1512C18.2999 10.8212 19.8536 9.8725 21.5861 9.99625C23.6624 10.1613 25.2299 10.9862 26.2611 12.4712C21.9711 15.0425 22.9886 20.6938 26.9211 22.275C26.1374 24.3375 25.1199 26.3863 23.4286 27.8988L23.4424 27.885ZM16.5399 9.96875C16.3336 6.9025 18.8224 4.3725 21.6824 4.125C22.0811 7.6725 18.4649 10.3125 16.5399 9.96875Z" fill="black"/>
-</svg>Sign Up with Apple</button>
-        </div>
-
-        <div class="divider"><span>Or Sign Up with email</span></div>
+       <div class="signup_header">
+        <img class="signup_logo" src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo">
+       <h1 class="signup_heading">Create an account</h1>
+       <p class="signup_pg">Already have an account? <a class="login" data-route href="/login.html">Log in</a></p>
+       <div class="role_select">
+       <label>
+         <input type="radio" value="Admin">Admin
+       </label>
+       <label>
+        <input type="radio" value="Employee">Employee
+       </label>
+       </div>
         <form id="signupForm">
-  <label>Email Address</label>
+       </div>
   <div class="input-field">
-    <i class="fa-solid fa-envelope"></i>
+     <label>Email Address</label>
     <input type="email" id="email" placeholder="name@gmail.com" required />
   </div>
-
-  <label>Create a password</label>
   <div class="input-field">
-    <i class="fa-solid fa-lock"></i>
-    <input type="password" id="password" placeholder="Enter password" required />
+    <label>Company Name</label>
+    <input type="password" id="password" placeholder="Doe corps" required />
   </div>
-
-  <label>Confirm password</label>
   <div class="input-field">
-    <i class="fa-solid fa-lock"></i>
+    <label>Role</label>
+    <input type="password" id="password" placeholder="HR Manager" required />
+  </div>
+  <div class="input-field">
+    <label>Enter password</label>
+    <input type="password" id="confirmPassword" placeholder="Enter password" required />
+  </div>
+  <div class="input-field">
+    <label>Confirm password</label>
     <input type="password" id="confirmPassword" placeholder="Confirm password" required />
   </div>
 
@@ -56,7 +69,7 @@
 
 
         <p class="signin-text">
-          Already have an account? <a href="#">Sign in</a>
+          or continue with <a data-route="google.email" href="google.email">Google</a>
         </p>
       </div>
     </div>
