@@ -1,0 +1,345 @@
+/* style.css */
+
+/* --- Variables and Base Reset --- */
+:root {
+    --primary-blue: #0076c8; /* Smartstart Blue */
+    --light-gray-bg: #f4f6f8; /* Very subtle background/border color */
+    --text-dark: #333333;
+    --text-medium: #6c757d;
+    --input-border: #ced4da;
+    --white: #ffffff;
+    --border-radius: 4px;
+    --container-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-gray-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* --- Main Container --- */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    background: var(--white);
+    border: 1px solid rgba(0, 118, 200, 0.1);
+    box-shadow: var(--container-shadow);
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* --- Left Panel: Login Form --- */
+.login-panel {
+    flex: 1 1 50%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Logo Styling */
+.logo {
+    margin-bottom: 30px;
+    align-self: flex-start;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    align-self: flex-start;
+}
+
+.subtitle {
+    color: var(--text-medium);
+    margin-bottom: 30px;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+/* Google Login Button Styling */
+.google-login {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    margin-bottom: 25px;
+    background-color: var(--white);
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    color: var(--text-dark);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.google-login:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 5px rgba(0, 118, 200, 0.2);
+}
+
+.google-login img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/* Divider 'Or Login with email' Styling */
+.divider {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    border-bottom: 1px solid var(--input-border);
+    line-height: 0.1em;
+    margin: 10px 0 25px;
+    color: var(--text-medium);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.divider::before {
+    content: "Or Login with email";
+    background: var(--white);
+    padding: 0 10px;
+}
+
+/* Login Form Styling */
+.login-form {
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 5px;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+    border-color: var(--primary-blue);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 118, 200, 0.1);
+}
+
+/* Password input specific styling to mimic the image visually */
+.password-input-wrapper {
+    position: relative;
+    margin-bottom: 5px; /* Same margin as standard input */
+}
+
+.password-input-wrapper input[type="password"] {
+    /* Hide actual input for visual trick, JS handles interaction */
+    color: transparent; 
+    text-shadow: 0 0 0 var(--text-dark); /* Makes text visible but appears as dots */
+    font-family: monospace; /* For uniform dot/char width */
+    padding-right: 110px; /* Make space for the mock chars */
+}
+
+.password-char-mock {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #e9ecef; /* Light gray background for the "tabs" */
+    border-radius: var(--border-radius);
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-dark);
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px; /* Adjust as needed */
+    height: 30px;
+    border: 1px solid #dee2e6;
+    user-select: none; /* Prevent selection */
+}
+
+.password-char-mock:nth-of-type(1) { right: 80px; } /* P */
+.password-char-mock:nth-of-type(2) { right: 55px; } /* I */
+.password-char-mock:nth-of-type(3) { right: 30px; } /* D */
+.password-char-mock:nth-of-type(4) { right: 5px; } /* Blank dot */
+
+/* For the blank dots, we can use a circle */
+.password-char-mock:nth-of-type(2):empty::after,
+.password-char-mock:nth-of-type(3):empty::after,
+.password-char-mock:nth-of-type(4):empty::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-dark);
+    border-radius: 50%;
+}
+
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.keep-logged-in {
+    display: flex;
+    align-items: center;
+    color: var(--text-medium);
+}
+
+.keep-logged-in input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-blue);
+}
+
+.forgot-password {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.log-in-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.log-in-button:hover {
+    background-color: #0056b3;
+}
+
+.sign-up-prompt {
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--text-medium);
+}
+
+.sign-up-prompt a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sign-up-prompt a:hover {
+    text-decoration: underline;
+}
+
+/* --- Right Panel: Image --- */
+.image-panel {
+    flex: 1 1 50%;
+    background: url('smiling-woman.jpg') no-repeat center center; /* Replace with your image */
+    background-size: cover;
+    border-left: 5px solid var(--primary-blue);
+}
+
+/* --- Responsiveness (Media Queries) --- */
+
+/* Tablet/Medium Screens: Hide Image Panel */
+@media (max-width: 992px) {
+    .container {
+        max-width: 600px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
+
+    .image-panel {
+        display: none;
+    }
+
+    .login-panel {
+        flex: 1 1 100%;
+        padding: 40px 30px;
+    }
+
+    h1, .subtitle, .logo {
+        align-self: center;
+        text-align: center;
+    }
+}
+
+/* Mobile/Small Screens: Full width and tighter spacing */
+@media (max-width: 576px) {
+    body {
+        align-items: flex-start;
+        padding-top: 0;
+        background-color: var(--white);
+    }
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .login-panel {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .google-login,
+    .login-form {
+        max-width: 100%;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .forgot-password {
+        margin-top: 10px;
+    }
+}

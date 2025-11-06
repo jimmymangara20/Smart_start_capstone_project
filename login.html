@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartstart Login</title>
+    <link rel="stylesheet" href="static\login.css">
+    <link rel="icon" type="image/png" href="smartstart-favicon.png"> 
+</head>
+<body>
+    <div class="container">
+        <div class="login-panel">
+            <div class="logo">
+                <img src="static\assets\smartstart-logo-orig.png" alt="Smartstart Logo">
+            </div>
+
+            <h1>Welcome Back!</h1>
+            <p class="subtitle">Sign in to your account with your details</p>
+
+            <button class="google-login">
+                <img src="static\assets\google-logo.png" alt="Google Icon"> Login with Google
+            </button>
+
+            <div class="divider">Or Login with email</div>
+
+            <form class="login-form" id="loginForm">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="name@gmail.com" required>
+
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" value="password123" required>
+                    <span class="password-char-mock">P</span>
+                    <span class="password-char-mock"></span> 
+                    <span class="password-char-mock"></span> 
+                    <span class="password-char-mock"></span> 
+                </div>
+
+                <div class="form-footer">
+                    <div class="keep-logged-in">
+                        <input type="checkbox" id="keep" name="keep" checked>
+                        <label for="keep">Keep me logged in</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="log-in-button">Log In</button>
+            </form>
+
+            <p class="sign-up-prompt">
+                Don't have an account? <a href="#">Sign up</a>
+            </p>
+        </div>
+
+        <div class="image-panel">
+            </div>
+    </div>
+
+    <script src="static\javascript\login.js"></script>
+</body>
+</html>
