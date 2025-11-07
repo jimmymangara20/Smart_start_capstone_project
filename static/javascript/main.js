@@ -84,3 +84,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+// LOGOUT HANDLER
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.querySelector(".logout-btn");
+
+    // Replace this with your backend logout endpoint if you have one
+    const LOGOUT_API_URL = "https://smartstart-backend-8afq.onrender.com/api/logout";
+
+    logoutBtn.addEventListener("click", async () => {
+        const confirmLogout = confirm("Are you sure you want to log out?");
+        if (!confirmLogout) return;
+
+        try {
+            // Optional: if your backend has a logout API
+            await fetch(LOGOUT_API_URL, {
+                method: "POST",
+                credentials: "include" // sends cookies if session-based
+            }).catch(() => {});
+
+            // Clear any locally stored tokens or session data
+            localStorage.removeItem("authToken");
+            sessionStorage.clear();
+
+            // Redirect to login page
+            window.location.href = "login.html";
+
+        } catch (error) {
+            console.error("Logout failed:", error);
+            alert("Something went wrong while logging out. Please try again.");
+        }
+    });
+});
