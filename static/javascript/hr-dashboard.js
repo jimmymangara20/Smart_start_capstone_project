@@ -1,147 +1,50 @@
-import Chart from "https://cdn.jsdelivr.net/npm/chart.js";
-let employees = [];
+const API = "https://smartstart-backend-8afq.onrender.com";
 
-async function fetchEmployees() {
-  try {
-    const res = await fetch("/api/employees"); // Backend endpoint placeholder
-    employees = await res.json();
-  } catch (error) {
-    console.warn("");
-    employees = [
-      { name: "Aisha Bello", role: "Logistics Specialist", date: "Oct 28, 2025", progress: 0, status: "Not Started" },
-      { name: "Ayara Joshua", role: "Product Designer", date: "Oct 28, 2025", progress: 5, status: "In Progress" },
-      { name: "Nwarija Chioma", role: "Marketing Manager", date: "Oct 27, 2025", progress: 20, status: "In Progress" },
-      { name: "Daniel Owoni", role: "Backend Developer", date: "Oct 20, 2025", progress: 30, status: "In Progress" },
-    ];
-  }
+const activeCount = document.getElementById("active-count");
+const completedCount = document.getElementById("completed-count");
+const progressCount = document.getElementById("progress-count");
+const overdueCount = document.getElementById("overdue-count");
+const tableBody = document.getElementById("recent-employees-body");
+
+async function loadDashboard() {
+    try {
+        const res = await fetch(`${API}/api/employees`);
+        const employees = await res.json();
+
+        // Stats
+        activeCount.textContent = employees.length;
+        completedCount.textContent = employees.filter(e => e.status === "Completed").length;
+        progressCount.textContent = employees.filter(e => e.status === "In Progress").length;
+        overdueCount.textContent = employees.filter(e => e.status === "Overdue").length;
+
+        // Recent employees (limit 4)
+        tableBody.innerHTML = employees.slice(0, 4)
+        .map(e => `
+            <tr>
+              <td><strong>${e.firstName} ${e.lastName}</strong></td>
+              <td>${e.role}</td>
+              <td>${e.startDate}</td>
+              <td><div class="bar"><div style="width:${e.progress}%"></div></div></td>
+              <td><span class="status ${e.status.replace(" ", "").toLowerCase()}">${e.status}</span></td>
+            </tr>
+        `).join("");
+
+        drawChart();
+
+    } catch(err) { console.log("Dashboard load failed", err); }
 }
 
-// Routine Data
-
-let routineData = [];
-
-async function fetchRoutine() {
-  try {
-    const res = await fetch("/api/routine");
-    routineData = await res.json();
-  } catch {
-    console.warn("");
-    routineData = [
-      "Onboarding formalities in-progress",
-      "1:1 session scheduled",
-      "Template review",
-    ];
-  }
-}
-
-// Completion Chart Data
-
-let completionData = { labels: [], values: [] };
-
-async function fetchChartData() {
-  try {
-    const res = await fetch("/api/onboarding/stats");
-    const data = await res.json();
-    completionData.labels = data.labels;
-    completionData.values = data.values;
-  } catch {
-    console.warn("");
-    completionData = {
-      labels: ["Doc Upload", "Forms", "Workspace", "Meet Team", "Checklist"],
-      values: [10, 7, 12, 15, 9],
-    };
-  }
-}
-
-// Render Functions
-
-function loadEmployees() {
-  const tbody = document.getElementById("employee-table-body");
-
-  tbody.innerHTML = employees.map(emp => `
-    <tr>
-      <td>${emp.name}</td>
-      <td>${emp.role}</td>
-      <td>${emp.date}</td>
-      <td>
-        <div class="progress-bar">
-          <div class="progress-bar__fill" style="width:${emp.progress}%"></div>
-        </div>
-      </td>
-      <td><span class="status status--${emp.status.replace(/\s+/g, '').toLowerCase()}">${emp.status}</span></td>
-    </tr>
-  `).join("");
-}
-
-function loadRoutine() {
-  const ul = document.getElementById("routineList");
-  ul.innerHTML = routineData.map(item => `<li class="routine__item">${item}</li>`).join("");
-}
-
-function loadCompletionChart() {
-  const ctx = document.getElementById("completionChart");
-
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: completionData.labels,
-      datasets: [{
-        data: completionData.values,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false } }
-    }
-  });
-}
-
-// Mobile Menu & Search Toggle
-
-const menuBtn = document.querySelector(".main-header__menu-btn");
-const sidebar = document.querySelector(".sidebar");
-const searchBtn = document.querySelector(".main-header__search-icon");
-const searchInput = document.querySelector(".main-header__search-input");
-
-if (menuBtn) {
-  menuBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("sidebar--open");
-  });
-}
-
-if (searchBtn) {
-  searchBtn.addEventListener("click", () => {
-    searchInput.classList.toggle("show-search");
-    searchInput.focus();
-  });
-}
-
-if (searchInput) {
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value.toLowerCase();
-
-    // Select all rows inside the checklist table (excluding header)
-    const rows = document.querySelectorAll(".templates__row:not(.templates__row--head)");
-
-    rows.forEach(row => {
-      const text = row.textContent.toLowerCase();
-      // Show row only if it contains the search term
-      row.style.display = text.includes(query) ? "" : "none";
+function drawChart() {
+    const ctx = document.getElementById("onboardChart");
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Profile Setup","Document Upload","Onboarding Form","Workspace Access","Meet Team","First week Checklist"],
+            datasets: [{
+                data: [19, 12, 15, 8, 17, 10]
+            }]
+        }
     });
-  });
 }
-// Initialize Dashboard
-document.addEventListener("DOMContentLoaded", async () => {
-  await fetchEmployees();
-  await fetchRoutine();
-  await fetchChartData();
 
-  loadEmployees();
-  loadRoutine();
-  loadCompletionChart();
-});
-
-
-
+document.addEventListener("DOMContentLoaded", loadDashboard);
