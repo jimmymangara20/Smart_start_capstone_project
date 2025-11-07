@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initial update on page load
+    // Initial update on page loadqa
     updatePasswordMocks();
 
     // Update on input change

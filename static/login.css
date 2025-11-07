@@ -1,6 +1,6 @@
 /* style.css */
 
-/* --- Variables and Base Reset --- */
+/* --- Variables and Base Reset -- */
 :root {
     --primary-blue: #0076c8; /* Smartstart Blue */
     --light-gray-bg: #f4f6f8; /* Very subtle background/border color */
@@ -24,16 +24,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     color: var(--text-dark);
 }
 
 /* --- Main Container --- */
 .container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 600px 550px;
     width: 90%;
     max-width: 1100px;
-    background: var(--white);
     border: 1px solid rgba(0, 118, 200, 0.1);
     box-shadow: var(--container-shadow);
     overflow: hidden;
@@ -48,12 +47,12 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 20px;
 }
 
 /* Logo Styling */
 .logo {
     margin-bottom: 30px;
-    align-self: flex-start;
 }
 
 .logo img {
@@ -65,20 +64,17 @@ h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 8px;
-    align-self: flex-start;
 }
 
 .subtitle {
     color: var(--text-medium);
     margin-bottom: 30px;
     font-size: 16px;
-    align-self: flex-start;
 }
 
 /* Google Login Button Styling */
 .google-login {
-    width: 100%;
-    max-width: 350px;
+    width: 90%;
     padding: 12px;
     margin-bottom: 25px;
     background-color: var(--white);
@@ -106,27 +102,23 @@ h1 {
 
 /* Divider 'Or Login with email' Styling */
 .divider {
-    width: 100%;
-    max-width: 350px;
-    text-align: center;
-    border-bottom: 1px solid var(--input-border);
-    line-height: 0.1em;
-    margin: 10px 0 25px;
-    color: var(--text-medium);
-    font-size: 13px;
-    font-weight: 500;
+    display: inline-block;
+    width: 150px;
+     padding: 0px;
+     height: auto;
 }
+.divider_div {
+    display: flex;
+    gap: 20px;
+    height: 1px;
+    justify-content: center;
+    align-items: center;
+   }
 
-.divider::before {
-    content: "Or Login with email";
-    background: var(--white);
-    padding: 0 10px;
-}
 
 /* Login Form Styling */
 .login-form {
-    width: 100%;
-    max-width: 350px;
+    width: 90%;
     text-align: left;
 }
 
@@ -221,14 +213,6 @@ h1 {
     text-decoration: underline;
 }
 
-/* --- Right Panel: Image --- */
-.image-panel {
-    flex: 1 1 50%;
-    background: url('smiling-woman.jpg') no-repeat center center; /* Replace with your image */
-    background-size: cover;
-    border-left: 5px solid var(--primary-blue);
-}
-
 /* --- Responsiveness (Media Queries) --- */
 
 /* Tablet/Medium Screens: Hide Image Panel */
@@ -290,22 +274,6 @@ h1 {
     .forgot-password {
         margin-top: 10px;
     }
-}
-.image-panel {
-    /* 1. Ensure it participates in the flex layout correctly */
-    flex: 1 1 50%; 
-    
-    background: url('static/assets/smiling-woman.jpg') no-repeat center center; 
-    
-    /* 2. THE FIX: Scale the image to cover the panel */
-    background-size: cover; 
-    
-    /* 3. Also, ensure the main container is behaving */
-    height: 100%; /* Important if the container is using flex-box for height */
-    
-    /* Optional but good practice: */
-    overflow: hidden; 
-    border-left: 5px solid var(--primary-blue);
 }
 
 /* Also remember the responsiveness to hide it on mobile! */
