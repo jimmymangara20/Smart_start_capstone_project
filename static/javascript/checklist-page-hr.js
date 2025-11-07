@@ -8,10 +8,10 @@ menuButton.addEventListener("click", () => {
 
 const API_URL = "/api/checklists"; // <-- backend will replace this
 
-// ✅ Table body element
+// Table body element
 const tableBody = document.getElementById("employee-table-body");
 
-// ✅ Fetch checklist templates from backend
+// Fetch checklist templates from backend
 async function loadChecklists() {
     try {
         const response = await fetch(API_URL);
@@ -54,7 +54,7 @@ function renderTable(checklists) {
     attachActionEvents();
 }
 
-// ✅ Handle action buttons 
+// Handle action buttons 
 function attachActionEvents() {
     document.querySelectorAll(".action-btn.view").forEach(btn =>
         btn.addEventListener("click", e => {
@@ -94,7 +94,7 @@ async function deleteChecklist(id) {
     }
 }
 
-// ✅ Load data on page load
+// Load data on page load
 document.addEventListener("DOMContentLoaded", loadChecklists);
 
 const tabs = document.querySelectorAll(".templates__tab");
@@ -113,19 +113,18 @@ tabs.forEach(tab => {
   });
 });
 
-// ✅ Handle "+ New Template" button (no page change)
+// Handle "+ New Template" button (no page change)
 const newTemplateBtn = document.querySelector(".btn--primary");
 
 if (newTemplateBtn) {
   newTemplateBtn.addEventListener("click", () => {
-    console.log("Open new template form here");
-    alert("This will open the New Template form");
+    window.location.href = "hr-page-checklist-template.html";
     // Later you can show a modal or form here instead of alert
   });
 }
 
 
-// ✅ Search functionality
+// Search functionality
 const searchInput = document.querySelector(".main-header__search-input");
 
 if (searchInput) {
