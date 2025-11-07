@@ -1,53 +1,45 @@
-const API_URL = "/api/employees"; // backend endpoint
+const API = "https://smartstart-backend-8afq.onrender.com";
+const tbody = document.getElementById("employee-rows");
+const totalCountEl = document.getElementById("total-count");
 
 let employees = [];
-let currentPage = 1;
-let rowsPerPage = 10;
 
-async function loadEmployees() {
-  try {
-    const res = await fetch(API_URL);
-    employees = await res.json();
-    renderTable();
-  } catch (err) {
-    console.error("Fetch error:", err);
-  }
+async function fetchEmployees() {
+    try {
+        const res = await fetch(`${API}/api/employees`);
+        employees = await res.json();
+        totalCountEl.textContent = employees.length;
+        renderEmployees(employees);
+    } catch (error) {
+        console.log("Failed to load employees:", error);
+    }
 }
 
-function renderTable() {
-  const tableBody = document.getElementById("employeeTableBody");
-  tableBody.innerHTML = "";
-
-  let start = (currentPage - 1) * rowsPerPage;
-  let paginated = employees.slice(start, start + rowsPerPage);
-
-  paginated.forEach(emp => {
-    tableBody.innerHTML += `
-      <tr>
-        <td>
-          <strong>${emp.name}</strong><br>
-          <small>${emp.email}</small>
-        </td>
-        <td>${emp.id}</td>
-        <td>${emp.department}</td>
-        <td>${emp.role}</td>
-        <td>${emp.joinDate}</td>
-        <td><span class="tag tag--${emp.contractClass}">${emp.contract}</span></td>
-        <td><button class="action-btn">⋮</button></td>
-      </tr>
-    `;
-  });
-
-  document.getElementById("empCount").textContent = employees.length;
+function renderEmployees(list) {
+    tbody.innerHTML = list.map(emp => `
+        <tr>
+            <td>
+                <img src="${emp.profileImageUrl || 'static/assets/default-user.png'}" class="employee-pic">
+                <strong>${emp.firstName} ${emp.lastName}</strong><br>
+                <small>${emp.email}</small>
+            </td>
+            <td>${emp.employeeId}</td>
+            <td>• ${emp.department}</td>
+            <td>${emp.role}</td>
+            <td>${emp.joiningDate}</td>
+            <td><span class="contract-tag ${getContractClass(emp.contractType)}">${emp.contractType}</span></td>
+            <td class="actions">⋮</td>
+        </tr>
+    `).join("");
 }
 
-document.getElementById("searchInput").addEventListener("input", (e) => {
-  const query = e.target.value.toLowerCase();
-  employees = employees.filter(emp =>
-    emp.name.toLowerCase().includes(query) ||
-    emp.id.toLowerCase().includes(query)
-  );
-  renderTable();
-});
+function getContractClass(type) {
+    return {
+        "Full-time": "fulltime",
+        "Part-time": "parttime",
+        "Freelance": "freelance",
+        "Internship": "intern"
+    }[type] || "fulltime";
+}
 
-loadEmployees();
+document.addEventListener("DOMContentLoaded", fetchEmployees);

@@ -1,182 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HR Checklist</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="checklist-page-hr.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist | Smartstart</title>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-<script type="module" src="static/javascript/checklist-page-hr.js" defer></script>
+    <link rel="stylesheet" href="static\checklist-page-hr.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body class="dashboard">
+<body id="checklist-page">
 
-<!-- ✅ SIDEBAR -->
-<aside class="sidebar" aria-label="Main Navigation">
-    <div class="sidebar__logo">
-        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
-    </div>
+<div class="dashboard-container">
 
-    <nav class="sidebar__nav">
-        <ul class="sidebar__list">
-                <a href="hr-dashboard.html" class="sidebar__item sidebar__item"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</a>
-                <a href="hr-employees-page.html" class="sidebar__item"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</a>
-                <a href="checklist-page-hr.html" class="sidebar__item sidebar__item--active"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</a>
-                <a href="hr-page-checklist-template.html" class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</a>
-                <a href="hr-uploads.html" class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</a>
-                <a href="event-page.html" class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</a>
-                <a href="profile-hr.html" class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</a>
-        </ul>
-    </nav>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <img src="static/assets/smartstart-logo-orig.png" class="logo-img">
 
-    <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
-</aside>
+        <nav class="sidebar-menu">
+            <a href="employee-dashboard.html"><i class="fas fa-home"></i> Home</a>
+            <a href="employees.html"><i class="fas fa-users"></i> Employees</a>
+            <a class="active" href="checklist-page-admin.html"><i class="fas fa-list-check"></i> Checklist</a>
+            <a href="progress-tracker.html"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+            <a href="uploads.html"><i class="fas fa-upload"></i> Uploads</a>
+            <a href="events.html"><i class="fas fa-calendar"></i> Events</a>
+            <a href="profile-admin.html"><i class="fas fa-user"></i> Profile</a>
+        </nav>
 
-<!-- ✅ MAIN CONTENT -->
-<main class="main">
-                <header class="main-header">
-                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
-
-            <div class="main-header__search-wrapper">
-                <button class="main-header__search-icon" aria-label="Search"></button>
-                <input class="main-header__search-input" type="text" placeholder="Search" />
+        <div class="logout"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+    </aside>
 
 
-                <div class="main-headear__wrapper">
-                    <div class="main-header__actions">
-                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
-                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
-                    <div class="main-header__user">
-                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
-                <span class="main-header__name">Ada Okafor</span>
-                            </div>
-                        </div>
-                    </div>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="profile-area">
+                <i class="fas fa-bell icon"></i>
+                <i class="fas fa-cog icon"></i>
+
+                <span class="user-name">Ada Okafor</span>
+                <img src="static/assets/profile.jpg" class="profile-pic">
+            </div>
+        </header>
+
+
+        <h2>Checklist</h2>
+        <p>Create and manage onboarding checklists</p>
+
+        <!-- SUMMARY CARDS -->
+        <section class="summary-cards">
+            <div class="card"><h3>Total Templates</h3><p id="total-templates">0</p></div>
+            <div class="card"><h3>Active</h3><p id="active-templates">0</p></div>
+            <div class="card"><h3>Total Tasks</h3><p id="total-tasks">0</p></div>
+            <div class="card"><h3>Employees Using</h3><p id="total-using">0</p></div>
+        </section>
+
+        <!-- TEMPLATES TABLE -->
+        <section class="table-box">
+
+            <div class="table-header">
+                <div class="tabs">
+                    <button class="tab active" data-filter="all">All Templates</button>
+                    <button class="tab" data-filter="active">Active</button>
+                    <button class="tab" data-filter="inactive">Inactive</button>
                 </div>
-                </header>
+
+                <button class="new-template"><i class="fas fa-plus"></i> New Template</button>
+            </div>
 
 
-        <section class="dashboard-top">
-                <div class="dashboard-top__wrapper">
-                    <div class="dashboard-top__content">
-                        <h1 class="dashboard-top__title">Checklist</h1>
-                        <p class="dashboard-top__text">Create and manage onboarding checklists</p>
-                    </div>
-                        <button class="btn btn--primary"> + New Template</button>
-                </div>
-            </section>
+            <table class="template-table">
+                <thead>
+                    <tr>
+                        <th>Template Name</th>
+                        <th>Department</th>
+                        <th>Tasks</th>
+                        <th>Assigned</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
 
- <section class="stats">
-                <div class="stats__card card">
-                    <p class="stats__label">Total Templates</p>
-                    <h3 class="stats__value">4</h3>
-                </div>
-                <div class="stats__card card">
-                    <p class="stats__label">Active</p>
-                    <h3 class="stats__value">3</h3>
-                </div>
-                <div class="stats__card card">
-                    <p class="stats__label">Total Tasks</p>
-                    <h3 class="stats__value">55</h3>
-                </div>
-                <div class="stats__card card">
-                    <p class="stats__label">Employees Using</p>
-                    <h3 class="stats__value">24</h3>
-                </div>
-            </section>
+                <tbody id="template-rows">
+                    <!-- Loaded by JavaScript -->
+                </tbody>
+            </table>
 
+        </section>
 
-            <section class="templates">
-                <header class="templates__header">
-                    <div class="templates__tabs">
-                        <button class="templates__tab templates__tab--active" data-tab="all">All Templates</button>
-                        <button class="templates__tab" data-tab="active">Active</button>
-                        <button class="templates__tab" data-tab="inactive">Inactive</button>
-                    </div>
-                </header>
+    </main>
+</div>
 
-                    <div class="templates__table">
-                        <div class="templates__row templates__row--head">
-                            <span class="templates__col-title">Template Name</span>
-                            <span class="templates__col-title">Department</span>
-                            <span class="templates__col-title">Tasks</span>
-                            <span class="templates__col-title">Assigned</span>
-                            <span class="templates__col-title">Status</span>
-                            <span class="templates__col-title">Actions</span>
-                        </div>
-
-                    <!-- Row -->
-                    <div class="templates__row">
-                        <div class="templates__info">
-                            <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
-                            <div>
-                                <h4 class="templates__name">Standard Onboarding</h4>
-                                <p class="templates__desc">Default checklist for all new hires</p>
-                            </div>
-                        </div>
-
-                            <span class="templates__badge">All Departments</span>
-                            <span class="templates__value">☰ 12</span>
-                            <span class="templates__value">24 employees</span>
-                            <span class="templates__status templates__status--active">Active</span>
-                            <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
-                    </div>
-
-
-                    <div class="templates__row">
-                        <div class="templates__info">
-                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
-                            <div>
-                                <h4 class="templates__name">Engineering Onboarding</h4>
-                                <p class="templates__desc">Technical setup and team integration for engineers</p>
-                            </div>
-                        </div>
-
-                            <span class="templates__badge">Engineering</span>
-                            <span class="templates__value">☰ 18</span>
-                            <span class="templates__value">8 employees</span>
-                            <span class="templates__status templates__status--active">Active</span>
-                            <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
-                        </div>
-
-                    <div class="templates__row">
-                    <div class="templates__info">
-                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
-                        <div>
-                            <h4 class="templates__name">Remote Employee Setup</h4>
-                            <p class="templates__desc">Checklist for remote workers with equipment shipment</p>
-                        </div>
-                    </div>
-
-                        <span class="templates__badge">All Departments</span>
-                        <span class="templates__value">☰ 10</span>
-                        <span class="templates__value">5 employees</span>
-                        <span class="templates__status templates__status--inactive">Inactive</span>
-                        <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
-                    </div>
-
-
-                    <div class="templates__row">
-                    <div class="templates__info">
-                        <img src="static/assets/Icon (2).png" alt="Icon" class="templates__drag">
-                        <div>
-                            <h4 class="templates__name">Sales Team Onboarding</h4>
-                            <p class="templates__desc">Product training and CRM setup for sales team</p>
-                        </div>
-                    </div>
-
-                        <span class="templates__badge">Sales</span>
-                        <span class="templates__value">☰ 10</span>
-                        <span class="templates__value">5 employees</span>
-                        <span class="templates__status templates__status--inactive">Inactive</span>
-                        <img src="static/assets/Icon (4).png" alt="Icon" class="templates__action">
-                    </div>
-
-                </div>
-                </section>
+<script src="static\javascript\checklist-page-hr.js"></script>
 </body>
 </html>

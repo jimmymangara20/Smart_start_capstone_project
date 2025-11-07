@@ -1,113 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HR Dashboard</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="hr-employees-page.css" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-        <script type="module" src="static/javascript/hr-dashboard.js" defer></script>
-    </head>
-<body class="dashboard">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees | Smartstart</title>
 
+    <link rel="stylesheet" href="static\hr-employees-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 
-        <aside class="sidebar" aria-label="Main Navigation">
-        <div class="sidebar__logo">
-        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" class="Logo"/>
-        </div>
+<body id="employees-page">
 
-        <nav class="sidebar__nav">
-            <div class="sidebar__list">
-                <a href="hr-dashboard.html" class="sidebar__item sidebar__item"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</a>
-                <a href="hr-employees-page.html" class="sidebar__item sidebar__item--active"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</a>
-                <a href="checklist-page-hr.html" class="sidebar__item"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</a>
-                <a href="hr-page-checklist-template.html" class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</a>
-                <a href="hr-uploads.html" class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</a>
-                <a href="event-page.html" class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</a>
-                <a href="profile-hr.html" class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</a>
-            </div>
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img src="static/assets/smartstart-logo-orig.png" class="logo-img">
+        <nav class="sidebar-menu">
+            <a href="employee-dashboard.html"><i class="fas fa-home"></i> Home</a>
+            <a class="active" href="employees-admin.html"><i class="fas fa-users"></i> Employees</a>
+            <a href="checklist-page-admin.html"><i class="fas fa-list-check"></i> Checklist</a>
+            <a href="progress-tracker.html"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+            <a href="uploads.html"><i class="fas fa-upload"></i> Uploads</a>
+            <a href="events.html"><i class="fas fa-calendar"></i> Events</a>
+            <a href="profile-admin.html"><i class="fas fa-user"></i> Profile</a>
         </nav>
-          <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
-        </aside>
-        <main class="main">
-                <header class="main-header">
-                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
-
-            <div class="main-header__search-wrapper">
-                <button class="main-header__search-icon" aria-label="Search"></button>
-                <input class="main-header__search-input" type="text" placeholder="Search" />
+        <div class="logout"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+    </aside>
 
 
-                <div class="main-headear__wrapper">
-                    <div class="main-header__actions">
-                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
-                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
-                    <div class="main-header__user">
-                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
-                <span class="main-header__name">Ada Okafor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </header>
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
 
-
-            <section class="dashboard-top">
-                <div class="dashboard-top__wrapper">
-                    <div class="dashboard-top__content">
-                        <h1 class="dashboard-top__title">Employees</h1>
-                        <p class="dashboard-top__text">View and manage employees</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="employee">
-        <div class="employee__header">
-            <div class="employee__title">
-            <span class="employee__icon"><img src="static/assets/profile-2user (1).png" alt=""></span>
-            <h2 class="employee__count">Total Employees: <span id="empCount">24</span></h2>
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search payroll or name">
+                <button><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="employee__actions">
-            <input type="text" class="employee__search" placeholder="Search payroll or name" id="searchInput"/>
-
-            <button class="employee__filter-btn"><img src="static/assets/filter.png" alt="" class="sort-img"> Filter</button>
-            <button class="employee__sort-btn"><img src="static/assets/sort.png" alt="" class="sort-img"> Sort</button>
+            <div class="profile-area">
+                <i class="fas fa-bell icon"></i>
+                <i class="fas fa-comments icon"></i>
+                <span class="user-name">Ada Okafor</span>
+                <img src="static/assets/profile.jpg" class="profile-pic">
             </div>
-        </div>
+        </header>
 
-                <div class="employee__table-wrapper">
-                    <table class="employee__table">
-                    <thead>
-                        <tr class="employee__table-row">
-                        <th>Name</th>
-                        <th>ID</th>
-                        <th>Department</th>
-                        <th>Role</th>
-                        <th>Joining Date</th>
-                        <th>Contract type</th>
-                        <th>Action</th>
-                        </tr>
-                    </thead>
+        <h2>Employees</h2>
+        <p>View and manage employees</p>
 
-                    <tbody id="employeeTableBody"></tbody>
-                    </table>
-                </div>
-
-            <div class="employee__pagination">
-                <p class="employee__entries">Showing <span id="pageStart">1</span> to <span id="pageEnd">10</span> of <span id="totalEntries">24</span> entries</p>
-                
-                <div class="employee__pagination-controls">
-                <button id="prevPage" class="employee__page-btn">◀  Back</button>
-                <span id="pageNumbers"></span>
-                <button id="nextPage" class="employee__page-btn">Next ▶</button>
+        <section class="table-section">
+            <div class="table-header">
+                <h3>Total Employees: <span id="total-count">0</span></h3>
+                <div class="controls">
+                    <button id="filterBtn"><i class="fas fa-filter"></i> Filter</button>
+                    <button id="sortBtn"><i class="fas fa-sort"></i> Sort</button>
                 </div>
             </div>
-            </section>
-            </section>
-        </main>
-    </body>
+
+            <table class="employee-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Joining Date</th>
+                    <th>Contract Type</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody id="employee-rows">
+                    <!-- JS loads employees here -->
+                </tbody>
+            </table>
+
+            <!-- PAGINATION -->
+            <div class="pagination">
+                <span id="info">Showing 1 to 10 of entries</span>
+                <div class="pages">
+                    <button class="page-btn prev">Back</button>
+                    <span id="page-numbers"></span>
+                    <button class="page-btn next">Next</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="static\javascript\hr-employee-page.js"></script>
+</body>
 </html>

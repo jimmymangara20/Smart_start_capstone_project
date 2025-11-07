@@ -1,146 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HR Dashboard</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="hr-dashboard.css" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-        <script type="module" src="static/javascript/hr-dashboard.js" defer></script>
-    </head>
-<body class="dashboard">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard | Smartstart</title>
+
+    <link rel="stylesheet" href="static\hr-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body id="dashboard-page">
+
+<div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img src="static/assets/smartstart-logo-orig.png" class="logo-img">
+        <nav class="sidebar-menu">
+            <a class="active" href="dashboard-admin.html"><i class="fas fa-home"></i> Home</a>
+            <a href="employees-admin.html"><i class="fas fa-users"></i> Employees</a>
+            <a href="checklist-page-admin.html"><i class="fas fa-list-check"></i> Checklist</a>
+            <a href="progress-tracker.html"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+            <a href="uploads.html"><i class="fas fa-upload"></i> Uploads</a>
+            <a href="events.html"><i class="fas fa-calendar"></i> Events</a>
+            <a href="profile-admin.html"><i class="fas fa-user"></i> Profile</a>
+        </nav>
+        <div class="logout"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+    </aside>
 
 
-        <aside class="sidebar" aria-label="Main Navigation">
-        <div class="sidebar__logo">
-        <img src="static/assets/Logo + Name.png" alt="Smartstart Logo" />
+    <!-- MAIN BODY -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <div class="search-wrapper">
+                <input type="text" placeholder="Search">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="profile-area">
+                <i class="fas fa-bell icon"></i>
+                <i class="fas fa-comments icon"></i>
+                <span class="user-name">Ada Okafor</span>
+                <img src="static/assets/profile.jpg" class="profile-pic">
+            </div>
+        </header>
+
+        <div class="page-header">
+            <h2>Dashboard</h2>
+            <p>Overview of onboarding activities</p>
+            <button class="new-employee-btn"><i class="fas fa-plus"></i> New Employee</button>
         </div>
 
-        <nav class="sidebar__nav">
-            <div class="sidebar__list">
-                <a href="hr-dashboard.html" class="sidebar__item sidebar__item--active"><img src="static/assets/home-2.png" alt="Home" class="sidebar__icon">Home</a>
-                <a href="hr-employees-page.html" class="sidebar__item"><img src="static/assets/people.png" alt="" class="sidebar__icon">Employees</a>
-                <a href="checklist-page-hr.html" class="sidebar__item"><img src="static/assets/task-square.png" alt="Checklist" class="sidebar__icon">Checklist</a>
-                <a href="hr-page-checklist-template.html" class="sidebar__item"><img src="static/assets/activity.png" alt="Progress Tracker" class="sidebar__icon">Progress Tracker</a>
-                <a href="hr-uploads.html" class="sidebar__item"><img src="static/assets/document-upload.jpg" alt="Upload" class="sidebar__icon">Uploads</a>
-                <a href="event-page.html" class="sidebar__item"><img src="static/assets/calendar-edit.png" alt="Events" class="sidebar__icon">Events</a>
-                <a href="profile-hr.html" class="sidebar__item"><img src="static/assets/profile.png" alt="Profile" class="sidebar__icon">Profile</a>
+        <!-- STAT CARDS -->
+        <section class="stats-grid">
+            <div class="card">
+                <h4>Active Employees</h4>
+                <h2 id="active-count">0</h2>
             </div>
-        </nav>
-          <button class="sidebar__logout"><img src="static/assets/logout.png" alt="">Log Out</button>
-        </aside>
-        <main class="main">
-                <header class="main-header">
-                <button class="main-header__menu-btn" aria-label="Open menu">☰</button>
+            <div class="card">
+                <h4>Completed Onboarding</h4>
+                <h2 id="completed-count">0</h2>
+            </div>
+            <div class="card">
+                <h4>In Progress</h4>
+                <h2 id="progress-count">0</h2>
+            </div>
+            <div class="card">
+                <h4>Overdue Tasks</h4>
+                <h2 id="overdue-count">0</h2>
+            </div>
+        </section>
 
-            <div class="main-header__search-wrapper">
-                <button class="main-header__search-icon" aria-label="Search"></button>
-                <input class="main-header__search-input" type="text" placeholder="Search"/>
+        <!-- RECENT EMPLOYEES TABLE -->
+        <section class="recent-employees">
+            <div class="table-head">
+                <h3>Recent Employees</h3>
+                <button class="view-all-btn">View All</button>
+            </div>
 
-
-                <div class="main-headear__wrapper">
-                    <div class="main-header__actions">
-                <img src="static/assets/notification.png" alt="Notifications" class="main-header__icon">
-                <img src="static/assets/message.png" alt="Messages" class="main-header__icon">
-                    <div class="main-header__user">
-                <img class="main-header__avatar" src="static/assets/unsplash_OH2S9XAcLhc.png" alt="User Avatar" />
-                <span class="main-header__name">Ada Okafor</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </header>
-
-
-            <section class="dashboard-top">
-                <div class="dashboard-top__wrapper">
-                    <div class="dashboard-top__content">
-                        <h1 class="dashboard-top__title">Dashboard</h1>
-                        <p class="dashboard-top__text">Overview of onboarding activities</p>
-                    </div>
-                        <button class="btn btn--primary">New Employee</button>
-                </div>
-            </section>
-
-
-            <section class="stats">
-                <div class="stats__card card">
-                    <div class="stats__wrapper">
-                    <p class="stats__label">Active Employees</p>
-                    <h3 class="stats__value">24</h3>
-                    </div>
-                        <img src="static/assets/profile-2user.png" alt="Profile" class="stats__img">
-                </div>
-                <div class="stats__card card">
-                    <div class="stats__wrapper">
-                    <p class="stats__label">Completed Onboarding</p>
-                    <h3 class="stats__value">18</h3>
-                    </div>
-                        <img src="static/assets/tick-circle.png" alt="Tick" class="stats__img">
-                </div>
-                <div class="stats__card card">
-                    <div class="stats__wrapper">
-                    <p class="stats__label">In Progress</p>
-                    <h3 class="stats__value">6</h3>
-                    </div>
-                        <img src="static/assets/Container.png" alt="Container" class="stats__img">
-                </div>
-                <div class="stats__card card">
-                    <div class="stats__wrapper">
-                    <p class="stats__label">Overdue Tasks</p>
-                    <h3 class="stats__value">2</h3>
-                    </div>
-                        <img src="static/assets/Icon.png" alt="Icon" class="stats__img">
-                </div>
-            </section>
-
-
-            <section class="employees">
-                <header class="employees__header">
-                <div class="employees__wrapper">
-                    <h2 class="employees__title">Recent Employees</h2>
-                <p class="employee__para">Track Onboarding Progress</p>
-                </div>
-                <button class="btn btn--link"><img src="static/assets/Icon (1).png" alt="" class="btn--img">View All</button>
-                </header>
-
-
-                <table class="table employees__table">
+            <table>
                 <thead>
-                    <tr>
-                        <th>Employee</th>
-                        <th>Role</th>
-                        <th>Start Date</th>
-                        <th>Progress</th>
-                        <th>Status</th>
-                    </tr>
+                <tr>
+                    <th>Employee</th>
+                    <th>Role</th>
+                    <th>Start Date</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                </tr>
                 </thead>
-                    <tbody id="employee-table-body"></tbody>
-                </table>
+                <tbody id="recent-employees-body">
+                </tbody>
+            </table>
+        </section>
+
+        <div class="bottom-grid">
+            <!-- ONBOARDING ROUTINE -->
+            <section class="routine">
+                <h3>Onboarding Routine</h3>
+                <p>As per HR rules, new hires should onboard within first week.</p>
+                <button class="schedule-btn">Schedule Onboarding</button>
+                <ul id="routine-list"></ul>
             </section>
 
-
-            <section class="dashboard-charts">
-            <article class="routine">
-                <header class="routine__header">
-                    <h2 class="routine__title">Onboarding Routine</h2>
-                    <button class="routine__view-btn">View ▾</button>
-                </header>
-                <ul class="routine__list" id="routineList"></ul>
-            </article>
-
-
-            <article class="completion">
-                <h2 class="completion__title">Onboarding Completion Status</h2>
-                    <div class="completion__chart-wrapper">
-                        <canvas id="completionChart"></canvas>
-                    </div>
-             </article>
-
+            <!-- CHART -->
+            <section class="chart-box">
+                <h3>Onboarding Completion Status</h3>
+                <canvas id="onboardChart"></canvas>
             </section>
-        </main>
-    </body>
+        </div>
+
+    </main>
+</div>
+
+<script src="static/javascript/dashboard.js"></script>
+</body>
 </html>

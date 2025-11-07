@@ -1,0 +1,460 @@
+/* --- Global Variables and Resets --- */
+:root {
+    --sidebar-width: 280px;
+    --smartstart-blue: #0A66C2; /* Primary Action Blue */
+    --smartstart-red: #E74C3C;
+    --smartstart-green: #27AE60;
+    --smartstart-yellow: #F39C12;
+    --smartstart-indigo: #4F46E5;
+    --smartstart-light-blue: #EBF5FB; /* Sidebar Active BG */
+    --text-primary: #1F2937;
+    --text-secondary: #5A6A85;
+    --border-color: #E5E7EB;
+    --body-bg: #F8FAFC;
+    --card-bg: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* --- 1. Dashboard Layout & Sidebar (Standard Smartstart Layout) --- */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--card-bg);
+    padding: 24px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-img {
+    width: 160px;
+    height: auto;
+    padding: 0 24px;
+    margin-bottom: 30px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 14px 24px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background-color: var(--smartstart-light-blue);
+    color: var(--smartstart-blue);
+}
+
+.sidebar-menu a.active {
+    background-color: var(--smartstart-light-blue);
+    color: var(--smartstart-blue);
+    border-left-color: var(--smartstart-blue);
+}
+
+.sidebar-menu a i {
+    width: 24px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.logout {
+    padding: 15px 24px;
+    margin: 24px;
+    border-top: 1px solid var(--border-color);
+    color: var(--smartstart-red);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.logout i {
+    margin-right: 10px;
+}
+
+/* --- 2. Main Content & Header --- */
+.main-content {
+    flex-grow: 1;
+    padding: 20px 40px;
+    overflow-y: auto;
+}
+
+/* Top Bar/Header */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 12px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    margin-bottom: 30px;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-wrapper button {
+    padding: 10px 15px;
+    color: var(--text-secondary);
+}
+.search-wrapper button:hover {
+    color: var(--smartstart-blue);
+}
+
+.profile-area {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+.icon:hover {
+    color: var(--smartstart-blue);
+}
+
+.user-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 10px;
+    padding-left: 15px;
+    border-left: 1px solid var(--border-color);
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+/* Page Titles */
+.main-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.main-content p {
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+/* --- 3. Employee Table Section --- */
+.table-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    overflow-x: auto;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.table-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+#total-count {
+    color: var(--smartstart-blue);
+    font-weight: 700;
+}
+
+.controls button {
+    background-color: var(--body-bg);
+    color: var(--text-secondary);
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-left: 10px;
+}
+.controls button:hover {
+    border-color: var(--smartstart-blue);
+    color: var(--smartstart-blue);
+}
+.controls button i {
+    margin-right: 5px;
+}
+
+/* Table styles */
+.employee-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px; /* Tighter spacing than progress tracker */
+}
+
+.employee-table thead th {
+    text-align: left;
+    padding: 15px 10px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.employee-table tbody tr {
+    background: var(--card-bg);
+    transition: box-shadow 0.2s;
+}
+
+.employee-table tbody td {
+    padding: 10px;
+    vertical-align: middle;
+    color: var(--text-primary);
+    font-weight: 500;
+    border-top: 1px solid #F3F4F6; /* Very light separator */
+}
+
+.employee-table tbody tr:hover {
+    background-color: #FAFAFA;
+}
+
+/* Name/Email Cell (Requires JS to insert this structure) */
+.name-cell {
+    display: flex;
+    align-items: center;
+}
+.employee-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    background-color: #D1D5DB; /* Placeholder background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    font-size: 0.9rem;
+}
+.name-details p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+.name-details span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* Department/Role/ID styling */
+.employee-table tbody td:nth-child(2), /* ID */
+.employee-table tbody td:nth-child(3), /* Department */
+.employee-table tbody td:nth-child(4) /* Role */ {
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+/* Contract Type Badges */
+.contract-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* Specific Badge Colors (Adjusted from image) */
+.type-full-time { color: var(--smartstart-blue); background-color: #EBF5FB; }
+.type-part-time { color: #A855F7; background-color: #F3E8FF; }
+.type-freelance { color: var(--smartstart-green); background-color: #E8F5E9; }
+.type-internship { color: #F97316; background-color: #FFF7ED; }
+.type-contract { color: #84cc16; background-color: #F7FEE7; }
+
+
+/* Action Column */
+.action-cell button {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    padding: 5px 10px;
+}
+.action-cell button:hover {
+    color: var(--smartstart-blue);
+}
+
+
+/* --- 4. Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0;
+}
+
+#info {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+}
+
+.page-btn {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.page-btn:hover:not(:disabled),
+.page-btn.active {
+    background-color: var(--smartstart-blue);
+    color: white;
+    border-color: var(--smartstart-blue);
+}
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f3f4f6;
+    color: #9CA3AF;
+}
+
+#page-numbers button {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    margin: 0 2px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+
+/* --- 5. Responsiveness --- */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+    .main-content {
+        padding: 20px;
+    }
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .search-wrapper {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .profile-area {
+        width: 100%;
+        justify-content: flex-end;
+        padding-top: 10px;
+        border-top: 1px solid var(--border-color);
+        margin-top: 10px;
+    }
+    .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .controls {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .table-section {
+        padding: 10px;
+    }
+    .employee-table thead {
+        display: none;
+    }
+    .employee-table tbody tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .employee-table td {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+        text-align: left;
+    }
+    .name-cell {
+        padding-top: 10px;
+    }
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pages {
+        margin-top: 10px;
+    }
+}
