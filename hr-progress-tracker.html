@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Tracker | Smartstart</title>
+
+    <link rel="stylesheet" href="static\hr-progress-tracker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body id="progress-tracker-page">
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="static/assets/smartstart-logo-orig.png" class="logo-img">
+        </div>
+        <nav class="nav-links">
+            <a href="employee-dashboard.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+            <a href="employees.html" class="nav-item"><i class="fas fa-users"></i> Employees</a>
+            <a href="checklist-page-admin.html" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
+            <a href="progress-tracker.html" class="nav-item active"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+            <a href="uploads.html" class="nav-item"><i class="fas fa-upload"></i> Uploads</a>
+            <a href="events.html" class="nav-item"><i class="fas fa-calendar"></i> Events</a>
+            <a href="profile-admin.html" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+        </nav>
+
+        <div class="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</div>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="top-header">
+            <div class="search-area">
+                <input placeholder="Search">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="user-info">
+                <i class="fas fa-bell user-icon"></i>
+                <i class="fas fa-cog user-icon"></i>
+
+                <div class="profile-area">
+                    <span class="user-name">Ada Okafor</span>
+                    <img src="static/assets/profile.jpg" class="profile-pic">
+                </div>
+            </div>
+        </header>
+
+        <h2>Progress Tracker</h2>
+        <p class="subtitle">Monitor onboarding progress across all employees</p>
+
+        <!-- Summary Cards -->
+        <section class="summary-cards">
+            <div class="summary-card"><h3>Total</h3><p id="total-count">0</p></div>
+            <div class="summary-card"><h3>Completed</h3><p id="completed-count">0</p></div>
+            <div class="summary-card"><h3>On Track</h3><p id="ontrack-count">0</p></div>
+            <div class="summary-card"><h3>At Risk</h3><p id="atrisk-count">0</p></div>
+            <div class="summary-card"><h3>Delayed</h3><p id="delayed-count">0</p></div>
+        </section>
+
+        <!-- Employee Table -->
+        <div class="table-container">
+            <table class="progress-table">
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Start Date</th>
+                        <th>Progress</th>
+                        <th>Tasks</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="employee-rows">
+                    <!-- Data will be inserted by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button id="prev">Prev</button>
+            <span id="page-number">1</span>
+            <button id="next">Next</button>
+        </div>
+
+        <!-- Footer Alert -->
+        <div class="attention-bar">
+            <span id="alert-text">0 employees need attention</span>
+            <button class="reminder-btn">Send reminder</button>
+        </div>
+
+    </main>
+</div>
+
+<script src="static\javascript\hr-progress-tracker.js"></script>
+</body>
+</html>

@@ -30,17 +30,18 @@ const DOM = {
     progressDetailH3: document.querySelector('.progress-details h3'),
     
     // Quick Information
-    employeeId: document.querySelector('.detail-row .value:nth-child(1)'),
-    email: document.querySelector('.detail-row .value:nth-child(2)'),
-    phone: document.querySelector('.detail-row .value:nth-child(3)'),
-    department: document.querySelector('.detail-row .value:nth-child(4)'),
-    startDate: document.querySelector('.detail-row .value:nth-child(5)'),
+    employeeId: document.querySelector('.employee-id'),
+    email: document.querySelector('.employee-email'),
+    phone: document.querySelector('.employee-phone'),
+    department: document.querySelector('.employee-dept'),
+    startDate: document.querySelector('.employee-startdate'),
+
     
     // Sessions Container (for dynamic rendering)
     sessionsContainer: document.querySelector('.upcoming-sessions-container')
 };
 
-// const API_BASE = 'http://your-backend-api.com'; // Replace with your actual base URL
+ const API_BASE = 'https://smartstart-backend-8afq.onrender.com'; 
 
 /**
  * Updates the circular progress bar based on the percentage fetched.
