@@ -3,115 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartstart Events</title>
-
-    <link rel="stylesheet" href="static/events-page-employee.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Upcoming Events | Smartstart</title>
+    <link rel="stylesheet" href="static\events-page-employee.css">
 </head>
+<body>
 
-<!-- body ID added so main.js detects the page -->
-<body id="events-page">
+<div class="container">
 
-    <div class="dashboard-container">
-        
-        <aside class="sidebar">
-            <a href="employee-dashboard.html" class="logo-link">
-                <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
-            </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+    <img src="assets/images/smartstart-logo.png" alt="SmartStart Logo">
+</div>
 
-            <nav class="nav-links">
-                <a href="employee-dashboard.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
-                <a href="checklist-page-employee.html" class="nav-item"><i class="fas fa-list-check"></i> Checklist</a>
-                <a href="employee-progress-tracker.html" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
-                <a href="events-page-employee.html" class="nav-item active"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="employee-documents.html" class="nav-item"><i class="fas fa-file-alt"></i> Documents</a>
-                <a href="profile-employee.html" class="nav-item"><i class="fas fa-user"></i> Profile</a>
-            </nav>
+        <ul>
+            <li><a href="dashboard.html">Home</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li><a href="checklist.html">Checklist</a></li>
+            <li><a href="progress.html">Progress Tracker</a></li>
+            <li class="active"><a href="events.html">Events</a></li>
+            <li><a href="documents.html">Documents</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
 
-            <div class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </div>
-        </aside>
-
-        <main class="main-content">
-            
-            <header class="top-header">
-                <div class="search-area">
-                    <input type="text" placeholder="Search" class="search-input">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
-                </div>
-
-                <div class="user-info">
-                    <i class="fas fa-bell user-icon"></i>
-                    <div class="profile-area">
-                        <span class="user-name">Aisha Bello</span>
-                        <img src="aisha-bello.jpg" alt="Aisha Bello Profile" class="profile-pic">
-                    </div>
-                </div>
-            </header>
-
-            <div id="events-view" class="view active">
-                
-                <div class="events-content-body">
-                    
-                    <header class="events-view-header">
-                        <h1>Upcoming Events</h1>
-                    </header>
-
-                    <ul class="event-list">
-                        <li class="event-card clickable">
-                            <span class="event-title">Induction</span>
-                            <div class="event-tags">
-                                <span class="tag tag-time">November 10 | 11:00-16:00</span>
-                                <span class="tag tag-location">Physical/Virtual</span>
-                            </div>
-                        </li>
-                        
-                        <li class="event-card clickable">
-                            <span class="event-title">Office Tour</span>
-                            <div class="event-tags">
-                                <span class="tag tag-time">November 10 | 11:00-16:00</span>
-                                <span class="tag tag-location">Physical</span>
-                            </div>
-                        </li>
-                        
-                        <li class="event-card clickable">
-                            <span class="event-title">Meet The Team</span>
-                            <div class="event-tags">
-                                <span class="tag tag-time">November 11 | 11:00-13:00</span>
-                                <span class="tag tag-location">Physical/Virtual</span>
-                            </div>
-                        </li>
-
-                        <li class="event-card clickable">
-                            <span class="event-title">Luncheon</span>
-                            <div class="event-tags">
-                                <span class="tag tag-time">November 15 | 12:00-15:00</span>
-                                <span class="tag tag-location">Physical</span>
-                            </div>
-                        </li>
-                        
-                        <li class="event-card clickable">
-                            <span class="event-title">Friday Scavenger Hunt</span>
-                            <div class="event-tags">
-                                <span class="tag tag-time">November 21 | 12:00-14:00</span>
-                                <span class="tag tag-location">Physical</span>
-                            </div>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-            
-        </main>
+        <div class="logout">
+            <a href="#">Log Out</a>
+        </div>
     </div>
 
-    <!-- Page-specific JS first -->
-    <script src="static/javascript/events-page-employee.js"></script>
+    <!-- Main content -->
+    <div class="main">
 
-    <!--  main.js last -->
-    <script src="static/javascript/main.js"></script>
+        <!-- Topbar -->
+        <div class="topbar">
+            <input type="text" placeholder="Search" class="search-box">
+            <div class="profile">
+                <img src="user.png" alt="">
+                <span>Aisha Bello</span>
+            </div>
+        </div>
 
+        <!-- Title -->
+        <h2 class="heading">Upcoming Events</h2>
+
+        <!-- Events List -->
+        <div id="eventsContainer" class="events-list">
+            <!-- events will load here dynamically -->
+        </div>
+
+    </div>
+</div>
+
+<script src="static\javascript\events-page-employee.js"></script>
 </body>
 </html>

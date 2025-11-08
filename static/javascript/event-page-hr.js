@@ -45,7 +45,7 @@ document.getElementById("eventForm").addEventListener("submit", async function (
 
         if (response.ok) {
             alert("Event saved successfully!");
-            window.location.href = "events.html"; // redirect after saving
+            window.location.href = "events-page-employee.html"; // redirect after saving
         } else {
             alert("Failed to save event: " + result.message);
         }

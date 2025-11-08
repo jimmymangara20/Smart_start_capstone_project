@@ -1,35 +1,40 @@
-function loadEventsData() {
-    console.log("Events Page Loaded");
+document.addEventListener("DOMContentLoaded", loadEvents);
 
-    // 1. Event Card Click Handler (For viewing event details/RSVP)
-    const eventCards = document.querySelectorAll('.event-card.clickable');
-    
-    eventCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const title = card.querySelector('.event-title').textContent;
-            console.log(`Event Clicked: ${title}. Future: Open event details modal or route to event page.`);
+// Replace with YOUR actual backend URL
+const API_URL = "https://YOUR_BACKEND_URL/api/events";
+
+function loadEvents() {
+    fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+            displayEvents(data);
+        })
+        .catch(err => {
+            console.error("Error loading events:", err);
         });
-    });
+}
 
-    // 2. Data Simulation (How you would render future data)
-    function renderEvents(eventData) {
-        const eventList = document.querySelector('.event-list');
-        eventList.innerHTML = ''; 
+function displayEvents(events) {
+    const container = document.getElementById("eventsContainer");
+    container.innerHTML = "";
 
-        // Future rendering loop for fetched data
-        /*
-        eventData.forEach(event => {
-            const newCard = document.createElement('li');
-            newCard.classList.add('event-card', 'clickable');
-            newCard.innerHTML = `
-                <span class="event-title">${event.title}</span>
-                <div class="event-tags">
-                    <span class="tag tag-time">${event.date} | ${event.time}</span>
-                    <span class="tag tag-location">${event.type}</span>
-                </div>
-            `;
-            eventList.appendChild(newCard);
-        });
-        */
+    if (events.length === 0) {
+        container.innerHTML = "<p>No upcoming events yet.</p>";
+        return;
     }
+
+    events.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "event-card";
+
+        card.innerHTML = `
+            <div class="event-title">${event.title}</div>
+            <div class="event-details">
+                <span class="tag">${event.date} | ${event.time}</span>
+                <span class="tag">${event.mode}</span>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
 }
