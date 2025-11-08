@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event - Smartstart</title>
+
+    <!-- FullCalendar -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="event-page-hr.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo">Smartstart</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Employees</a>
+            <a href="#">Checklist</a>
+            <a href="#">Progress Tracker</a>
+            <a href="#">Uploads</a>
+            <a href="#" class="active">Events</a>
+            <a href="#">Profile</a>
+        </div>
+        <a class="logout" href="#">Log Out</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <h2>Create a New Event</h2>
+
+        <div class="form-calendar-section">
+            
+            <!-- FORM -->
+            <form id="eventForm">
+                <label>Time *</label>
+                <input type="time" id="time" required>
+
+                <label>Title *</label>
+                <input type="text" id="title" required>
+
+                <label>Registration Form (optional)</label>
+                <input type="url" id="formLink" placeholder="Google Form Link">
+
+                <label>Mode</label>
+                <select id="mode">
+                    <option value="Physical">Physical</option>
+                    <option value="Virtual">Virtual</option>
+                </select>
+
+                <div class="buttons">
+                    <button class="btn-cancel" type="button" onclick="window.history.back()">Cancel</button>
+                    <button class="btn-save" type="submit">Save</button>
+                </div>
+            </form>
+
+            <!-- FULL CALENDAR -->
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+
+<!-- FullCalendar Script -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<!-- External JS -->
+<script src="static\javascript\event-page-hr.js"></script>
+
+</body>
+</html>

@@ -1,257 +1,400 @@
-/* ========================================================= */
-/* 1. GLOBAL BASE STYLES & LAYOUT GRID                       */
-/* ========================================================= */
+/* --- Root Variables & Base Styles --- */
+:root {
+    --sidebar-bg: #ffffff; /* White Sidebar */
+    --sidebar-text: #343a40; /* Dark Text */
+    --main-bg: #f4f7f9; /* Light Gray Main Content BG */
+    --primary-color: #007bff; /* Bright Blue (Primary Accent) */
+    --accent-teal: #17a2b8; /* Teal color for logo/accents */
+    --text-dark: #343a40;
+    --text-medium: #6c757d;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --shadow-light: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f7f9;
-    color: #333;
+    background-color: var(--main-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
-.dashboard-container {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    height: 100vh;
-    overflow: hidden;
+.container {
+    display: flex;
+    min-height: 100vh;
 }
 
-.main-content {
-    overflow-y: auto;
-}
-
-.view {
-    padding: 30px;
-}
-.view.active {
-    display: block;
-}
-
-
-/* ========================================================= */
-/* 2. SIDEBAR STYLING                                        */
-/* ========================================================= */
+/* --- SIDEBAR STYLING (MATCHING LIGHT THEME) --- */
 .sidebar {
-    background-color: #ffffff;
-    padding: 20px 0;
+    width: 250px;
+    background-color: var(--sidebar-bg); /* Changed to White */
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #eee;
+    box-shadow: var(--shadow-light); /* Subtle shadow on the right */
+    border-right: 1px solid var(--border-color);
 }
 
-.logo-link { padding: 0 20px 30px 20px; display: block; }
-.logo-img { height: 40px; display: block; }
-.nav-links { flex-grow: 1; }
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
+.logo {
+    padding: 0;
+    margin-bottom: 40px;
 }
 
-.nav-item i { margin-right: 15px; width: 20px; font-size: 1.1rem; }
-
-/* Active Link State */
-.nav-item.active {
-    background-color: #e0f0ff;
-    color: #007bff;
-    border-left: 4px solid #007bff;
-    padding-left: 16px;
+/* Smartstart logo placeholder to match the visual (Blue/Teal Block) */
+.logo h2 {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 35px;
 }
 
-.logout-btn {
-    color: #d9534f;
-    border-top: 1px solid #eee;
-    margin-top: auto;
-    padding: 20px;
+.logo h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-color: var(--accent-teal); /* Teal block */
+    border-radius: 4px;
 }
 
-/* ========================================================= */
-/* 3. HEADER STYLING                                         */
-/* ========================================================= */
-.top-header {
-    background-color: #ffffff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-}
-
-.search-area {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 350px;
-    height: 40px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-}
-.search-input { border: none; outline: none; flex-grow: 1; padding: 5px; font-size: 1rem; }
-
-.user-info { display: flex; align-items: center; gap: 20px; }
-.profile-pic { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-
-
-/* ========================================================= */
-/* 4. CHECKLIST TEMPLATE CREATION VIEW STYLING               */
-/* ========================================================= */
-.create-checklist-body {
-    max-width: 800px; /* Constrain content width for better readability */
-    margin: 0 auto;
+nav ul {
+    list-style: none;
     padding: 0;
 }
 
-/* --- Header & Back Button --- */
-.create-checklist-header {
+nav ul li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    color: var(--sidebar-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
-.back-arrow {
+nav ul li:hover {
+    background-color: #f8f9fa; /* Very subtle gray hover */
+    color: var(--primary-color);
+}
+
+/* Active Checklist Item */
+nav ul li.active {
+    background-color: #e0f7fa; /* Very light blue background */
+    color: var(--primary-color);
+    font-weight: 600;
+    border-left: 5px solid var(--primary-color); /* Blue indicator bar */
+    padding-left: 10px;
+}
+
+nav ul li i {
+    font-size: 1.1rem;
+    margin-right: 15px;
+    color: var(--text-medium); /* Icon color is medium gray by default */
+    width: 20px;
+}
+
+nav ul li.active i {
+    color: var(--primary-color); /* Active icon is blue */
+}
+
+.logout {
+    margin-top: auto;
+    padding: 15px 20px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--sidebar-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+}
+
+.logout:hover {
+    color: var(--danger-color, #dc3545);
+}
+
+.logout i {
+    margin-right: 15px;
+    color: var(--danger-color, #dc3545); /* Red icon for log out */
+    font-size: 1.1rem;
+}
+
+/* --- MAIN CONTENT & TOP BAR --- */
+.main {
+    flex-grow: 1;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--card-bg);
+    /* No shadow/border needed here since the sidebar has the shadow and the main background is light */
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--card-bg);
+    width: 350px;
+    margin-right: auto; /* Push profile to the right */
+}
+
+.search {
+    border: none;
+    padding: 8px 15px;
+    width: calc(100% - 40px);
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-icon {
+    padding: 8px 15px;
+    color: var(--text-medium);
+}
+
+.profile-area {
+    display: flex;
+    align-items: center;
+}
+
+.profile-area .icon {
     font-size: 1.2rem;
-    color: #333;
+    color: var(--text-medium);
     margin-right: 15px;
     cursor: pointer;
 }
+/* Style the profile area to match the image, including the hidden bell/dots */
+.profile-area .icon:first-child {
+    display: none; /* Hide bell/dots icons if they are not visible in the image */
+}
+.profile-area .icon:last-child {
+    display: none;
+}
+/* Re-added styling for the two small icons that are present in the image */
+.profile-area {
+    position: relative;
+    padding-left: 70px; /* Space for the two invisible icons */
+}
+.profile-area::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f007"; /* User icon placeholder */
+    font-weight: 900;
+    position: absolute;
+    left: 15px;
+    color: var(--text-medium);
+    font-size: 1.1rem;
+}
+.profile-area::after {
+    font-family: "Font Awesome 6 Free";
+    content: "\f0f3"; /* Bell icon placeholder */
+    font-weight: 900;
+    position: absolute;
+    left: 40px;
+    color: var(--text-medium);
+    font-size: 1.1rem;
+}
 
-.create-checklist-header h1 {
-    font-size: 1.2rem;
+.name {
+    margin-right: 10px;
     font-weight: 500;
+    color: var(--text-dark);
 }
 
-.checklist-intro-text {
-    color: #777;
-    margin-bottom: 25px;
-    font-size: 0.95rem;
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-/* --- Tabs Container (Questions/Response) --- */
-.tabs-container {
+/* --- CONTENT AREA --- */
+.content {
+    padding: 30px;
+}
+
+.back-link {
     display: flex;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #eee;
+    align-items: center;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
-.tab-button {
+.back-link i {
+    margin-right: 10px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* Tabs Styling */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+.tab {
     background: none;
     border: none;
     padding: 10px 20px;
+    cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
-    color: #777;
-    cursor: pointer;
-    transition: color 0.2s, border-bottom 0.2s;
-    border-bottom: 2px solid transparent; /* For inactive state */
+    color: var(--text-medium);
+    transition: color 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
 }
 
-.tab-button.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+.tab.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
 }
 
-/* --- Form Builder Section --- */
-.form-builder-section {
-    padding-bottom: 50px; /* Space for the add button */
+.hidden {
+    display: none;
 }
 
-.checklist-card {
-    background-color: white;
-    padding: 20px 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    margin-bottom: 20px;
+/* --- FORM CARDS --- */
+.form-card-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+    margin-bottom: 30px;
 }
 
-.form-title-card h2 {
+.form-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* Form Header Card (Titles/Descriptions) */
+.form-header-card {
+    padding-right: 60px;
+}
+
+.form-header-card h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    margin-bottom: 5px;
+    cursor: text;
+    padding-right: 15px;
 }
 
-.add-description-card p {
-    color: #777;
-    font-style: italic;
-}
-
-.card-actions {
-    display: flex;
-    gap: 15px;
-}
-
-.action-icon {
-    color: #888;
-    cursor: pointer;
+.form-header-card p {
     font-size: 0.9rem;
-    transition: color 0.2s;
-}
-.action-icon:hover {
-    color: #007bff;
-}
-
-/* Add Task Card Specifics */
-.add-task-card {
-    flex-direction: column;
-    align-items: flex-start; /* Align contents to the left */
+    color: var(--text-medium);
+    cursor: text;
+    padding-right: 15px;
 }
 
-.task-input {
+.edit-icon {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 20px;
+    color: var(--text-medium);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.title-edit {
+    top: 25px;
+}
+.desc-edit {
+    bottom: 25px;
+}
+
+/* Task Creation Card */
+.task-section label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+}
+
+#taskInput {
     width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 10px 15px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
     font-size: 0.95rem;
     margin-bottom: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-.task-input:focus {
-    border-color: #007bff;
+    outline-color: var(--primary-color);
 }
 
-.upload-required-checkbox {
+.checkbox-row {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
-    color: #555;
 }
-.upload-required-checkbox input[type="checkbox"] {
+
+.checkbox-row input[type="checkbox"] {
     margin-right: 8px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-row label {
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
 }
 
 /* Add Button */
-.add-task-btn {
-    background-color: #007bff;
+.add-btn {
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 5px;
     padding: 10px 20px;
-    font-size: 0.95rem;
+    border-radius: 5px;
     font-weight: 500;
     cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    float: right;
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-left: auto; /* Push to the right */
-    transition: background-color 0.2s;
+    margin-right: calc(100% - 600px);
 }
-.add-task-btn:hover {
-    background-color: #0056b3;
+
+.add-btn:hover {
+    background-color: #0069d9;
 }
-.add-task-btn i {
-    font-size: 0.85rem;
+
+.add-btn i {
+    margin-right: 8px;
 }

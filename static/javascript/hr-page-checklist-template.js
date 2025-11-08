@@ -1,46 +1,160 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Tab Switching
-    const tabButtons = document.querySelectorAll('.tabs-container .tab-button');
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            console.log(`Switched to tab: ${button.textContent}. Future: Render different content based on tab.`);
-        });
-    });
+// ====== ELEMENTS ======
+const tabs = document.querySelectorAll(".tab");
+const tabContents = document.querySelectorAll(".tab-content");
+const addTaskBtn = document.getElementById("addTaskBtn");
+const taskInput = document.getElementById("taskInput");
+const uploadCheckbox = document.getElementById("uploadRequired");
+const taskList = document.getElementById("taskList");
+const logoutBtn = document.getElementById("logoutBtn");
+const formTitle = document.getElementById("formTitle");
+const formDesc = document.getElementById("formDesc");
 
-    // 2. Back Arrow Functionality
-    const backArrow = document.querySelector('.create-checklist-header .back-arrow');
-    backArrow.addEventListener('click', () => {
-        console.log("Back button clicked. Future: Navigate back to main Checklist management view.");
-        // In a router: window.history.back(); or navigateTo('checklist-overview');
-    });
+// ====== BACKEND URL ======
+const BASE_URL = "https://smartstart-backend-8afq.onrender.com/api"; // <--- Replace with your actual backend
 
-    // 3. Card Action Icons (Edit/Link)
-    const cardActionIcons = document.querySelectorAll('.card-actions .action-icon');
-    cardActionIcons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            const action = icon.getAttribute('data-action');
-            console.log(`Action triggered: ${action}. Future: Open modal or enable inline editing.`);
-        });
-    });
+// ====== STATE ======
+let checklistId = null; // Backend will return this when checklist is created
+let tasks = [];
 
-    // 4. Add Task Button
-    const addTaskButton = document.querySelector('.add-task-btn');
-    addTaskButton.addEventListener('click', () => {
-        const taskInput = document.querySelector('.task-input');
-        const uploadRequired = document.getElementById('upload-required').checked;
-        
-        console.log(`Adding new task: "${taskInput.value}", Upload Required: ${uploadRequired}. Future: Dynamically add a new task card.`);
-        taskInput.value = ''; // Clear input
-        document.getElementById('upload-required').checked = false; // Reset checkbox
-    });
+// ====== TAB SWITCHING ======
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
 
-    // 5. Checklist Card hover effect for consistency
-    const checklistCards = document.querySelectorAll('.checklist-card');
-    checklistCards.forEach(card => {
-        card.addEventListener('mouseenter', () => card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)');
-        card.addEventListener('mouseleave', () => card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)');
-    });
+    tabContents.forEach((content) => content.classList.add("hidden"));
+    document.getElementById(tab.dataset.tab).classList.remove("hidden");
+  });
 });
+
+// ====== LOAD EXISTING CHECKLISTS ======
+async function loadChecklist() {
+  try {
+    const res = await fetch(`${BASE_URL}/checklists`);
+    if (!res.ok) throw new Error("Failed to load checklist");
+    const data = await res.json();
+
+    if (data.length > 0) {
+      const latest = data[data.length - 1];
+      checklistId = latest.id;
+      formTitle.textContent = latest.title;
+      formDesc.textContent = latest.description;
+      tasks = latest.tasks || [];
+      renderTasks();
+    }
+  } catch (error) {
+    console.error("Error loading checklist:", error);
+  }
+}
+
+// ====== ADD TASK LOCALLY & SEND TO BACKEND ======
+addTaskBtn.addEventListener("click", async () => {
+  const taskText = taskInput.value.trim();
+  if (taskText === "") return alert("Please enter a task.");
+
+  const newTask = {
+    text: taskText,
+    uploadRequired: uploadCheckbox.checked,
+  };
+
+  // Save task in backend
+  try {
+    const res = await fetch(`${BASE_URL}/checklists/${checklistId || "new"}/tasks`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newTask),
+    });
+
+    if (!res.ok) throw new Error("Failed to save task");
+
+    const savedTask = await res.json();
+    tasks.push(savedTask);
+    renderTasks();
+
+    taskInput.value = "";
+    uploadCheckbox.checked = false;
+  } catch (error) {
+    console.error("Error adding task:", error);
+    alert("Could not save task. Please check backend connection.");
+  }
+});
+
+// ====== RENDER TASKS ======
+function renderTasks() {
+  taskList.innerHTML = "";
+  tasks.forEach((task) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <span>${task.text} ${task.uploadRequired ? "(Upload Required)" : ""}</span>
+      <button class="remove-btn" data-id="${task.id}">✖</button>
+    `;
+    taskList.appendChild(li);
+  });
+
+  document.querySelectorAll(".remove-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const taskId = e.target.dataset.id;
+      deleteTask(taskId);
+    });
+  });
+}
+
+// ====== DELETE TASK ======
+async function deleteTask(taskId) {
+  try {
+    const res = await fetch(`${BASE_URL}/checklists/${checklistId}/tasks/${taskId}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Failed to delete task");
+
+    tasks = tasks.filter((t) => t.id !== taskId);
+    renderTasks();
+  } catch (error) {
+    console.error("Error deleting task:", error);
+  }
+}
+
+// ====== AUTO-SAVE FORM TITLE AND DESCRIPTION ======
+formTitle.addEventListener("blur", saveChecklist);
+formDesc.addEventListener("blur", saveChecklist);
+
+async function saveChecklist() {
+  const payload = {
+    title: formTitle.textContent.trim(),
+    description: formDesc.textContent.trim(),
+  };
+
+  try {
+    let res;
+    if (!checklistId) {
+      res = await fetch(`${BASE_URL}/checklists`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } else {
+      res = await fetch(`${BASE_URL}/checklists/${checklistId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    }
+
+    if (!res.ok) throw new Error("Failed to save checklist");
+    const data = await res.json();
+    checklistId = data.id;
+    console.log("Checklist saved:", data);
+  } catch (error) {
+    console.error("Error saving checklist:", error);
+  }
+}
+
+// ====== LOGOUT ======
+logoutBtn.addEventListener("click", () => {
+  alert("You have been logged out.");
+  window.location.href = "login.html"; // Change this to your actual login route
+});
+
+// ====== INITIALIZE ======
+loadChecklist();
