@@ -1,40 +1,39 @@
-document.addEventListener("DOMContentLoaded", loadEvents);
+document.addEventListener("DOMContentLoaded", () => {
+  const eventsContainer = document.getElementById("eventsContainer");
 
-// Replace with YOUR actual backend URL
-const API_URL = "https://YOUR_BACKEND_URL/api/events";
+  // 🔗 Replace with your live API endpoint
+  const apiUrl = "https://smartstart-backend-8afq.onrender.com/api/events";
 
-function loadEvents() {
-    fetch(API_URL)
-        .then(res => res.json())
-        .then(data => {
-            displayEvents(data);
-        })
-        .catch(err => {
-            console.error("Error loading events:", err);
-        });
-}
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(events => {
+      eventsContainer.innerHTML = "";
 
-function displayEvents(events) {
-    const container = document.getElementById("eventsContainer");
-    container.innerHTML = "";
-
-    if (events.length === 0) {
-        container.innerHTML = "<p>No upcoming events yet.</p>";
+      // If no events found
+      if (events.length === 0) {
+        eventsContainer.innerHTML = "<p>No upcoming events at the moment.</p>";
         return;
-    }
+      }
 
-    events.forEach(event => {
-        const card = document.createElement("div");
-        card.className = "event-card";
+      // Create cards for each event
+      events.forEach(event => {
+        const eventCard = document.createElement("div");
+        eventCard.classList.add("event-card");
 
-        card.innerHTML = `
-            <div class="event-title">${event.title}</div>
-            <div class="event-details">
-                <span class="tag">${event.date} | ${event.time}</span>
-                <span class="tag">${event.mode}</span>
-            </div>
+        eventCard.innerHTML = `
+          <div class="event-title">${event.title}</div>
+          <div class="event-details">
+            <span class="event-date"><i class="fa-regular fa-calendar"></i> ${event.date}</span>
+            <span class="event-time"><i class="fa-regular fa-clock"></i> ${event.time}</span>
+            <span class="event-type"><i class="fa-solid fa-location-dot"></i> ${event.type}</span>
+          </div>
         `;
 
-        container.appendChild(card);
+        eventsContainer.appendChild(eventCard);
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching events:", error);
+      eventsContainer.innerHTML = "<p>⚠️ Failed to load events. Please try again later.</p>";
     });
-}
+});

@@ -1,59 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upcoming Events | Smartstart</title>
-    <link rel="stylesheet" href="static\events-page-employee.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Events | Smartstart</title>
+
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-olCkC6cMN1qRk6yuw8Y3DJrO3s4eWZrwzVfGJka5h7R3iM4nQz6ZfBdPgya7n7e7cF5gr1Jcg4AokbGpm+6O0A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="static/events-page-employee.css">
 </head>
 <body>
-
-<div class="container">
+  <div class="container">
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <div class="logo">
-    <img src="assets/images/smartstart-logo.png" alt="SmartStart Logo">
-</div>
+      <div class="logo">
+        <img src="static/assets/smartstart-logo-orig.png" alt="SmartStart Logo">
+      </div>
 
-        <ul>
-            <li><a href="dashboard.html">Home</a></li>
-            <li><a href="employees.html">Employees</a></li>
-            <li><a href="checklist.html">Checklist</a></li>
-            <li><a href="progress.html">Progress Tracker</a></li>
-            <li class="active"><a href="events.html">Events</a></li>
-            <li><a href="documents.html">Documents</a></li>
-            <li><a href="profile.html">Profile</a></li>
-        </ul>
+      <ul>
+        <li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="employees.html"><i class="fa-solid fa-users"></i> Employees</a></li>
+        <li><a href="checklist.html"><i class="fa-solid fa-list-check"></i> Checklist</a></li>
+        <li><a href="progress.html"><i class="fa-solid fa-chart-line"></i> Progress Tracker</a></li>
+        <li class="active"><a href="events.html"><i class="fa-solid fa-calendar-days"></i> Events</a></li>
+        <li><a href="documents.html"><i class="fa-solid fa-file"></i> Documents</a></li>
+        <li><a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+      </ul>
 
-        <div class="logout">
-            <a href="#">Log Out</a>
-        </div>
+      <div class="logout">
+        <a href="#"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+      </div>
     </div>
 
     <!-- Main content -->
     <div class="main">
 
-        <!-- Topbar -->
-        <div class="topbar">
-            <input type="text" placeholder="Search" class="search-box">
-            <div class="profile">
-                <img src="user.png" alt="">
-                <span>Aisha Bello</span>
-            </div>
+      <!-- Topbar -->
+      <div class="topbar">
+        <input type="text" placeholder="Search" class="search-box">
+        <div class="profile">
+          <img src="user.png" alt="User" class="profile-pic">
+          <span>Aisha Bello</span>
         </div>
+      </div>
 
-        <!-- Title -->
-        <h2 class="heading">Upcoming Events</h2>
+      <!-- Title -->
+      <h2 class="heading">Upcoming Events</h2>
 
-        <!-- Events List -->
-        <div id="eventsContainer" class="events-list">
-            <!-- events will load here dynamically -->
-        </div>
+      <!-- Events List -->
+      <div id="eventsContainer" class="events-list">
+        <!-- Events will load here dynamically -->
+      </div>
 
     </div>
-</div>
+  </div>
 
-<script src="static\javascript\events-page-employee.js"></script>
+  <!-- Link to external JS -->
+  <script src="static/javascript/events-page-employee.js"></script>
 </body>
 </html>
