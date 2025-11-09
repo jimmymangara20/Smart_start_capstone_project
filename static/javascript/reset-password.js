@@ -1,93 +1,85 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("reset-form");
+  const backLink = document.querySelector(".link");
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Select the form element using its ID
-    const form = document.getElementById('reset-form');
-    
-    // Check if the form exists before adding the listener
-    if (form) {
-        form.addEventListener('submit', handleResetPassword);
-    }
-});
+  if (!form) return; // Exit if form doesn't exist
 
-function handleResetPassword(event) {
-    // Stop the browser from submitting the form (which would cause a reload)
-    event.preventDefault(); 
-    
-    // Select the input fields
-    const oldPasswordInput = document.getElementById('old-password');
-    const newPasswordInput = document.getElementById('new-password');
-    const confirmPasswordInput = document.getElementById('confirm-password');
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    // Get the values
+    // --- Input elements ---
+    const oldPasswordInput = document.getElementById("old-password");
+    const newPasswordInput = document.getElementById("new-password");
+    const confirmPasswordInput = document.getElementById("confirm-password");
+
+    // --- Values ---
     const oldPassword = oldPasswordInput.value.trim();
     const newPassword = newPasswordInput.value.trim();
     const confirmPassword = confirmPasswordInput.value.trim();
-    
-    // Clear any previous error states
+
+    // --- Clear previous errors ---
     clearErrors([oldPasswordInput, newPasswordInput, confirmPasswordInput]);
 
     let isValid = true;
-    
-    // --- Validation Checks ---
 
-    // Check for empty old password (Required)
+    // --- Validation ---
+
+    // Old password required
     if (!oldPassword) {
-        displayError(oldPasswordInput, "Please enter your current password.");
-        isValid = false;
+      displayError(oldPasswordInput, "Please enter your current password.");
+      isValid = false;
     }
 
-    // Check for new password strength
-    // This is a robust regex: Min 8 chars, at least one number, one lowercase, one uppercase, one symbol
+    // New password strength
     const strengthRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-    
     if (!strengthRegex.test(newPassword)) {
-        displayError(newPasswordInput, "New password must be 8+ characters, with Upper, Lower, Number, and Symbol.");
-        isValid = false;
+      displayError(newPasswordInput, "New password must be 8+ characters, with Upper, Lower, Number, and Symbol.");
+      isValid = false;
     }
 
-    // Check if new passwords match
+    // New passwords match
     if (newPassword !== confirmPassword) {
-        displayError(confirmPasswordInput, "New passwords do not match.");
-        isValid = false;
+      displayError(confirmPasswordInput, "New passwords do not match.");
+      isValid = false;
     }
-    
-    // Check if new password is different from old password (Crucial security step)
+
+    // New password different from old
     if (newPassword && newPassword === oldPassword) {
-         displayError(newPasswordInput, "New password must be different from the old password.");
-         isValid = false;
+      displayError(newPasswordInput, "New password must be different from the old password.");
+      isValid = false;
     }
 
-    // --- Final Submission ---
+    // --- If all valid, store and route ---
     if (isValid) {
-        console.log("Validation successful! Submitting new password...");
-        // This is where you would integrate with your *backend* API to reset the password.
-        
-        // If this were a simple front-end-only project, you might route the user:
-        // window.location.href = 'success.html'; 
+      // Store new password temporarily (or send to API)
+      localStorage.setItem("newPassword", newPassword);
+
+      // Route to success page
+      window.location.href = "password-reset-successful.html";
     }
-}
+  });
 
-// --- Helper Functions (For showing and clearing errors) ---
-
-function displayError(inputElement, message) {
-    // Set a visible error border (requires CSS)
-    inputElement.classList.add('input-error');
-
-    // Create and insert the error message below the input
-    let errorEl = document.createElement('p');
-    errorEl.className = 'error-text';
-    errorEl.textContent = message;
-    
-    // Insert the error message after the input field
-    inputElement.parentNode.insertBefore(errorEl, inputElement.nextSibling);
-}
-
-function clearErrors(inputs) {
-    // Remove the error class from all inputs
-    inputs.forEach(input => {
-        input.classList.remove('input-error');
+  // --- Back link to login ---
+  if (backLink) {
+    backLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "login.html";
     });
-    
-    // Remove all dynamically added error message paragraphs
-    document.querySelectorAll('.error-text').forEach(el => el.remove());
-}
+  }
+
+  // --- Helper Functions ---
+  function displayError(inputElement, message) {
+    inputElement.classList.add("input-error");
+
+    const errorEl = document.createElement("p");
+    errorEl.className = "error-text";
+    errorEl.textContent = message;
+
+    inputElement.parentNode.insertBefore(errorEl, inputElement.nextSibling);
+  }
+
+  function clearErrors(inputs) {
+    inputs.forEach((input) => input.classList.remove("input-error"));
+    document.querySelectorAll(".error-text").forEach((el) => el.remove());
+  }
+});

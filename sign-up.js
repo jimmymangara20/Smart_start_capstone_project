@@ -1,45 +1,42 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Elements ---
   const adminRadio = document.querySelector('input[value="Admin"]');
   const employeeRadio = document.querySelector('input[value="Employee"]');
-  const companyField = document.querySelectorAll(".input-field")[1]; // Company
-  const roleField = document.querySelectorAll(".input-field")[2]; // Role
+  const inputFields = document.querySelectorAll(".input-field");
+  const companyField = inputFields[1]; // Company
+  const roleField = inputFields[2];    // Role
   const signupForm = document.getElementById("signupForm");
   const signupBtn = document.querySelector(".signup-btn");
   const googleLink = document.querySelector('[data-route="google.email"]');
   const loginLink = document.querySelector(".login");
 
-  // Ensure only one radio stays checked at a time
-  adminRadio.addEventListener("change", () => {
-    if (adminRadio.checked) employeeRadio.checked = false;
+  const API_BASE_URL = "https://your-backend-api.com"; // Replace with your backend
+
+  // --- Show/Hide fields based on role ---
+  adminRadio?.addEventListener("change", () => {
+    employeeRadio.checked = false;
     companyField.style.display = "block";
     roleField.style.display = "block";
   });
 
-  employeeRadio.addEventListener("change", () => {
-    if (employeeRadio.checked) adminRadio.checked = false;
-    // Hide company and role fields for employees
+  employeeRadio?.addEventListener("change", () => {
+    adminRadio.checked = false;
     companyField.style.display = "none";
     roleField.style.display = "none";
   });
 
-  // Handle form submission
-  signupForm.addEventListener("submit", async (e) => {
+  // --- Signup form submission ---
+  signupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const selectedRole = adminRadio.checked ? "Admin" : "Employee";
+    const selectedRole = adminRadio.checked ? "Admin" : employeeRadio.checked ? "Employee" : null;
+    if (!selectedRole) return alert("Please select Admin or Employee");
+
     const email = document.getElementById("email").value.trim();
-    const password = document.querySelectorAll("#password")[0]?.value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+    const password = inputFields[3].querySelector("input").value.trim();
+    const confirmPassword = inputFields[4].querySelector("input").value.trim();
 
-    if (!selectedRole) {
-      alert("Please select Admin or Employee");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+    if (password !== confirmPassword) return alert("Passwords do not match");
 
     const payload = {
       email,
@@ -49,27 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
       position: selectedRole === "Admin" ? roleField.querySelector("input").value.trim() : "",
     };
 
-    // Disable button while processing
     signupBtn.disabled = true;
     signupBtn.textContent = "Processing...";
 
     try {
-      // Replace this with your actual backend endpoint
-      const response = await fetch("https://your-backend-api.com/signup", {
+      const response = await fetch(`${API_BASE_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (response.ok) {
-        alert("Signup successful!");
+        alert("Signup successful! Check the verification page.");
 
-        // Redirect based on user type
-        if (selectedRole === "Admin") {
-          window.location.href = "/admin-profile.html"; // Admin route
-        } else {
-          window.location.href = "/employee-profile.html"; // Employee route
-        }
+        // Store pending user for verification routing
+        localStorage.setItem("pendingUser", JSON.stringify(payload));
+
+        // Redirect to verification page
+        window.location.href = "/signup-verification.html";
       } else {
         const errorData = await response.json();
         alert(errorData.message || "Signup failed. Try again.");
@@ -83,20 +77,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Google signup
-  googleLink.addEventListener("click", (e) => {
+  // --- Google signup ---
+  googleLink?.addEventListener("click", (e) => {
     e.preventDefault();
-    // Replace this with your backend Google Auth route
-    window.location.href = "https://your-backend-api.com/auth/google";
+    window.location.href = `${API_BASE_URL}/auth/google`;
   });
 
-  // "Already have an account" → login page
-  loginLink.addEventListener("click", (e) => {
+  // --- Already have an account (login) ---
+  loginLink?.addEventListener("click", (e) => {
     e.preventDefault();
     window.location.href = "/login.html";
   });
 
-  // Default visibility
+  // --- Default visibility ---
   companyField.style.display = "block";
   roleField.style.display = "block";
 });

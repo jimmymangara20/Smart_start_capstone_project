@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // =============================
-  // ROUTING (Navbar & Buttons)
+  // ROUTING (Navbar & Buttonmkks)
   // =============================
   const routes = {
     "#home": "/index.html",

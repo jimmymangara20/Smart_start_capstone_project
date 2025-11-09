@@ -1,9 +1,25 @@
-// Display saved email
-const email = localStorage.getItem("resetEmail");
-document.getElementById("userEmail").textContent = email || "your email";
+document.addEventListener("DOMContentLoaded", () => {
+  const emailSpan = document.getElementById("userEmail");
+  const openEmailBtn = document.querySelector(".instruction__btn");
+  const backToSignIn = document.querySelector(".instruction__link");
 
-// Handle "Open email app" button
-document.querySelector(".instruction__btn").addEventListener("click", function () {
-  window.location.href = "mailto:";
+  // Get stored email
+  const email = localStorage.getItem("resetEmail") || "your email";
+
+  if (emailSpan) emailSpan.textContent = email;
+
+  // Open email button → go to reset password page
+  if (openEmailBtn) {
+    openEmailBtn.addEventListener("click", () => {
+      window.location.href = "reset_password.html";
+    });
+  }
+
+  // Back to sign-in link
+  if (backToSignIn) {
+    backToSignIn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "login.html";
+    });
+  }
 });
-

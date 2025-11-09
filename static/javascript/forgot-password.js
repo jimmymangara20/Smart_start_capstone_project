@@ -1,42 +1,44 @@
-const form = document.querySelector(".forgot__form");
+document.addEventListener("DOMContentLoaded", () => {
+  // Select the form and back link
+  const form = document.querySelector("form.forgot__form");
+  const backToLoginLink = document.querySelector(".forgot__link");
 
-form.addEventListener("submit", async function (e) {
-  e.preventDefault();
+  // ROUTES
+  const routes = {
+    login: "login.html",
+    forgotPasswordInstruction: "forgot-password-instruction.html",
+  };
 
-  const email = document.querySelector("#email").value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Form submit handler
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  if (!email) {
-    alert("Please enter your email address.");
-    return;
-  }
+    const emailInput = document.querySelector("#email").value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!emailPattern.test(email)) {
-    alert("Please enter a valid email address (e.g., name@example.com).");
-    return;
-  }
-
-  try {
-    const response = await fetch("/api/auth/forgot-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      alert(data.message || "Something went wrong");
+    // Validation
+    if (!emailInput) {
+      alert("Please enter your email address.");
       return;
     }
 
-    // ✅ ROUTING happens here after successful response
-    window.location.href = "forgot-password-instruction.html";
+    if (!emailPattern.test(emailInput)) {
+      alert("Please enter a valid email (e.g., name@example.com).");
+      return;
+    }
 
-  } catch (error) {
-    console.error(error);
-    alert("Network error — please try again");
+    // Save email to localStorage
+    localStorage.setItem("forgotEmail", emailInput);
+
+    // Redirect to forgot-password-instruction page
+    window.location.href = routes.forgotPasswordInstruction;
+  });
+
+  // Back to login handler
+  if (backToLoginLink) {
+    backToLoginLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = routes.login;
+    });
   }
 });
