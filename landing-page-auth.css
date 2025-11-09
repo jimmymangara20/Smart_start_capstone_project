@@ -507,7 +507,6 @@ li {
     font-size: 2rem;
     font-weight: 500;
     color: #FFFDFA;
-    margin-left: 5rem;
 }
 .footer_pg {
     display: inline-block;
@@ -539,6 +538,7 @@ gap: 2rem;
     justify-content: center;
     gap: 2rem;
     color: #FFFDFA;
+    margin-left: 6rem;
 }
 
 .info_div-con {
@@ -565,10 +565,11 @@ gap: 2rem;
   gap: 1.5rem;
 }
 
-.footer_heading {
+.footer_heading-middle  {
   font-size: 1.6rem;
   color: #FFFDFA;
   font-weight: 700;
+
 }
 
 .newsletter_form {
@@ -615,26 +616,24 @@ gap: 2rem;
 .footer_last-con {
 
     display: flex;
-    justify-content: space-around; 
-    align-items: flex-start;                 
+    justify-content: center;             
     background-color: #003C5B;     
-    flex-wrap: wrap;  
-    gap:50rem; 
-    margin-right: 10rem;  
+    flex-wrap: wrap;   
     margin-top: 10rem;         
-
+    gap: 75rem;
 }
 
 
 .footer_bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background-color: #003C5B;
   color: #FFFDFA;
   font-size: 1.3rem;
   padding: 5rem 20rem;
+  gap: 50rem;
 }
 
 .footer_bottom-left {
@@ -663,6 +662,32 @@ gap: 2rem;
   color: #C6C6C6;
   font-size: 1.3rem;
 }
+/* responsiveness */
+/* ---------- Tablet (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .why_box {
+    flex-wrap: wrap;
+    /* height: fit-content;
+    width: fit-content; */
+
+  }
+
+  .why_card {
+  width: fit-content;
+
+  }
+  .why_heading {
+    font-size: 3.5rem;
+  }
+  .footer_top-div {
+  flex-wrap: wrap;
+}
+    footer {
+    flex-wrap: wrap;
+    }
+
+    }
+
 /* responsiveness */
 /* ---------- Tablet (≤1024px) ---------- */
 @media (max-width: 1024px) {
