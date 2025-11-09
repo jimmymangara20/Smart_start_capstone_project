@@ -1,84 +1,102 @@
-// login.js
+// ==========================
+// SMARTSTART LOGIN PAGE
+// ==========================
 
-document.addEventListener('DOMContentLoaded', () => {
-    const passwordInput = document.getElementById('password');
-    const passwordCharMocks = document.querySelectorAll('.password-char-mock');
-    const forgotPasswordLink = document.querySelector('.forgot-password');
-    const loginForm = document.getElementById('loginForm');
-    
-    // Function to update the password mock characters
-    function updatePasswordMocks() {
-        const passwordValue = passwordInput.value;
-        const charsToDisplay = ['P', 'I', 'D']; // Characters from the mock image
+// Base API URL
+const API_BASE = "https://smartstart-backend-8afq.onrender.com/api/auth";
 
-        passwordCharMocks.forEach((mock, index) => {
-            if (index < charsToDisplay.length) {
-                mock.textContent = charsToDisplay[index];
-            } else if (index < passwordValue.length - (charsToDisplay.length - 1)) {
-                mock.textContent = ''; // Show dots via CSS :after pseudo
-            } else {
-                mock.textContent = '';
-            }
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("loginForm");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const keepLoggedIn = document.getElementById("keep");
+  const googleLoginBtn = document.querySelector(".google-login");
+  const forgotPasswordLink = document.querySelector(".forgot-password");
 
-            mock.style.display = index < passwordValue.length ? 'inline-flex' : 'none';
-        });
+  // ======================
+  // LOGIN FORM SUBMISSION
+  // ======================
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+      alert("Please fill in both email and password.");
+      return;
     }
 
-    // Initial update
-    updatePasswordMocks();
+    const loginData = { email, password };
 
-    // Update on input
-    passwordInput.addEventListener('input', updatePasswordMocks);
+    try {
+      const response = await fetch(`${API_BASE}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(loginData),
+      });
 
-    // ----- Forgot Password routing -----
-    if (forgotPasswordLink) {
-        forgotPasswordLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.location.href = '/forgot-password.html'; // Update to your actual forgot password page path
-        });
+      const result = await response.json();
+
+      if (response.ok) {
+        // Store token and HR ID in localStorage (or sessionStorage)
+        if (keepLoggedIn.checked) {
+          localStorage.setItem("jwtToken", result.token);
+          localStorage.setItem("hrId", result.user.id);
+        } else {
+          sessionStorage.setItem("jwtToken", result.token);
+          sessionStorage.setItem("hrId", result.user.id);
+        }
+
+        alert("Login successful! Redirecting...");
+
+        // Redirect based on role (HR or Employee)
+        if (result.user.role === "HR") {
+          window.location.href = "hr-profile.html";
+        } else if (result.user.role === "Employee") {
+          window.location.href = "events-page-employee.html";
+        } else {
+          window.location.href = "index.html";
+        }
+      } else {
+        alert("Login failed: " + (result.message || "Invalid credentials"));
+      }
+    } catch (err) {
+      console.error("⚠ Login error:", err);
+      alert("Error connecting to the server. Please try again.");
     }
+  });
 
-    // ----- Handle login submission -----
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value.trim();
-            const password = passwordInput.value.trim();
+  // ======================
+  // GOOGLE LOGIN HANDLER
+  // ======================
+  googleLoginBtn.addEventListener("click", () => {
+    alert(" Google login integration coming soon!");
+    // Example placeholder — replace with real OAuth link:
+    // window.location.href = `${API_BASE}/google-auth`;
+  });
 
-            if (!email || !password) {
-                alert('Please enter your email and password');
-                return;
-            }
-
-            try {
-                const response = await fetch('https://your-backend-api.com/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password })
-                });
-
-                if (response.ok) {
-                    const userData = await response.json();
-                    // Save user data in local storage for session
-                    localStorage.setItem('smartstartUser', JSON.stringify(userData));
-
-                    // Redirect based on role
-                    if (userData.role === 'Admin') {
-                        window.location.href = '/admin-profile.html';
-                    } else if (userData.role === 'Employee') {
-                        window.location.href = '/employee-profile.html';
-                    } else {
-                        window.location.href = '/user-landing.html';
-                    }
-                } else {
-                    const error = await response.json();
-                    alert(error.message || 'Login failed. Please try again.');
-                }
-            } catch (err) {
-                console.error('Login error:', err);
-                alert('Unable to connect to server. Try again later.');
-            }
-        });
+  // ======================
+  // FORGOT PASSWORD
+  // ======================
+  forgotPasswordLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    const email = prompt("Enter your email to reset your password:");
+    if (email) {
+      fetch(`${API_BASE}/forgot-password`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert("Reset link sent! Check your email inbox.");
+          } else {
+            alert("⚠ Could not send reset link. Please check your email.");
+          }
+        })
+        .catch(() => alert("⚠ Server error. Try again later."));
     }
+  });
 });
