@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const routes = {
     home: "index.html",
     features: "features.html",
-    contact: "contact.html",
+    contact: "#contact",
     pricing: "pricing.html",
     signin: "signin.html",
     "get started": "signin.html",

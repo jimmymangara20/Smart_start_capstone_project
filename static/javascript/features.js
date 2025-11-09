@@ -1,62 +1,73 @@
-// Ensure the DOM is loaded before running
+// Ensure DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------
-     SPA-LIKE ROUTING FOR NAV LINKS
+     ROUTES
   --------------------------------*/
-  const navLinks = document.querySelectorAll(".nav_link");
+  const routes = {
+    home: "index.html",
+    features: "features.html",
+    contact: "#contact",
+    pricing: "pricing.html",
+    login: "login.html",
+    signup: "sign-up.html"
+  };
 
-  navLinks.forEach(link => {
+  /* -------------------------------
+     NAVIGATION LINKS
+  --------------------------------*/
+  document.querySelectorAll(".nav_link").forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-
       const target = e.target.textContent.trim().toLowerCase();
-
-      // Route based on link text
-      switch (target) {
-        case "home":
-          window.location.href = "index.html";
-          break;
-        case "features":
-          window.location.href = "features.html";
-          break;
-        case "contact":
-          window.location.href = "contact.html";
-          break;
-        case "pricing":
-          window.location.href = "pricing.html";
-          break;
-        default:
-          console.warn("Unknown route:", target);
+      if (routes[target]) {
+        window.location.href = routes[target];
+      } else {
+        console.warn("Unknown route:", target);
       }
     });
   });
 
-
   /* -------------------------------
-     BUTTON CLICK ROUTES
+     FOOTER QUICK LINKS
   --------------------------------*/
-  const routeToSignup = () => (window.location.href = "signup.html");
-
-  document.querySelector(".nav_btn")?.addEventListener("click", routeToSignup);
-  document.querySelector(".hero_btn-one")?.addEventListener("click", routeToSignup);
-  document.querySelector(".trial_btn")?.addEventListener("click", routeToSignup);
-
-  // Optional demo button
-  document.querySelector(".hero_btn-two")?.addEventListener("click", () => {
-    window.location.href = "demo.html";
+  document.querySelectorAll(".footer_list-container li").forEach(item => {
+    item.addEventListener("click", () => {
+      const text = item.textContent.trim().toLowerCase();
+      if (routes[text]) {
+        window.location.href = routes[text];
+      }
+    });
   });
 
+  /* -------------------------------
+     GET STARTED / TRIAL BUTTONS
+  --------------------------------*/
+  const allStartButtons = document.querySelectorAll(".nav_btn, .hero_btn-one, .trial_btn");
+  allStartButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const isOldUser = confirm("Are you an existing user?");
+      window.location.href = isOldUser ? routes.login : routes.signup;
+    });
+  });
 
   /* -------------------------------
-     NEWSLETTER SUBSCRIPTION (Fetch API)
+     GET DEMO BUTTON
+  --------------------------------*/
+  const demoBtn = document.querySelector(".hero_btn-two");
+  if (demoBtn) {
+    demoBtn.addEventListener("click", () => {
+      window.location.href = routes.contact;
+    });
+  }
+
+  /* -------------------------------
+     NEWSLETTER SUBSCRIPTION
   --------------------------------*/
   const newsletterForm = document.querySelector(".newsletter_form");
-
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-
       const email = newsletterForm.querySelector(".newsletter_input").value.trim();
 
       if (!email) {
@@ -84,13 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
   /* -------------------------------
-     OPTIONAL: MOBILE NAV TOGGLE
+     MOBILE NAV TOGGLE
   --------------------------------*/
   const navBtn = document.querySelector(".nav_btn-toggle");
   const navDiv = document.querySelector(".nav_div");
-
   if (navBtn && navDiv) {
     navBtn.addEventListener("click", () => {
       navDiv.classList.toggle("active");
