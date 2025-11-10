@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<!--  PAGE IDENTIFIER -->
 <body id="dashboard-page">
-
 <div class="dashboard-container">
 
     <!-- Sidebar -->
@@ -30,40 +28,38 @@
 
         <nav class="nav-links">
             <a href="employee-dashboard.html" class="nav-item active">
-                <i class="fas fa-home"></i>
-                Home
+                <i class="fas fa-home"></i><span>Home</span>
             </a>
             <a href="checklist-page-employee.html" class="nav-item">
-                <i class="fas fa-list-check"></i>
-                Checklist
+                <i class="fas fa-list-check"></i><span>Checklist</span>
             </a>
             <a href="employee-progress-tracker.html" class="nav-item">
-                <i class="fas fa-chart-line"></i>
-                Progress Tracker
+                <i class="fas fa-chart-line"></i><span>Progress Tracker</span>
             </a>
             <a href="events-page-employee.html" class="nav-item">
-                <i class="fas fa-calendar-alt"></i>
-                Events
+                <i class="fas fa-calendar-alt"></i><span>Events</span>
             </a>
             <a href="employee-documents.html" class="nav-item">
-                <i class="fas fa-file-alt"></i>
-                Documents
+                <i class="fas fa-file-alt"></i><span>Documents</span>
             </a>
             <a href="profile-employee.html" class="nav-item">
-                <i class="fas fa-user"></i>
-                Profile
+                <i class="fas fa-user"></i><span>Profile</span>
             </a>
         </nav>
 
         <div class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i>
-            Log Out
+            <i class="fas fa-sign-out-alt"></i><span>Log Out</span>
         </div>
     </aside>
 
-    
     <!-- Main Content -->
     <main class="main-content">
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Header -->
         <header class="top-header">
             <div class="search-area">
                 <input type="text" placeholder="Search" class="search-input">
@@ -77,13 +73,12 @@
                 <i class="fas fa-cog user-icon"></i>
                 <div class="profile-area">
                     <span class="user-name">Loading...</span>
-                    <img src="static\assets\Aisha bello.png" alt="Profile Picture" class="profile-pic">
+                    <img src="static/assets/Aisha bello.png" alt="Profile Picture" class="profile-pic">
                 </div>
             </div>
         </header>
 
-
-        <!-- Welcome Banner + Progress-->
+        <!-- Welcome Banner + Progress -->
         <section class="dashboard-body-content">
             <div class="welcome-banner">
                 <h2>Welcome <span class="user-firstname">Employee</span>!</h2>
@@ -108,14 +103,11 @@
             </div>
         </section>
 
-
         <!-- Info + Sessions -->
         <section class="info-sessions-grid">
-
             <div class="quick-info-container widget">
                 <h4>Quick Information</h4>
                 <div class="info-group details-section">
-
                     <div class="details-block">
                         <h5>Details</h5>
                         <div class="detail-row"><span class="label">Employee ID:</span><span class="value employee-id">-</span></div>
@@ -137,7 +129,6 @@
                             <span class="email manager-email">-</span>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -147,10 +138,8 @@
             </div>
         </section>
 
-
         <!-- Action Buttons -->
         <section class="action-cards-grid">
-
             <div class="action-card widget">
                 <div class="card-icon-container">
                     <i class="far fa-clipboard"></i>
@@ -159,9 +148,7 @@
                     <h3>View Checklist</h3>
                     <p>See your onboarding tasks and track your progress</p>
                 </div>
-                <a href="checklist-page-employee.html" class="action-button primary-btn">
-                    Open Checklist
-                </a>
+                <a href="checklist-page-employee.html" class="action-button primary-btn">Open Checklist</a>
             </div>
 
             <div class="action-card widget">
@@ -172,16 +159,15 @@
                     <h3>Upload Documents</h3>
                     <p>Submit your required documents securely</p>
                 </div>
-                <a href="employee-documents.html" class="action-button secondary-btn">
-                    Upload Files
-                </a>
+                <a href="employee-documents.html" class="action-button secondary-btn">Upload Files</a>
             </div>
-
         </section>
     </main>
 </div>
 
-<!-- Single Shared JS File -->
+<!-- JS Files -->
+<script src="static\javascript\sidebar-toggle.js"></script>
 <script src="static/javascript/main.js"></script>
+
 </body>
 </html>
