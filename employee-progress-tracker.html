@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +10,12 @@
 </head>
 <body>
 
+    <!-- Sidebar Toggle Button -->
+    <div class="sidebar-toggle-btn"><i class="fas fa-bars"></i></div>
+
     <div class="dashboard-container">
         
-        <!-- ✅ Sidebar -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <a href="#" class="logo-link">
                 <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
@@ -33,10 +35,10 @@
             </div>
         </aside>
 
-        <!-- ✅ Main Content -->
+        <!--Main Content -->
         <main class="main-content">
             
-            <!-- ✅ Top Header -->
+            <!-- Top Header -->
             <header class="top-header">
                 <div class="search-area">
                     <input type="text" placeholder="Search" class="search-input">
@@ -52,7 +54,7 @@
                 </div>
             </header>
 
-            <!-- ✅ Progress Tracker Content -->
+            <!-- Progress Tracker Content -->
             <div class="progress-tracker-body">
                 
                 <header class="tracker-header">
@@ -68,13 +70,13 @@
                     </div>
                 </div>
 
-                <!-- ✅ Milestones Section (EMPTY - filled by JS) -->
+                <!-- Milestones Section -->
                 <section class="milestones-section widget">
                     <h2>Milestones</h2>
                     <ul class="milestone-list"></ul>
                 </section>
 
-                <!-- ✅ Next Up Section (EMPTY - filled by JS) -->
+                <!-- Next Up Section -->
                 <section class="next-up-section widget">
                     <h2>Next Up</h2>
                     <div class="next-up-card warning-card"></div>
@@ -85,7 +87,8 @@
         </main>
     </div>
 
-    <!--JavaScript file -->
+    <!-- JS -->
     <script src="static/javascript/employee-progress-tracker.js"></script>
+    <script src="static/javascript/main.js"></script>
 </body>
 </html>

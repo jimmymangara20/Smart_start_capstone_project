@@ -15,17 +15,18 @@ body {
 
 .dashboard-container {
     display: grid;
-    /* Fixed sidebar width, rest is main content */
-    grid-template-columns: 250px 1fr; 
+    grid-template-columns: 250px 1fr;
     height: 100vh;
     overflow: hidden;
+    transition: grid-template-columns 0.3s ease;
 }
 
 .main-content {
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
-/* --- General Widget/Card Styles --- */
+/* --- Widgets / Cards --- */
 .widget {
     background-color: #ffffff;
     padding: 30px;
@@ -33,7 +34,6 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     margin-bottom: 25px;
 }
-
 
 /* ========================================================= */
 /* 2. SIDEBAR STYLING                                        */
@@ -44,6 +44,13 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 1px solid #eee;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-collapsed {
+    transform: translateX(-100%);
+    position: absolute;
+    z-index: 1000;
 }
 
 .logo-link {
@@ -76,10 +83,10 @@ body {
 }
 
 .nav-item.active {
-    background-color: #e0f0ff; /* Light blue background */
-    color: #007bff; /* Primary blue text */
+    background-color: #e0f0ff; 
+    color: #007bff; 
     border-left: 4px solid #007bff;
-    padding-left: 16px; /* Compensate for the border width */
+    padding-left: 16px; 
 }
 
 .logout-btn {
@@ -91,6 +98,17 @@ body {
     font-weight: 500;
     margin-top: auto; 
     border-top: 1px solid #eee;
+}
+
+/* Sidebar toggle button (hamburger) */
+.sidebar-toggle-btn {
+    display: none; /* Hidden by default, visible on small screens */
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
 }
 
 /* ========================================================= */
@@ -140,7 +158,7 @@ body {
 }
 
 /* ========================================================= */
-/* 4. PROGRESS TRACKER VIEW STYLING                          */
+/* 4. PROGRESS TRACKER / CHECKLIST VIEW STYLING             */
 /* ========================================================= */
 .progress-tracker-body {
     padding: 30px;
@@ -158,7 +176,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* --- Success Banner --- */
 .tracker-banner {
     display: flex;
     align-items: center;
@@ -184,23 +201,12 @@ body {
     margin-bottom: 5px;
 }
 
-/* --- Milestones Timeline --- */
-.milestones-section {
-    /* Inherits .widget styles */
-}
-
-.milestones-section h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
+/* Milestones Timeline */
 .milestone-list {
     list-style: none;
     padding: 0;
 }
 
-/* Core Timeline Effect */
 .milestone-item {
     display: flex;
     position: relative;
@@ -209,7 +215,6 @@ body {
     min-height: 50px; 
 }
 
-/* Vertical Timeline Line */
 .milestone-item:not(:last-child)::before {
     content: '';
     position: absolute;
@@ -220,7 +225,6 @@ body {
     background-color: #e0e0e0;
 }
 
-/* Icon Container */
 .milestone-icon {
     position: absolute;
     left: 0; 
@@ -236,7 +240,6 @@ body {
     z-index: 1; 
 }
 
-/* Completed Styles (Green Check) */
 .milestone-item.completed .milestone-icon {
     background-color: #28a745; 
     color: white;
@@ -246,7 +249,6 @@ body {
     background-color: #28a745; 
 }
 
-/* Pending Styles (Grey Number) */
 .milestone-item.pending .milestone-icon {
     background-color: #f7f7f7;
     color: #555;
@@ -254,7 +256,6 @@ body {
     font-size: 0.8rem;
 }
 
-/* Milestone Content */
 .milestone-content .title {
     font-weight: 500;
     color: #333;
@@ -268,18 +269,13 @@ body {
     color: #888;
 }
 
-/* --- Next Up Card --- */
-.next-up-section {
-    /* Inherits .widget styles */
-}
-
 .next-up-card {
     display: flex;
     align-items: flex-start;
     padding: 20px;
     border-radius: 8px;
     background-color: #ffffff;
-    border-left: 5px solid #ffc107; /* Warning yellow accent */
+    border-left: 5px solid #ffc107;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     cursor: pointer;
 }
@@ -295,4 +291,63 @@ body {
     font-weight: 600;
     color: #333;
     margin-bottom: 3px;
+}
+
+/* ========================================================= */
+/* 5. RESPONSIVE STYLES                                       */
+/* ========================================================= */
+@media (max-width: 1024px) {
+    .search-area {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Sidebar overlays content */
+    }
+
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .sidebar-collapsed {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle-btn {
+        display: block;
+    }
+
+    .main-content {
+        padding: 0 15px;
+    }
+
+    .search-area {
+        width: 100%;
+    }
+
+    .profile-area img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tracker-header h1 {
+        font-size: 1.5rem;
+    }
+    .tracker-header p {
+        font-size: 0.9rem;
+    }
+    .milestone-item::after {
+        font-size: 0.8rem;
+        left: 45px;
+    }
 }
