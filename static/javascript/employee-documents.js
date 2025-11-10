@@ -8,25 +8,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const emptyStateRow = document.getElementById("emptyStateRow");
     const allDocsButton = document.querySelector(".filter-dropdown"); // “All Documents” section
 
-    // Your live API endpoints
+    const sidebarToggleBtn = document.querySelector(".sidebar-toggle");
+    const dashboardContainer = document.querySelector(".dashboard-container");
+    const logoutBtn = document.querySelector(".logout-btn");
+
+    // API endpoints
     const API_UPLOAD_URL = "https://smartstart-backend-8afq.onrender.com/api/upload";
     const API_GET_ALL_URL = "https://smartstart-backend-8afq.onrender.com/api/documents";
+    const LOGOUT_API_URL = "https://smartstart-backend-8afq.onrender.com/api/logout";
 
-    // Trigger hidden file input
+    /* ---------------- Sidebar Toggle ---------------- */
+    sidebarToggleBtn?.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+            // Slide in/out sidebar on mobile
+            dashboardContainer.classList.toggle("show-sidebar");
+        } else {
+            // Collapse sidebar on tablet/desktop
+            dashboardContainer.classList.toggle("sidebar-collapsed");
+        }
+    });
+
+    /* ---------------- File Upload ---------------- */
     chooseFileBtn.addEventListener("click", (e) => {
         e.preventDefault();
         fileInput.click();
     });
 
-    // Upload files to backend
     fileInput.addEventListener("change", async (event) => {
         const files = event.target.files;
-        if (files.length === 0) {
+        if (!files.length) {
             uploadText.textContent = "No file selected.";
             return;
         }
 
-        // Remove empty message
         if (emptyStateRow) emptyStateRow.remove();
         uploadText.textContent = "Uploading...";
 
@@ -43,11 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!response.ok) throw new Error("Upload failed");
                 const data = await response.json();
 
-                // Add file to table
                 addFileRow({
                     type: data.type || "Uploaded File",
                     name: data.fileName || file.name,
-                    size: (file.size / 1024 / 1024).toFixed(2) + " MB",
+                    size: formatFileSize(file.size),
                     uploaded: "Just now",
                     status: "Pending Review",
                 });
@@ -61,28 +74,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Load all documents when “All Documents” button is clicked
-    allDocsButton.addEventListener("click", async () => {
+    /* ---------------- Load All Documents ---------------- */
+    allDocsButton?.addEventListener("click", async () => {
         try {
-            // Optional: show loading indicator
             allDocsButton.querySelector("span").textContent = "Loading...";
 
             const response = await fetch(API_GET_ALL_URL);
             if (!response.ok) throw new Error("Failed to load documents");
 
             const documents = await response.json();
-
-            // Clear current rows
             tableBody.innerHTML = "";
 
             if (!documents || documents.length === 0) {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td colspan="6" style="text-align: center; color: #888; padding: 20px;">
-                        No documents found.
-                    </td>
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center; color:#888; padding:20px;">
+                            No documents found.
+                        </td>
+                    </tr>
                 `;
-                tableBody.appendChild(row);
             } else {
                 documents.forEach((doc) => {
                     addFileRow({
@@ -104,7 +114,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Helper: Add new document row
+    /* ---------------- Logout ---------------- */
+    logoutBtn?.addEventListener("click", async () => {
+        if (!confirm("Are you sure you want to log out?")) return;
+
+        try {
+            await fetch(LOGOUT_API_URL, { method: "POST", credentials: "include" }).catch(() => {});
+            localStorage.removeItem("authToken");
+            sessionStorage.clear();
+            window.location.href = "login.html";
+        } catch (error) {
+            console.error("Logout failed:", error);
+            alert("Something went wrong while logging out. Please try again.");
+        }
+    });
+
+    /* ---------------- Helper Functions ---------------- */
     function addFileRow(fileData) {
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -112,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <td><i class="fas fa-file-pdf pdf-icon"></i> ${fileData.name}</td>
             <td>${fileData.size}</td>
             <td>${fileData.uploaded}</td>
-            <td><span class="status-badge ${fileData.status.toLowerCase().replace(" ", "-")}">
+            <td><span class="status-badge ${fileData.status.toLowerCase().replace(/\s+/g, "-")}">
                 ${fileData.status}
             </span></td>
             <td class="actions-cell">
@@ -123,14 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
         tableBody.prepend(row);
     }
 
-    // Helper: File size formatting
     function formatFileSize(bytes) {
         if (bytes < 1024) return bytes + " B";
         if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
         return (bytes / 1048576).toFixed(1) + " MB";
     }
 
-    //Helper: Convert timestamp to "time ago"
     function formatTimeAgo(timestamp) {
         if (!timestamp) return "Unknown";
         const diff = Date.now() - new Date(timestamp).getTime();
@@ -141,35 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
         const days = Math.floor(hours / 24);
         return `${days} day${days !== 1 ? "s" : ""} ago`;
     }
-});
-// LOGOUT HANDLER
-document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.querySelector(".logout-btn");
-
-    // Replace this with your backend logout endpoint if you have one
-    const LOGOUT_API_URL = "https://smartstart-backend-8afq.onrender.com/api/logout";
-
-    logoutBtn.addEventListener("click", async () => {
-        const confirmLogout = confirm("Are you sure you want to log out?");
-        if (!confirmLogout) return;
-
-        try {
-            // Optional: if your backend has a logout API
-            await fetch(LOGOUT_API_URL, {
-                method: "POST",
-                credentials: "include" // sends cookies if session-based
-            }).catch(() => {});
-
-            // Clear any locally stored tokens or session data
-            localStorage.removeItem("authToken");
-            sessionStorage.clear();
-
-            // Redirect to login page
-            window.location.href = "login.html";
-
-        } catch (error) {
-            console.error("Logout failed:", error);
-            alert("Something went wrong while logging out. Please try again.");
-        }
-    });
 });

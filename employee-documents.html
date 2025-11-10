@@ -35,6 +35,11 @@
         <main class="main-content">
 
             <header class="top-header">
+                <!-- Sidebar Toggle Button -->
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
                 <div class="search-area">
                     <input type="text" placeholder="Search" class="search-input">
                     <button class="search-button"><i class="fas fa-search"></i></button>
@@ -44,7 +49,7 @@
                     <i class="fas fa-bell user-icon"></i>
                     <div class="profile-area">
                         <span class="user-name">Aisha Bello</span>
-                        <img src="static\assets\Aisha bello.png" alt="Aisha Bello Profile" class="profile-pic">
+                        <img src="static/assets/Aisha bello.png" alt="Aisha Bello Profile" class="profile-pic">
                     </div>
                 </div>
             </header>
@@ -118,6 +123,22 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        // Sidebar toggle functionality
+        const sidebarToggleBtn = document.querySelector('.sidebar-toggle');
+        const dashboardContainer = document.querySelector('.dashboard-container');
+
+        sidebarToggleBtn.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                // Slide in/out sidebar on mobile
+                dashboardContainer.classList.toggle('show-sidebar');
+            } else {
+                // Collapse sidebar on tablet/desktop
+                dashboardContainer.classList.toggle('sidebar-collapsed');
+            }
+        });
+    </script>
+
     <script src="static/javascript/main.js"></script>
     <script src="static/javascript/employee-documents.js"></script>
 </body>
