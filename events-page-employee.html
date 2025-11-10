@@ -9,7 +9,6 @@
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-olCkC6cMN1qRk6yuw8Y3DJrO3s4eWZrwzVfGJka5h7R3iM4nQz6ZfBdPgya7n7e7cF5gr1Jcg4AokbGpm+6O0A=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
@@ -21,7 +20,7 @@
   <div class="container">
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
       <div class="logo">
         <img src="static/assets/smartstart-logo-orig.png" alt="SmartStart Logo">
       </div>
@@ -46,6 +45,7 @@
 
       <!-- Topbar -->
       <div class="topbar">
+        <button id="sidebarToggle" class="sidebar-toggle"><i class="fa-solid fa-bars"></i></button>
         <input type="text" placeholder="Search" class="search-box">
         <div class="profile">
           <img src="user.png" alt="User" class="profile-pic">
@@ -63,6 +63,23 @@
 
     </div>
   </div>
+
+  <!-- Sidebar Toggle Script -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebarToggle');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    // Optional: Close sidebar when clicking outside (mobile)
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 992 && !sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+        sidebar.classList.remove('active');
+      }
+    });
+  </script>
 
   <!-- Link to external JS -->
   <script src="static/javascript/events-page-employee.js"></script>

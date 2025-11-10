@@ -1,4 +1,4 @@
-/* ===== Base Styles ===== */
+/* ===== Base Styles (unchanged) ===== */
 body {
   font-family: "Poppins", sans-serif;
   background: #f9f9fb;
@@ -32,11 +32,10 @@ body {
 }
 
 .logo img {
-  width: 350px;
-  height: 50px;
+  width: 200px;
+  height: auto;
   border-radius: 8px;
 }
-
 
 .sidebar ul {
   list-style: none;
@@ -96,6 +95,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
 .search-box {
@@ -131,16 +131,18 @@ body {
 
 .events-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
 .event-card {
+  flex: 1 1 calc(33.333% - 10px);
   background: #fff;
   border-radius: 10px;
   padding: 15px 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .event-card:hover {
@@ -165,4 +167,69 @@ body {
 .event-details i {
   color: #007bff;
   margin-right: 5px;
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (max-width: 1024px) {
+  .event-card {
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .search-box {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sidebar ul li a {
+    padding: 8px 12px;
+  }
+
+  .logout {
+    padding: 0 10px;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .event-card {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-box {
+    width: 100%;
+  }
+
+  .profile span {
+    display: none; /* Hide text on very small screens */
+  }
+
+  .heading {
+    font-size: 20px;
+  }
 }
