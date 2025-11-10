@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("jwtToken", 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkV6ZWtpZWwgVHVyYWtpIiwiaWF0IjoxNzYyODAzODY3LCJleHAiOjE3NjI4MDc0Njd9.1zNtipGnKyRKCtPnZ5ARncdAnA5drRIX-QZBYqKkqZ8');
   localStorage.setItem("hrId", '69123dd5306f82961bb5ccea');
   alert("login successful")
-   email === 'betty@yopmail.com' ? window.location.href = 'https://smart-start-capstone-project.onrender.com/employee-dashboard.html' : window.location.href = "https://smart-start-capstone-project.onrender.com/hr-dashboard.html"
+   email === ('betty@yopmail.com' || 'daniel@gmail.com') ? window.location.href = 'https://smart-start-capstone-project.onrender.com/employee-dashboard.html' : window.location.href = "https://smart-start-capstone-project.onrender.com/hr-dashboard.html"
           return
     try {
       const response = await fetch(`${API_BASE}/login`, {
