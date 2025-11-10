@@ -1,450 +1,447 @@
-/* Basic Reset and Font Setup */
+/* -------------------------------
+   Base Styles (unchanged)
+--------------------------------*/
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f7f9; /* Light grey background */
-    color: #333;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f7f9;
+  color: #333;
 }
 
-/* 1. Dashboard Grid Layout */
+/* Dashboard layout */
 .dashboard-container {
-    display: grid;
-    /* Sidebar width is about 250px, the rest is the main content (1fr) */
-    grid-template-columns: 250px 1fr;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Important to keep main content clean */
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* 2. Sidebar Styling */
+/* Sidebar */
 .sidebar {
-    background-color: #ffffff; /* White background */
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #eee; /* Subtle separator */
+  background-color: #fff;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #eee;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
+
 .logo-link {
-    display: block; /* Make it take up the full width */
-    padding: 0 20px 30px 20px; /* Keep the original padding for spacing */
-    text-decoration: none; /* In case you use an <a> tag */
+  display: block;
+  padding: 0 20px 30px 20px;
+  text-decoration: none;
 }
 
 .logo-img {
-    /* Adjust these values to match the dimensions of your logo image */
-    max-width: 100%; 
-    height: 40px; /* Set a fixed height for a consistent look */
-    display: block;
+  max-width: 100%;
+  height: 40px;
+  display: block;
 }
 
 .nav-links {
-    flex-grow: 1; /* Pushes the logout button to the bottom */
+  flex-grow: 1;
 }
 
 .nav-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #555; /* Default link color */
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .nav-item i {
-    font-size: 1.1rem;
-    margin-right: 15px;
-    width: 20px; /* To align the text neatly */
+  font-size: 1.1rem;
+  margin-right: 15px;
+  width: 20px;
 }
 
 .nav-item:hover {
-    background-color: #f0f8ff; /* Light hover effect */
-    color: #007bff;
+  background-color: #f0f8ff;
+  color: #007bff;
 }
 
-/* Key Styling: The ACTIVE link */
 .nav-item.active {
-    background-color: #e0f0ff; /* Light blue background as shown in image */
-    color: #007bff; /* Primary blue text */
-    /* A subtle visual indicator, like a thicker left border */
-    border-left: 4px solid #007bff;
-    padding-left: 16px; /* Adjust padding due to border */
+  background-color: #e0f0ff;
+  color: #007bff;
+  border-left: 4px solid #007bff;
+  padding-left: 16px;
 }
 
 .logout-btn {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    color: #d9534f; /* Red/danger color for logout */
-    cursor: pointer;
-    font-weight: 500;
-    margin-top: auto; /* Ensures it sits at the very bottom */
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  color: #d9534f;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: auto;
 }
+
 .logout-btn i {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
-
-/* 3. Main Content Area */
+/* Main Content */
 .main-content {
-    padding: 0; /* We will add padding inside the sections */
-    overflow-y: auto; /* Allows scrolling if content is too long */
-}
-/* 4. Top Header Styling */
-.top-header {
-    background-color: #ffffff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between; /* Pushes search to left, user to right */
-    align-items: center;
-    border-bottom: 1px solid #eee; /* Separator from the welcome content */
+  padding: 0;
+  overflow-y: auto;
 }
 
-/* Search Bar Styling */
+/* Top Header */
+.top-header {
+  background-color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
 .search-area {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 350px;
-    height: 40px;
-    padding: 0 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 350px;
+  height: 40px;
+  padding: 0 10px;
 }
 
 .search-input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    padding: 5px;
-    font-size: 1rem;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 1rem;
 }
 
 .search-button {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    padding: 5px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
 }
 
-/* User Info Styling */
 .user-info {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Spacing between icons and profile area */
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .user-icon {
-    font-size: 1.1rem;
-    color: #555;
-    cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  cursor: pointer;
 }
 
 .profile-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .user-name {
-    font-weight: 500;
-    color: #333;
+  font-weight: 500;
+  color: #333;
 }
 
 .profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Makes it a circle */
-    object-fit: cover;
-    border: 2px solid #007bff; /* Small blue border for emphasis */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
 }
-/* 5. Dashboard Body Content & Widget Styling */
 
+/* Dashboard Content */
 .dashboard-body-content {
-    padding: 30px;
+  padding: 30px;
 }
 
 .welcome-banner {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .welcome-banner h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
 }
 
 .welcome-banner p {
-    color: #666;
-    margin-top: 5px;
+  color: #666;
+  margin-top: 5px;
 }
 
-/* General Widget Styling */
 .widget {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft, subtle shadow */
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
 }
 
-/* Onboarding Progress Specific Styling */
 .progress-widget {
-    gap: 40px; /* Space between the circle and the text */
+  gap: 40px;
 }
 
-/* --- Circular Progress Bar CSS using CSS Variables & Conic Gradient --- */
-
-/* We will define the current progress as a CSS variable 
-   (0 degrees is 0%, 360 degrees is 100%) 
-   Since the screenshot is 0%, we set the gradient to start and end at 0deg.
-   We will use JS later to update this property.
-*/
 .progress-circle {
-    --progress-percent: 0; /* JS will update this (0-100) */
-    --progress-angle: calc(var(--progress-percent) * 3.6deg); /* Convert percent to degrees */
-    
-    position: relative;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    
-    /* This creates the color fill based on the variable */
-    background: conic-gradient(
-        #007bff var(--progress-angle), /* Primary blue color for the fill */
-        #e9ecef var(--progress-angle) /* Light gray for the rest of the circle */
-    );
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  --progress-percent: 0;
+  --progress-angle: calc(var(--progress-percent) * 3.6deg);
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #007bff var(--progress-angle),
+    #e9ecef var(--progress-angle)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* The inner white ring to make the circle appear hollow */
 .progress-ring {
-    width: 100px; /* Inner radius */
-    height: 100px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    z-index: 1; /* Ensure it's above the background gradient */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
 }
 
-/* Text in the center of the circle */
 .progress-value {
-    position: relative;
-    z-index: 2; /* Ensure text is visible over the white ring */
-    text-align: center;
-    line-height: 1.1;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  line-height: 1.1;
 }
 
 .percentage-num {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #007bff;
-    display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #007bff;
+  display: block;
 }
 
 .percentage-text {
-    font-size: 0.8rem;
-    color: #555;
-    display: block;
+  font-size: 0.8rem;
+  color: #555;
+  display: block;
 }
 
-/* Details text next to the circle */
 .progress-details h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 .progress-details p {
-    color: #888;
+  color: #888;
 }
 
-/* 6. Information and Sessions Grid Layout */
+/* Info grid */
 .info-sessions-grid {
-    display: grid;
-    /* Two columns: the info area (about 65%) and the sessions area (about 35%) */
-    grid-template-columns: 2fr 1fr; 
-    gap: 25px; /* Spacing between the columns */
-    margin-bottom: 25px;
-    align-items: stretch; /* Ensures both columns stretch to the same height */
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+  align-items: stretch;
 }
 
-/* Base Widget Styling from previous step applies here, but we fine-tune headers */
-.quick-info-container h4,
-.upcoming-sessions-container h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-/* Quick Information Container (Left Column) */
-.info-group {
-    display: flex;
-    gap: 30px; /* Space between the Details, Support Team, and Manager blocks */
-}
-
-.details-section {
-    display: flex;
-    flex-wrap: wrap; /* Allows blocks to wrap to the next line */
-    gap: 30px;
-}
-
-.details-block {
-    /* Define widths to mimic the image layout */
-    min-width: 150px; 
-    flex: 1; /* Allows blocks to grow/shrink equally */
-}
-
-.details-block h5 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #007bff; /* Primary blue for the block headers */
-    margin-bottom: 10px;
-}
-
-.detail-row,
-.support-contact,
-.manager-contact {
-    display: flex;
-    justify-content: space-between; /* Pushes label/name to one side, value/email to the other */
-    flex-wrap: wrap; /* Handles long emails/values if needed */
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-}
-
-.label, .name {
-    color: #555;
-    font-weight: 500;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-
-.value, .email {
-    color: #888;
-    text-align: right;
-    flex-grow: 1;
-}
-
-/* Upcoming Sessions Container (Right Column) */
-.upcoming-sessions-container {
-    /* Remove default flex alignment from .widget to stack the cards */
-    display: block; 
-    padding: 20px; /* Slightly less padding to match the image's condensed look */
-}
-
-.session-card {
-    background-color: #e0f0ff; /* Very light blue background for session cards */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 4px solid #007bff; /* Blue indicator line */
-    transition: background-color 0.2s;
-    cursor: pointer;
-}
-
-.session-card:hover {
-    background-color: #c9e6ff; /* Slightly darker on hover */
-}
-
-.session-date {
-    font-size: 0.75rem;
-    color: #007bff;
-    font-weight: 600;
-    margin-bottom: 3px;
-}
-
-.session-title {
-    font-size: 0.9rem;
-    color: #333;
-    font-weight: 500;
-}
-/* 7. Action Cards Grid Layout */
+/* Action cards */
 .action-cards-grid {
-    display: flex;
-    gap: 25px; /* Spacing between the two cards */
-    margin-bottom: 30px; 
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
 }
 
 .action-card {
-    /* Override the default widget flex style for this layout */
-    display: block; 
-    flex: 1; /* Allows both cards to take equal width */
-    text-align: center;
-    padding: 30px 20px;
+  flex: 1;
+  text-align: center;
+  padding: 30px 20px;
 }
 
 .card-icon-container {
-    background-color: #f0f8ff; /* Light blue background for icon */
-    color: #007bff;
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    margin: 0 auto 15px auto; /* Centers the icon and adds bottom margin */
+  background-color: #f0f8ff;
+  color: #007bff;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  margin: 0 auto 15px auto;
 }
 
-.card-text h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.card-text p {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 20px;
-}
-
-/* Button Styling */
 .action-button {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    width: 100%; /* Make buttons full width inside the card */
-    max-width: 200px; /* Optional: cap the max width for aesthetics */
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  max-width: 200px;
 }
 
-/* Primary Button (Open Checklist) */
 .primary-btn {
-    background-color: #007bff;
-    color: white;
+  background-color: #007bff;
+  color: white;
 }
 
 .primary-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-/* Secondary Button (Upload Files) - Appears lighter/ghost-like in the image */
 .secondary-btn {
-    background-color: transparent;
-    color: #007bff;
-    border: 2px solid #007bff; /* A simple outline border */
-    padding: 8px 25px; /* Adjust padding to account for border */
+  background-color: transparent;
+  color: #007bff;
+  border: 2px solid #007bff;
 }
 
 .secondary-btn:hover {
-    background-color: #f0f8ff; /* Light blue background on hover */
+  background-color: #f0f8ff;
 }
 
-/* --- Final Review --- */
-/* A quick check to ensure the overall layout is correct */
-.dashboard-body-content > * {
-    /* Ensures all main sections (welcome, grid, cards) are in a column */
-    display: block; 
+/* -------------------------------
+   Responsive Design
+--------------------------------*/
+
+/* Tablets (≤ 992px) */
+@media (max-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .sidebar {
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  .nav-item span {
+    display: none; /* Hide text labels */
+  }
+
+  .nav-item i {
+    margin: 0;
+  }
+
+  .search-area {
+    width: 250px;
+  }
+
+  .info-sessions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .action-cards-grid {
+    flex-direction: column;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  /* Add a hamburger icon */
+  .menu-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  .top-header {
+    padding: 15px 20px;
+  }
+
+  .search-area {
+    width: 100%;
+  }
+
+  .user-info {
+    gap: 10px;
+  }
+
+  .dashboard-body-content {
+    padding: 20px;
+  }
+
+  .widget {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .progress-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .action-cards-grid {
+    flex-direction: column;
+  }
+}
+
+/* Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .welcome-banner h2 {
+    font-size: 1.4rem;
+  }
+
+  .search-area {
+    height: 35px;
+  }
+
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+  }
+
+  .widget {
+    padding: 20px;
+  }
+
+  .action-card {
+    padding: 20px 15px;
+  }
 }
