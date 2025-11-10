@@ -33,7 +33,7 @@ document.getElementById("eventForm").addEventListener("submit", async function (
     };
 
     try {
-        let response = await fetch("https://smartstart-backend-2.onrender.com/api/events", {
+        let response = await fetch("https://smartstart-backend-2.onrender.com/api/events/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

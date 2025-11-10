@@ -6,7 +6,7 @@ let employees = [];
 
 async function fetchEmployees() {
     try {
-        const res = await fetch(`${API}/api/employees`);
+        const res = await fetch(`${API}/api/hr/employees`);
         employees = await res.json();
         totalCountEl.textContent = employees.length;
         renderEmployees(employees);

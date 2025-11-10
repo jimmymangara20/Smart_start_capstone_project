@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.querySelector(".logout-btn");
 
     // API endpoints
-    const API_UPLOAD_URL = "https://smartstart-backend-2.onrender.com/api/upload";
-    const API_GET_ALL_URL = "https://smartstart-backend-2.onrender.com/api/documents";
+    const API_UPLOAD_URL = "https://smartstart-backend-2.onrender.com/api/uploads/upload";
+    const API_GET_ALL_URL = "https://smartstart-backend-2.onrender.com/api/documents/";
     const LOGOUT_API_URL = "https://smartstart-backend-2.onrender.com/api/logout";
 
     /* ---------------- Sidebar Toggle ---------------- */
