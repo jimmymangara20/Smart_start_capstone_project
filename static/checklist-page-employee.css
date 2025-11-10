@@ -11,6 +11,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f7f9;
     color: #333;
+    overflow-x: hidden;
 }
 
 .dashboard-container {
@@ -18,10 +19,12 @@ body {
     grid-template-columns: 250px 1fr; 
     height: 100vh;
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .main-content {
     overflow-y: auto;
+    background-color: #f4f7f9;
 }
 
 /* Routing utility classes (for when you add other pages) */
@@ -32,7 +35,6 @@ body {
     display: block;
 }
 
-
 /* ========================================================= */
 /* 2. SIDEBAR STYLING                                        */
 /* ========================================================= */
@@ -42,15 +44,19 @@ body {
     display: flex;
     flex-direction: column;
     border-right: 1px solid #eee;
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
 .logo-link {
     display: block;
     padding: 0 20px 30px 20px;
 }
+
 .logo-img {
     height: 40px; 
     display: block;
+    width: auto;
 }
 
 .nav-links {
@@ -73,6 +79,11 @@ body {
     width: 20px;
 }
 
+.nav-item:hover {
+    background-color: #f0f8ff;
+    color: #007bff;
+}
+
 .nav-item.active {
     background-color: #e0f0ff; 
     color: #007bff; 
@@ -89,6 +100,27 @@ body {
     font-weight: 500;
     margin-top: auto; 
     border-top: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #fbeaea;
+}
+
+/* Sidebar toggle button for small screens */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #005fcc;
+    cursor: pointer;
+    background-color: #eef4ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #d9e7ff;
 }
 
 /* ========================================================= */
@@ -101,6 +133,9 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 500;
 }
 
 .search-area {
@@ -111,13 +146,16 @@ body {
     width: 350px;
     height: 40px;
     padding: 0 10px;
+    background-color: #fff;
 }
+
 .search-input {
     border: none;
     outline: none;
     flex-grow: 1;
     padding: 5px;
     font-size: 1rem;
+    color: #333;
 }
 
 .user-info {
@@ -125,16 +163,19 @@ body {
     align-items: center;
     gap: 20px;
 }
+
 .profile-area {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .profile-pic {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #007bff;
 }
 
 /* ========================================================= */
@@ -159,6 +200,7 @@ body {
     border-radius: 6px;
     border-left: 5px solid #ffc107;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 .deadline-banner .banner-icon i {
     font-size: 1.5rem;
@@ -184,6 +226,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 .progress-summary h2 {
     font-size: 1.1rem;
@@ -207,6 +251,8 @@ body {
     border-left: 5px solid; 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     cursor: pointer;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .task-content {
@@ -247,3 +293,171 @@ body {
 
 .status-not-started { border-color: #aaa; }
 .badge-not-started { background-color: #f0f0f0; color: #777; }
+
+/* ========================================================= */
+/* 5. RESPONSIVE DESIGN BREAKPOINTS                           */
+/* ========================================================= */
+
+/* Tablets (width ≤ 1024px) */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 200px 1fr;
+    }
+    .search-area {
+        width: 250px;
+    }
+}
+
+/* Small Tablets / Landscape Phones (width ≤ 768px) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 70px 1fr;
+    }
+
+    .nav-item span,
+    .logout-btn span {
+        display: none;
+    }
+
+    .nav-item i {
+        margin: 0 auto;
+    }
+
+    .top-header {
+        padding: 15px 20px;
+    }
+
+    .search-area {
+        width: 200px;
+        height: 36px;
+    }
+
+    .checklist-content-body {
+        padding: 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Mobile Devices (width ≤ 480px) */
+@media (max-width: 480px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 240px;
+        height: 100%;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .top-header {
+        justify-content: space-between;
+    }
+
+    .search-area {
+        display: none;
+    }
+
+    .profile-pic {
+        width: 36px;
+        height: 36px;
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-status,
+    .task-date {
+        margin-left: 0;
+    }
+}
+/* ========================================================= */
+/* 5. RESPONSIVENESS & SIDEBAR TOGGLE                         */
+/* ========================================================= */
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 992px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sidebar-toggle {
+    display: inline-block;
+    margin-right: 15px;
+  }
+
+  .top-header {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .search-area {
+    flex: 1;
+    max-width: 60%;
+  }
+
+  .user-info {
+    margin-left: auto;
+  }
+
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-area {
+    display: none;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .profile-pic {
+    width: 32px;
+    height: 32px;
+  }
+}

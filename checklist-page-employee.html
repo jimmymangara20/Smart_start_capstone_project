@@ -1,111 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartstart Checklist</title>
-    
-    <link rel="stylesheet" href="static/checklist-page-employee.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smartstart Checklist</title>
+
+  <link rel="stylesheet" href="static/checklist-page-employee.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body id="checklist-page">
 
-    <div class="dashboard-container">
-        
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo">
-                <a href="employee-dashboard.html" class="logo-link">
-                    <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img">
-                </a>
+  <div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <a href="employee-dashboard.html" class="logo-link">
+          <img src="static/assets/smartstart-logo-orig.png" alt="Smartstart Logo" class="logo-img" />
+        </a>
+      </div>
+
+      <nav class="nav-links">
+        <a href="employee-dashboard.html" class="nav-item"><i class="fas fa-home"></i> Home</a>
+        <a href="checklist-page-employee.html" class="nav-item active"><i class="fas fa-list-check"></i> Checklist</a>
+        <a href="employee-progress-tracker.html" class="nav-item"><i class="fas fa-chart-line"></i> Progress Tracker</a>
+        <a href="events-page-employee.html" class="nav-item"><i class="fas fa-calendar-alt"></i> Events</a>
+        <a href="employee-documents.html" class="nav-item"><i class="fas fa-file-alt"></i> Documents</a>
+        <a href="profile-employee.html" class="nav-item"><i class="fas fa-user"></i> Profile</a>
+      </nav>
+
+      <div class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Log Out
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="top-header">
+        <!-- Sidebar Toggle for mobile -->
+        <button id="sidebarToggle" class="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="search-area">
+          <input type="text" placeholder="Search" class="search-input" />
+          <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="user-info">
+          <i class="fas fa-bell user-icon"></i>
+          <div class="profile-area">
+            <span class="user-name">Aisha Bello</span>
+            <img src="static/assets/Aisha bello.png" alt="Aisha Bello" class="profile-pic" />
+          </div>
+        </div>
+      </header>
+
+      <!-- Checklist View -->
+      <div id="checklist-view" class="view active">
+        <div class="checklist-content-body">
+          <header class="checklist-view-header">
+            <h1>Checklist</h1>
+          </header>
+
+          <div class="deadline-banner warning-card">
+            <div class="banner-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <div class="banner-text">
+              <p class="deadline-title">Deadline to complete all tasks:</p>
+              <p class="deadline-time" data-deadline-ms="368022007">4 days 18:22:07</p>
             </div>
+          </div>
 
-            <nav class="nav-links">
-                <a href="employee-dashboard.html" class="nav-item">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="checklist-page-employee.html" class="nav-item active">
-                    <i class="fas fa-list-check"></i> Checklist
-                </a>
-                <a href="employee-progress-tracker.html" class="nav-item">
-                    <i class="fas fa-chart-line"></i> Progress Tracker
-                </a>
-                <a href="events-page-employee.html" class="nav-item">
-                    <i class="fas fa-calendar-alt"></i> Events
-                </a>
-                <a href="employee-documents.html" class="nav-item">
-                    <i class="fas fa-file-alt"></i> Documents
-                </a>
-                <a href="profile-employee.html" class="nav-item">
-                    <i class="fas fa-user"></i> Profile
-                </a>
-            </nav>
+          <div class="progress-summary">
+            <h2>Complete all tasks to finish your onboarding</h2>
+            <p class="completion-count">2 of 8 completed</p>
+          </div>
 
-            <div class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </div>
-        </aside>
+          <ul class="task-list">
+            <li class="task-item status-completed clickable" data-task-id="1">...</li>
+            <li class="task-item status-completed clickable" data-task-id="2">...</li>
+            <li class="task-item status-processing clickable" data-task-id="3">...</li>
+            <li class="task-item status-pending clickable" data-task-id="4">...</li>
+            <li class="task-item status-not-started clickable" data-task-id="5">...</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            
-            <header class="top-header">
-                <div class="search-area">
-                    <input type="text" placeholder="Search" class="search-input">
-                    <button class="search-button"><i class="fas fa-search"></i></button>
-                </div>
-
-                <div class="user-info">
-                    <i class="fas fa-bell user-icon"></i>
-                    <div class="profile-area"> 
-                        <span class="user-name">Aisha Bello</span>
-                        <img src="static\assets\Aisha bello.png" alt="Aisha Bello" class="profile-pic">
-                    </div>
-                </div>
-            </header>
-
-            <!-- Checklist View -->
-            <div id="checklist-view" class="view active">
-                
-                <div class="checklist-content-body">
-                    
-                    <header class="checklist-view-header">
-                        <h1>Checklist</h1>
-                    </header>
-
-                    <div class="deadline-banner warning-card">
-                        <div class="banner-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                        <div class="banner-text">
-                            <p class="deadline-title">Deadline to complete all tasks:</p>
-                            <p class="deadline-time" data-deadline-ms="368022007">4 days 18:22:07</p> 
-                        </div>
-                    </div>
-
-                    <div class="progress-summary">
-                        <h2>Complete all tasks to finish your onboarding</h2>
-                        <p class="completion-count">2 of 8 completed</p>
-                    </div>
-
-                    <ul class="task-list">
-                        <li class="task-item status-completed clickable" data-task-id="1">...</li>
-                        <li class="task-item status-completed clickable" data-task-id="2">...</li>
-                        <li class="task-item status-processing clickable" data-task-id="3">...</li>
-                        <li class="task-item status-pending clickable" data-task-id="4">...</li>
-                        <li class="task-item status-not-started clickable" data-task-id="5">...</li>
-                    </ul>
-
-                </div>
-            </div>
-
-        </main>
-    </div>
-
-    <!-- Page-specific JS first -->
-    <script src="static/javascript/checklist-page-employee.js"></script>
-
-    <!-- Always place main.js last -->
-    <script src="static/javascript/main.js"></script>
-
+  <script src="static/javascript/checklist-page-employee.js"></script>
+  <script src="static/javascript/main.js"></script>
 </body>
 </html>

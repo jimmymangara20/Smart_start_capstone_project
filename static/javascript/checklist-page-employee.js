@@ -1,9 +1,40 @@
-// checklist.js (page-specific logic only)
+// checklist-page-employee.js
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --------------------------------------------------
-       1. Checklist Countdown Timer
-    -------------------------------------------------- */
+    /* ========================================================
+       1. Sidebar Toggle for Mobile/Small Screens
+    ======================================================== */
+    const dashboardContainer = document.querySelector('.dashboard-container');
+    const sidebar = document.querySelector('.sidebar');
+
+    // Create toggle button dynamically if on small screens
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'sidebar-toggle-btn';
+    toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    toggleBtn.setAttribute('aria-label', 'Toggle Sidebar');
+
+    const topHeader = document.querySelector('.top-header');
+    topHeader.insertAdjacentElement('afterbegin', toggleBtn);
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('sidebar-collapsed');
+    });
+
+    // Optional: collapse sidebar on window resize below 768px
+    function handleResize() {
+        if (window.innerWidth < 768) {
+            sidebar.classList.add('sidebar-collapsed');
+        } else {
+            sidebar.classList.remove('sidebar-collapsed');
+        }
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+
+    /* ========================================================
+       2. Checklist Countdown Timer
+    ======================================================== */
     const deadlineElement = document.querySelector('.deadline-time');
 
     if (deadlineElement) {
@@ -38,14 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    /* --------------------------------------------------
-       2. Task Item Click Events
-    -------------------------------------------------- */
+    /* ========================================================
+       3. Task Item Click Events
+    ======================================================== */
     const taskItems = document.querySelectorAll('.task-item.clickable');
 
     taskItems.forEach(item => {
         item.addEventListener('click', () => {
-            const taskTitle = item.querySelector('h3').textContent;
+            const taskTitle = item.querySelector('h3')?.textContent || 'Untitled Task';
             console.log(`Task Clicked: ${taskTitle}`);
             // Future routing: window.location.href = `/task/${id}`;
         });
