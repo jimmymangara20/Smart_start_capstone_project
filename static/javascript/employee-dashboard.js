@@ -63,7 +63,7 @@ function updateProgressBar(percentage) {
 async function loadDashboardData() {
     try {
         // --- 1. Fetch User Data ---
-        const userResponse = await fetch(`${API_BASE}/api/user/aisha`);
+        const userResponse = await fetch(`${API_BASE}/api/employees`);
         if (!userResponse.ok) throw new Error("Failed to fetch user data.");
         const userData = await userResponse.json();
         
