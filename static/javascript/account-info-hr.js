@@ -1,5 +1,5 @@
-// ✅ SET YOUR LIVE BACKEND URL
-const API_BASE_URL = "https://smartstart-backend-8afq.onrender.com/api";
+// SET YOUR LIVE BACKEND URL
+const API_BASE_URL = "https://smartstart-backend-2.onrender.com/api";
 
 // Load user data on page load
 document.addEventListener("DOMContentLoaded", async () => {
@@ -51,22 +51,22 @@ document.querySelector("[data-action='change-password']").addEventListener("clic
   window.location.href = "/profile/change-password";
 });
 
-// ✅ PRIVACY POLICY
+// PRIVACY POLICY
 document.querySelector("[data-action='privacy']").addEventListener("click", () => {
   window.location.href = "/privacy";
 });
 
-// ✅ SUPPORT PAGE
+// SUPPORT PAGE
 document.querySelector("[data-action='support']").addEventListener("click", () => {
   window.location.href = "/support";
 });
 
-// ✅ ABOUT PAGE
+// ABOUT PAGE
 document.querySelector("[data-action='about']").addEventListener("click", () => {
   window.location.href = "/about";
 });
 
-// ✅ BIOMETRIC TOGGLE
+//  TOGGLE
 const biometricToggle = document.getElementById("biometric-toggle");
 biometricToggle.addEventListener("change", async () => {
   const enabled = biometricToggle.checked;
@@ -84,7 +84,7 @@ biometricToggle.addEventListener("change", async () => {
   alert(`Biometric login ${enabled ? "enabled" : "disabled"}`);
 });
 
-// ✅ SEARCH
+// SEARCH
 document.getElementById("searchBtn").addEventListener("click", () => {
   const text = document.getElementById("searchInput").value.trim();
   if (text.length > 0) {
@@ -92,7 +92,7 @@ document.getElementById("searchBtn").addEventListener("click", () => {
   }
 });
 
-// ✅ LOGOUT (sidebar + bottom)
+// LOGOUT (sidebar + bottom)
 document.querySelectorAll("[data-action='logout-menu']").forEach((btn) => {
   btn.addEventListener("click", () => {
     localStorage.removeItem("token");
@@ -100,12 +100,12 @@ document.querySelectorAll("[data-action='logout-menu']").forEach((btn) => {
   });
 });
 
-// ✅ NOTIFICATIONS DROPDOWN
+//NOTIFICATIONS DROPDOWN
 document.getElementById("notifIcon").addEventListener("click", () => {
   document.getElementById("notifDropdown").classList.toggle("show");
 });
 
-// ✅ MESSAGES DROPDOWN
+//MESSAGES DROPDOWN
 document.getElementById("msgIcon").addEventListener("click", () => {
   document.getElementById("msgDropdown").classList.toggle("show");
 });

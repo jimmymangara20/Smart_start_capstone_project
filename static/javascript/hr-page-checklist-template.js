@@ -10,7 +10,7 @@ const formTitle = document.getElementById("formTitle");
 const formDesc = document.getElementById("formDesc");
 
 // ====== BACKEND URL ======
-const BASE_URL = "https://smartstart-backend-8afq.onrender.com/api"; // <--- Replace with your actual backend
+const BASE_URL = "https://smartstart-backend-2.onrender.com/api"; // <--- Replace with your actual backend
 
 // ====== STATE ======
 let checklistId = null; // Backend will return this when checklist is created

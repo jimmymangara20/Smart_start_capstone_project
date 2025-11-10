@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoutBtn = document.querySelector(".logout-btn");
 
     // Replace this with your backend logout endpoint if you have one
-    const LOGOUT_API_URL = "https://smartstart-backend-8afq.onrender.com/api/logout";
+    const LOGOUT_API_URL = "https://smartstart-backend-2.onrender.com/api/logout";
 
     logoutBtn.addEventListener("click", async () => {
         const confirmLogout = confirm("Are you sure you want to log out?");

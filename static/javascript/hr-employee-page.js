@@ -1,4 +1,4 @@
-const API = "https://smartstart-backend-8afq.onrender.com";
+const API = "https://smartstart-backend-2.onrender.com";
 const tbody = document.getElementById("employee-rows");
 const totalCountEl = document.getElementById("total-count");
 

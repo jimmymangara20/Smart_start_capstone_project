@@ -153,21 +153,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const response = await fetch("https://your-backend-api.com/subscribe", {
+        const response = await fetch("https://smartstart-backend-2.onrender.com/subscribe", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email }),
         });
 
         if (response.ok) {
-          alert("✅ Subscription successful!");
+          alert("Subscription successful!");
           newsletterForm.reset();
         } else {
-          alert("❌ Subscription failed. Try again later.");
+          alert("Subscription failed. Try again later.");
         }
       } catch (error) {
         console.error("Error:", error);
-        alert("⚠️ Network error. Please check your connection.");
+        alert("Network error. Please check your connection.");
       }
     });
   }

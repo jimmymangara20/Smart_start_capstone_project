@@ -3,7 +3,7 @@
 // ==========================
 
 // Base API URL
-const API_BASE = "https://smartstart-backend-8afq.onrender.com/api/hr";
+const API_BASE = "https://smartstart-backend-2.onrender.com/api/hr";
 
 // Check if user is logged in (JWT token available)
 const token = localStorage.getItem("jwtToken");

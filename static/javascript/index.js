@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const API_BASE_URL = "https://your-backend-domain.com/api"; 
+const API_BASE_URL = "https://smartstart-backend-2.onrender.com/api"; 
 
   // === Highlight Active Link ===
   const setActiveLink = (path) => {

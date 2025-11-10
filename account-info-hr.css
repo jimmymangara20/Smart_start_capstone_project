@@ -1,5 +1,6 @@
-
-
+/* ========================================================= */
+/* 1. BASE LAYOUT & COMMON STYLES                            */
+/* ========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +23,10 @@ body {
 .main-content {
     overflow-y: auto;
 }
-/* sidebar */
+
+/* ========================================================= */
+/* 2. SIDEBAR & NAVIGATION                                    */
+/* ========================================================= */
 .sidebar {
     background-color: #ffffff;
     padding: 20px 0;
@@ -60,7 +64,6 @@ body {
     width: 20px;
 }
 
-/* Active Link State */
 .nav-item:hover {
     background-color: #e0f0ff;
     color: #007bff; 
@@ -79,7 +82,9 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* /* HEADER STYLING */
+/* ========================================================= */
+/* 3. HEADER STYLING                                         */
+/* ========================================================= */
 .top-header {
     background-color: #ffffff;
     padding: 15px 30px;
@@ -98,6 +103,7 @@ body {
     height: 40px;
     padding: 0 10px;
 }
+
 .search-input {
     border: none;
     outline: none;
@@ -111,6 +117,7 @@ body {
     align-items: center;
     gap: 20px;
 }
+
 .profile-pic {
     width: 40px;
     height: 40px;
@@ -118,8 +125,9 @@ body {
     object-fit: cover;
 }
 
-
-/* 4. PROFILE CONTENT STYLING */
+/* ========================================================= */
+/* 4. PROFILE CONTENT STYLING                                 */
+/* ========================================================= */
 .profile-content-body {
     padding: 30px;
 }
@@ -131,7 +139,7 @@ body {
     color: #333;
 }
 
-/* --- Top Profile Card --- */
+/* --- Profile Card --- */
 .profile-card {
     display: flex;
     align-items: center;
@@ -195,7 +203,7 @@ body {
     flex-grow: 1;
 }
 
-/* Incomplete Status Badge */
+/* Status Badge */
 .item-status {
     font-size: 0.75rem;
     font-weight: 600;
@@ -212,7 +220,7 @@ body {
     font-size: 0.9rem;
 }
 
-/* --- Toggle Switch (Biometric) --- */
+/* Toggle Switch */
 .toggle-switch {
     position: relative;
     display: inline-block;
@@ -252,4 +260,79 @@ input:checked + .slider {
 }
 input:checked + .slider:before {
     transform: translateX(18px);
+}
+
+/* ========================================================= */
+/* 5. RESPONSIVE STYLES                                       */
+/* ========================================================= */
+
+/* Tablets & small laptops */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        grid-template-columns: 200px 1fr;
+    }
+    .top-header {
+        padding: 15px 20px;
+    }
+    .search-area {
+        width: 250px;
+    }
+}
+
+/* Medium tablets / large phones */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 60px 1fr;
+    }
+    .sidebar {
+        padding: 10px 0;
+    }
+    .logo-link {
+        padding: 0 10px 20px 10px;
+    }
+    .nav-item span {
+        display: none; /* hide text, keep icons */
+    }
+    .top-header {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+    .profile-content-body {
+        padding: 20px;
+    }
+    .profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .settings-list {
+        padding: 0 10px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .dashboard-container {
+        grid-template-columns: 0 1fr; /* hide sidebar */
+    }
+    .sidebar {
+        display: none;
+    }
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .search-area {
+        width: 100%;
+    }
+    .profile-content-body {
+        padding: 15px;
+    }
+    .profile-card {
+        padding: 15px 0;
+    }
+    .settings-list {
+        padding: 0 5px;
+    }
 }

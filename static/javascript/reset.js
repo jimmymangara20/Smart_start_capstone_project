@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // API request to backend
-      const response = await fetch("https://your-backend-url.com/api/reset-password", {
+      const response = await fetch("https://smartstart-backend-2.onrender.com/api/reset-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

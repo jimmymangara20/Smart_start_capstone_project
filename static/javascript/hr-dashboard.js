@@ -1,4 +1,4 @@
-const API = "https://smartstart-backend-8afq.onrender.com";
+const API = "https://smartstart-backend-2.onrender.com";
 
 const activeCount = document.getElementById("active-count");
 const completedCount = document.getElementById("completed-count");

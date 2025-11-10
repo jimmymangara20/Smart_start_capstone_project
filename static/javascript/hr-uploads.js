@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tableBody = document.getElementById("docsTableBody");
     const emptyStateRow = document.getElementById("emptyStateRow");
 
-    const API_GET_ALL_URL = "https://smartstart-backend-8afq.onrender.com/api/documents";
-    const API_DOWNLOAD_URL = "https://smartstart-backend-8afq.onrender.com/api/download/"; // append file ID
+    const API_GET_ALL_URL = "https://smartstart-backend-2.onrender.com/api/documents";
+    const API_DOWNLOAD_URL = "https://smartstart-backend-2.onrender.com/api/download/"; // append file ID
 
     // Fetch all uploaded documents
     async function fetchAllDocuments() {

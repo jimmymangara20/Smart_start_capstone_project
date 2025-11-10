@@ -3,7 +3,7 @@
 // ==========================
 
 // Base API URL
-const API_BASE = "https://smartstart-backend-8afq.onrender.com/api/auth";
+const API_BASE = "https://smartstart-backend-2.onrender.com/api/auth";
 
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");

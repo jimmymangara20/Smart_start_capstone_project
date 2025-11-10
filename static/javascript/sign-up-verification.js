@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activateBtn = document.querySelector(".primary-btn"); // On verification page
   const emailSpan = document.querySelector("p span");
 
-  const API_BASE_URL = "https://your-backend-api.com"; // Replace with your backend
+  const API_BASE_URL = "https://smartstart-backend-2.onrender.com"; // Replace with your backend
 
   // ---- Role Selection ----
   adminRadio?.addEventListener("change", () => {

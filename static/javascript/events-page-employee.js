@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const eventsContainer = document.getElementById("eventsContainer");
 
   // 🔗 API endpoint
-  const apiUrl = "https://smartstart-backend-8afq.onrender.com/api/events";
+  const apiUrl = "https://smartstart-backend-2.onrender.com/api/events";
 
   async function loadEvents() {
     try {

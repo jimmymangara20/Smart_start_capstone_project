@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // --- MOCK API CALL FOR RESEND ---
         // Replace with your actual backend endpoint when ready
-        // const RESEND_ENDPOINT = 'YOUR_BACKEND_API_URL/api/resend-verification-email';
+        const RESEND_ENDPOINT = 'https://smartstart-backend-2.onrender.com/api/resend-verification-email';
 
         try {
             console.log(`MOCK: Attempting to resend verification email to ${userEmail}...`);

@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =============================
   // FETCH API (Reusable Template)
   // =============================
-  const API_BASE_URL = "https://your-backend-link.com/api"; // Replace with your actual backend
+  const API_BASE_URL = "https://smartstart-backend-2.onrender.com/api"; // Replace with your actual backend
 
   async function fetchData(endpoint, method = "GET", body = null) {
     try {
@@ -141,10 +141,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error(`Error ${response.status}`);
       const data = await response.json();
 
-      console.log("✅ Data fetched:", data);
+      console.log("Data fetched:", data);
       return data;
     } catch (err) {
-      console.error("❌ Fetch error:", err);
+      console.error("Fetch error:", err);
       return null;
     }
   }

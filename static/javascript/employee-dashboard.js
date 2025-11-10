@@ -41,7 +41,7 @@ const DOM = {
     sessionsContainer: document.querySelector('.upcoming-sessions-container')
 };
 
- const API_BASE = 'https://smartstart-backend-8afq.onrender.com'; 
+ const API_BASE = 'https://smartstart-backend-2.onrender.com'; 
 
 /**
  * Updates the circular progress bar based on the percentage fetched.

@@ -1,5 +1,5 @@
 // SET YOUR LIVE BACKEND URL
-const API_BASE_URL = "https://smartstart-backend-8afq.onrender.com/api";
+const API_BASE_URL = "https://smartstart-backend-2.onrender.com/api";
 
 // Load user data on page load
 document.addEventListener("DOMContentLoaded", async () => {

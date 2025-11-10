@@ -1,6 +1,6 @@
 // employee-progress-tracker.js
 
-const API_BASE_URL = "https://smartstart-backend-8afq.onrender.com/api/progress";
+const API_BASE_URL = "https://smartstart-backend-2.onrender.com/api/progress";
 
 document.addEventListener("DOMContentLoaded", () => {
     loadProgressData();

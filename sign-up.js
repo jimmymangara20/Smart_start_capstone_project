@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const googleLink = document.querySelector('[data-route="google.email"]');
   const loginLink = document.querySelector(".login");
 
-  const API_BASE_URL = "https://smartstart-backend-8afq.onrender.com"; // Replace with your backend
+  const API_BASE_URL = "https://smartstart-backend-2.onrender.com"; // Replace with your backend
 
   // --- Show/Hide fields based on role ---
   adminRadio?.addEventListener("change", () => {

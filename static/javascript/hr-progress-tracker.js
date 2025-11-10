@@ -1,4 +1,4 @@
-const API_BASE = "https://smartstart-backend-8afq.onrender.com";
+const API_BASE = "https://smartstart-backend-2.onrender.com";
 const tableBody = document.getElementById("employee-rows");
 
 let currentPage = 1;

@@ -54,7 +54,7 @@ async function submitRegistration(formData) {
 
 async function submitRegistration(formData) {
     // Replace with your actual backend registration endpoint URL
-    const API_ENDPOINT = 'YOUR_BACKEND_API_URL/api/register'; 
+    const API_ENDPOINT = 'https://smartstart-backend-2.onrender.com/api/users/'; 
 
     // Get the sign-up button to disable it during submission
     const submitButton = document.querySelector('.signup-btn');
